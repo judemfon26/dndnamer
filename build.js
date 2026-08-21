@@ -2,7 +2,8 @@ import fs from "fs";
 import path from "path";
 import { RACES as CORE, VARIANTS } from "./data/races.js";
 import { RACES2 } from "./data/races2.js";
-const RACES = { ...CORE, ...RACES2 };
+import { RACES3 } from "./data/races3.js";
+const RACES = { ...CORE, ...RACES2, ...RACES3 };
 import { generateSet } from "./lib/generate.js";
 import { page, SITE } from "./lib/template.js";
 
