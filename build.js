@@ -296,3 +296,9 @@ if(rollBtn&&fabEl){
 }
 `;
 fs.writeFileSync(path.join(OUT, "g.js"), clientJs);
+
+// ---- deploy plumbing (restored — a client-bundle rewrite once truncated this) ----
+fs.writeFileSync(path.join(OUT, "ads.txt"),
+  `google.com, ${SITE.adsenseClient.replace(/^ca-/, "")}, DIRECT, f08c47fec0942fa0\n`);
+fs.writeFileSync(path.join(OUT, "CNAME"), SITE.domain + "\n");
+fs.writeFileSync(path.join(OUT, ".nojekyll"), "");
