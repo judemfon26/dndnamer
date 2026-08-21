@@ -181,6 +181,11 @@ document.addEventListener("click",e=>{
 });`;
 fs.writeFileSync(path.join(OUT, "g.js"), clientJs);
 
+// ads.txt authorises Google to sell this site's inventory. A missing ads.txt
+// costs revenue and shows as "Not found" in the AdSense Sites list.
+fs.writeFileSync(path.join(OUT, "ads.txt"),
+  `google.com, ${SITE.adsenseClient.replace(/^ca-/, "")}, DIRECT, f08c47fec0942fa0\n`);
+
 // GitHub Pages needs a CNAME file in the published output to serve the custom domain.
 fs.writeFileSync(path.join(OUT, "CNAME"), SITE.domain + "\n");
 // Stop Jekyll from mangling the output (it ignores files/dirs beginning with _).
