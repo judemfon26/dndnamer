@@ -104,6 +104,8 @@ ${related(key)}`
     const pool = generateSet(key, "neutral", key + L + "seed", 400)
       .filter(n => n[0].toLowerCase() === L).slice(0, 30);
     if (pool.length < 6) continue;           // skip letters this phonology can't make
+    // skip degenerate pages where every name shares one stem (e.g. 28x "Cloud-")
+    if (new Set(pool.map(n => n.slice(0, 4).toLowerCase())).size < 2) continue;
     write(`/${s}-names-starting-with-${L}`, page({
       title: `${R.label} Names Starting With ${L.toUpperCase()} | ${SITE.name}`,
       desc: `${pool.length} ${R.label.toLowerCase()} names beginning with the letter ${L.toUpperCase()}, plus a free generator for more.`,
@@ -123,6 +125,15 @@ ${letterLinks(key)}`
 }
 
 // --------------------------------------------------------------------- genre hubs
+// Per-genre example overrides so a hub's cards speak that fandom's register.
+const GENRE_SEEDS = {
+  skyrim: {
+    elf: ["Faendal", "Ancano", "Elenwen"],
+    dwarf: ["Kagrenac", "Dumac", "Yagrum"],
+    orc: ["Ghorbash", "Borgakh", "Yamarz"],
+    human_nordic: ["Ulfric", "Ralof", "Lydia"],
+  },
+};
 const GENRES = { dnd:"D&D", fantasy:"Fantasy", lotr:"Lord of the Rings", skyrim:"Skyrim", wow:"World of Warcraft", viking:"Viking", historical:"Historical", druid:"Druid" };
 for (const [gk, glabel] of Object.entries(GENRES)) {
   const members = Object.entries(RACES).filter(([, R]) => (R.genre||[]).includes(gk));
@@ -134,7 +145,10 @@ for (const [gk, glabel] of Object.entries(GENRES)) {
     h1: `${glabel} Name Generator`,
     crumbs: [{href:"/",label:"Home"},{label:glabel}],
     body: `<p class="lede">Pick a race to generate ${glabel} names.</p>
-<ul class="cards">${members.map(([k,R])=>`<li><a href="/${slug(k)}-name-generator/"><strong>${R.label}</strong><span>${R.seeds.slice(0,3).join(", ")}</span></a></li>`).join("")}</ul>`
+<ul class="cards">${members.map(([k,R])=>{
+      const ex = (GENRE_SEEDS[gk] || {})[k] || R.seeds.slice(0,3);
+      return `<li><a href="/${slug(k)}-name-generator/"><strong>${R.label}</strong><span>${ex.slice(0,3).join(", ")}</span></a></li>`;
+    }).join("")}</ul>`
   }));
 }
 
@@ -256,6 +270,8 @@ document.addEventListener("click",e=>{
   if(fab){const g=$(".gen"); if(g){window.scrollTo({top:Math.max(0,g.getBoundingClientRect().top+scrollY-80),behavior:"instant"}); doGenerate(g,true);} return;}
   const st=e.target.closest("#savedbar .saved-toggle");
   if(st){$("#savedbar").classList.toggle("open"); return;}
+  const sb=$("#savedbar");
+  if(sb&&sb.classList.contains("open")&&!e.target.closest("#savedbar")){sb.classList.remove("open");}
   const cp=e.target.closest("#savedbar .copy-all");
   if(cp&&state.saved.length){if(navigator.clipboard)navigator.clipboard.writeText(state.saved.join("\\n"));toast("Copied "+state.saved.length+" names");return;}
 });
@@ -273,7 +289,7 @@ $$(".forged-n").forEach(e=>e.textContent=state.forged.toLocaleString());
 const rollBtn=$(".gen .reroll"), fabEl=$("#fab");
 if(rollBtn&&fabEl){
   const updFab=()=>{const r=rollBtn.getBoundingClientRect();
-    fabEl.classList.toggle("show",r.bottom<0||r.top>innerHeight);};
+    fabEl.classList.toggle("show",r.bottom<0);};
   addEventListener("scroll",updFab,{passive:true});
   addEventListener("resize",updFab,{passive:true});
   updFab();

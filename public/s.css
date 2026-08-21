@@ -79,7 +79,8 @@ select.count{appearance:none;background:var(--inset) url("data:image/svg+xml,%3C
 .chip.copied{animation:copy-pop 300ms var(--ease-pop);outline:2px solid var(--acc);outline-offset:-1px}
 .chip .nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .star{background:none;border:0;font-size:1.15rem;line-height:1;color:var(--text-3);cursor:pointer;padding:.35rem;border-radius:8px;
-  transition:transform var(--t-press) var(--ease-pop),color var(--t-hover)}
+  position:relative;transition:transform var(--t-press) var(--ease-pop),color var(--t-hover)}
+.star::after{content:"";position:absolute;inset:-9px}
 .star:hover{color:var(--acc-text);transform:scale(1.2)}
 .chip.saved .star,.chip.saved:hover .star{color:var(--acc-text)}
 .star.burst{animation:star-burst 500ms var(--ease-pop)}
@@ -150,5 +151,10 @@ footer a{color:var(--text-3)}
   .names{grid-template-columns:repeat(2,1fr)}
   .controls{flex-direction:row;justify-content:space-between}
   .reroll{flex:1;justify-content:center}
+}
+@media(max-width:420px){
+  .controls{flex-direction:column;align-items:stretch;gap:.6rem}
+  .reroll{width:100%;white-space:nowrap;font-size:1rem}
+  .count-wrap{justify-content:center}
 }
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto}}

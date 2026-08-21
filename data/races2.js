@@ -2,7 +2,7 @@
 export const RACES2 = {
   tabaxi: {
     label: "Tabaxi", genre: ["dnd"],
-    onset: ["Cloud","Jade","Skit","Whis","Purr","Mist","Swift","Night","Sand","Dust","Ember","Quick","Silent","Shadow","Amber","Rust","Flick","Pounce"],
+    onset: ["Cloud","Claw","Cinder","Crest","Jade","Skit","Whis","Purr","Mist","Swift","Night","Sand","Dust","Ember","Quick","Silent","Shadow","Amber","Rust","Flick","Pounce"],
     mid: ["on","er","ing","le","a","i","o"],
     coda: ["paw","claw","tail","whisker","step","leap","pounce","song","dancer","chaser","stalker","prowl","purr","hunter"],
     syl: [2], gendered: false,
@@ -44,7 +44,7 @@ export const RACES2 = {
   },
   firbolg: {
     label: "Firbolg", genre: ["dnd","druid"],
-    onset: ["Bram","Caer","Dun","Fal","Gorm","Hae","Loch","Mor","Nuall","Oak","Rowan","Tarn","Thal","Wyn","Bir","Fen"],
+    onset: ["Bram","Caer","Cairn","Clay","Dun","Fal","Gorm","Hae","Loch","Mor","Nuall","Oak","Rowan","Tarn","Thal","Wyn","Bir","Fen"],
     mid: ["a","o","ea","ui","ea","ar","en"],
     coda: ["wood","moss","stone","root","glen","fell","holt","mire","bark","thorn","brook","hollow","dale"],
     syl: [2], gendered: false,
@@ -73,7 +73,7 @@ export const RACES2 = {
   },
   warforged: {
     label: "Warforged", genre: ["dnd"],
-    onset: ["Bul","Crag","Dent","Ferro","Gird","Hammer","Iron","Lock","Mend","Nail","Plate","Rivet","Sever","Tor","Vault","Wrench","Bolt","Anvil"],
+    onset: ["Bul","Crag","Cog","Clank","Dent","Ferro","Gird","Hammer","Iron","Lock","Mend","Nail","Plate","Rivet","Sever","Tor","Vault","Wrench","Bolt","Anvil"],
     mid: ["er","on","ic","al","um","ard"],
     coda: ["wall","edge","hammer","bolt","gear","plate","forge","shard","spike","clamp","vice","brand","strike"],
     syl: [2], gendered: false,
@@ -113,7 +113,7 @@ export const RACES2 = {
   },
   pirate: {
     label: "Pirate", genre: ["fantasy","historical"],
-    onset: ["Black","Red","One","Bloody","Salt","Iron","Mad","Dead","Bones","Grim","Storm","Cut","Bar","Rack","Scur","Hook"],
+    onset: ["Black","Red","One","Bloody","Salt","Iron","Mad","Dead","Bones","Grim","Storm","Cut","Crow","Cannon","Bar","Rack","Scur","Hook"],
     mid: ["y","ie","er","a","o"],
     coda: ["beard","eye","hand","jack","tooth","bones","hook","sail","anne","morgan","rackham","flint","teach"],
     syl: [2], gendered: true,
