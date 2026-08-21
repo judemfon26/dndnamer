@@ -210,7 +210,7 @@ function renderSavedBar(){
   const listEl=$("#savedlist");
   if(listEl) listEl.innerHTML=state.saved.map(x=>\`<li class="chip saved" data-n="\${x}"><span class="nm">\${x}</span><button class="star" aria-label="remove">★</button></li>\`).join("");
 }
-function doGenerate(g){
+function doGenerate(g,scrollAfter){
   const btn=$(".reroll",g), list=$(".names",g);
   const n=+($(".count",g)?.value||12);
   btn.classList.add("rolling"); g.classList.add("shaking");
@@ -224,6 +224,9 @@ function doGenerate(g){
     while(list.children.length>160)list.removeChild(list.lastChild);
     updateForged(names.length);
     btn.classList.remove("rolling"); g.classList.remove("shaking");
+    if(scrollAfter){ // instant jump AFTER layout settles — smooth scroll loses to chip insertion
+      requestAnimationFrame(()=>window.scrollTo({top:Math.max(0,g.getBoundingClientRect().top+scrollY-80),behavior:"instant"}));
+    }
   },420);
 }
 document.addEventListener("click",e=>{
@@ -235,7 +238,10 @@ document.addEventListener("click",e=>{
     else{state.saved.unshift(name); if(state.saved.length>60)state.saved.pop();
       li.classList.add("saved"); star.textContent="★"; star.classList.add("burst");
       setTimeout(()=>star.classList.remove("burst"),500); toast("★ Saved");}
-    store.set(state); renderSavedBar(); return;
+    store.set(state);
+    $$(".chip").forEach(c=>{if(c.dataset.n===name){const on=state.saved.includes(name);
+      c.classList.toggle("saved",on); const st2=$(".star",c); if(st2)st2.textContent=on?"\u2605":"\u2606";}});
+    renderSavedBar(); return;
   }
   const li=e.target.closest(".chip,.names li");
   if(li){
@@ -247,7 +253,7 @@ document.addEventListener("click",e=>{
   const b=e.target.closest(".reroll");
   if(b){doGenerate(b.closest(".gen")); return;}
   const fab=e.target.closest("#fab");
-  if(fab){const g=$(".gen"); if(g){g.scrollIntoView({behavior:"smooth",block:"center"}); doGenerate(g);} return;}
+  if(fab){const g=$(".gen"); if(g){window.scrollTo({top:Math.max(0,g.getBoundingClientRect().top+scrollY-80),behavior:"instant"}); doGenerate(g,true);} return;}
   const st=e.target.closest("#savedbar .saved-toggle");
   if(st){$("#savedbar").classList.toggle("open"); return;}
   const cp=e.target.closest("#savedbar .copy-all");

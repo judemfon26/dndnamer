@@ -3,7 +3,7 @@
 // canonical examples used to anchor quality; `lore` gives each page unique prose.
 export const RACES = {
   elf: {
-    label: "Elf", genre: ["dnd","fantasy","lotr"],
+    label: "Elf", genre: ["dnd","fantasy","lotr","skyrim","druid"],
     onset: ["Ae","Ael","Al","Ar","Cel","Ela","El","Fae","Fi","Gal","Il","Lae","Leg","Lin","Lor","Mel","Mir","Nae","Nim","Ri","Sil","Tha","Thra","Va","Ya"],
     mid:   ["la","ri","the","na","do","li","ra","ni","va","lo","me","se","ya","wen","dre","ith"],
     coda:  ["riel","wen","dir","las","ion","eth","iel","ien","aur","or","ara","ael","yn","il","ath"],
@@ -14,7 +14,7 @@ export const RACES = {
     lore: "Elven names flow with open vowels and liquid consonants — l, r, and n do most of the work, and hard stops are rare. The style descends from Tolkien's Sindarin and Quenya, where names were built from meaningful roots: <em>gal</em> (light), <em>sil</em> (shine), <em>lor</em> (gold). Female names often close on -riel, -wen or -eth; male names on -dir, -las or -ion."
   },
   dwarf: {
-    label: "Dwarf", genre: ["dnd","fantasy","lotr"],
+    label: "Dwarf", genre: ["dnd","fantasy","lotr","skyrim","viking"],
     onset: ["Bal","Bar","Bof","Bom","Dur","Dwa","Far","Gim","Glo","Gro","Kil","Nal","Nor","Oin","Thor","Thra","Tho","Dain","Bru","Kaz","Mor","Grim"],
     mid:   ["in","ur","ar","or","um","ok","ad","un","ig","ral"],
     coda:  ["in","li","ur","ain","ki","rim","din","grim","borg","nar","dan","rok","mir"],
@@ -25,7 +25,7 @@ export const RACES = {
     lore: "Dwarven names are short, blunt and consonant-heavy — built to be shouted across a forge. Doubled consonants and hard stops (b, d, g, k, th) dominate, and vowels stay tight. Most run two syllables, and the Norse <em>Dvergatal</em> is the ancestor of nearly every dwarf name in modern fantasy."
   },
   orc: {
-    label: "Orc", genre: ["dnd","fantasy","wow","lotr"],
+    label: "Orc", genre: ["dnd","fantasy","wow","lotr","skyrim"],
     onset: ["Az","Bol","Dur","Gor","Gru","Gul","Kra","Lug","Mog","Naz","Ok","Rag","Sha","Thok","Ug","Ur","Var","Zag","Grish","Muz"],
     mid:   ["ga","ru","na","du","mo","ka","zu","gra","bu","tha"],
     coda:  ["nak","gash","dush","rak","muk","zog","tar","gul","hai","kar","thak","grum","luk"],
@@ -69,7 +69,7 @@ export const RACES = {
     lore: "Halfling names are warm, homely and faintly rural-English — soft consonants, cheerful open endings, and a fondness for -o on male names. Surnames read like village life: Underhill, Proudfoot, Goodbarrel. The whole register is deliberately unheroic, which is exactly the joke."
   },
   human_nordic: {
-    label: "Nordic", genre: ["skyrim","fantasy","viking"],
+    label: "Nordic", genre: ["skyrim","fantasy","viking","historical"],
     onset: ["Ast","Bjor","Ei","Erl","Frey","Gun","Hal","Har","Ing","Jor","Kje","Leif","Mag","Ol","Rag","Sig","Skj","Sten","Thor","Ulf","Vig","Ylv"],
     mid:   ["var","dis","borg","gar","hild","mund","stein","valdr","rik"],
     coda:  ["ar","son","sen","dis","hild","borg","gard","ulf","rik","mund","stein","var","ny"],
@@ -80,7 +80,7 @@ export const RACES = {
     lore: "Nordic names are compound words: two meaningful roots welded together. <em>Sig</em> (victory) + <em>rid</em> (rider) gives Sigrid; <em>Thor</em> + <em>stein</em> gives Thorstein. Male names commonly end -ar, -ulf or -stein; female names -dis, -hild, -run or -veig. This is the register Skyrim borrows almost wholesale."
   },
   human_celtic: {
-    label: "Celtic", genre: ["fantasy","historical"],
+    label: "Celtic", genre: ["fantasy","historical","druid"],
     onset: ["Aed","Aoi","Bran","Bri","Cael","Cia","Con","Dei","Don","Ea","Fin","Gwe","Ir","Lio","Mae","Mor","Nia","Oi","Rho","Ron","Sea","Tea"],
     mid:   ["dh","gh","bh","nn","ll","rr","ai","ea","io"],
     coda:  ["an","in","ach","aid","aine","wen","rid","gan","ath","eth","nn","agh"],

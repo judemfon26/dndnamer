@@ -43,7 +43,7 @@ export const RACES2 = {
     lore: "Aasimar names carry celestial weight — they lean on the Hebrew angelic suffix -el (\"of God\"), long open vowels, and light imagery. The result sits deliberately close to real angelic names (Uriel, Gabriel, Raphael) without copying them, giving aasimar the sound of something descended rather than born."
   },
   firbolg: {
-    label: "Firbolg", genre: ["dnd"],
+    label: "Firbolg", genre: ["dnd","druid"],
     onset: ["Bram","Caer","Dun","Fal","Gorm","Hae","Loch","Mor","Nuall","Oak","Rowan","Tarn","Thal","Wyn","Bir","Fen"],
     mid: ["a","o","ea","ui","ea","ar","en"],
     coda: ["wood","moss","stone","root","glen","fell","holt","mire","bark","thorn","brook","hollow","dale"],
