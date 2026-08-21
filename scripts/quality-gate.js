@@ -16,3 +16,13 @@ for (const key of Object.keys(RACES)) {
 }
 if (bad.length) { console.error("QUALITY GATE FAILED:\n" + bad.map(b => " - " + b).join("\n")); process.exit(1); }
 console.log(`quality gate passed for ${Object.keys(RACES).length} races`);
+
+// deploy plumbing must exist (ads.txt went missing once — never again)
+import fs2 from "fs";
+for (const req of ["dist/ads.txt", "dist/CNAME", "dist/sitemap.xml", "dist/robots.txt"]) {
+  if (!fs2.existsSync(req)) { console.error("GATE: missing " + req); process.exit(1); }
+}
+if (!fs2.readFileSync("dist/ads.txt", "utf8").includes("pub-6956651563030013")) {
+  console.error("GATE: ads.txt missing publisher id"); process.exit(1);
+}
+console.log("deploy plumbing present");
