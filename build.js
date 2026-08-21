@@ -23,22 +23,31 @@ const nameList = (names, cls = "names") =>
   `<ul class="${cls}">${names.map(n => `<li>${n}</li>`).join("")}</ul>`;
 
 // ---- generator widget: pre-rendered names for Google, re-roll button for humans ----
-function widget(raceKey, gender, seed) {
-  const names = generateSet(raceKey, gender, seed, 24);
-  return `<section class="gen" data-race="${raceKey}" data-gender="${gender}">
+function widget(raceKey, gender, seed, letter = null) {
+  const names = letter
+    ? generateSet(raceKey, gender, seed, 400).filter(n => n[0].toLowerCase() === letter).slice(0, 18)
+    : generateSet(raceKey, gender, seed, 24);
+  return `<section class="gen card" data-race="${raceKey}" data-gender="${gender}"${letter ? ` data-letter="${letter}"` : ""}>
   <div class="controls">
-    <label>How many: <select class="count"><option>12</option><option selected>24</option><option>48</option><option>100</option></select></label>
-    <button class="reroll" type="button">Generate new names</button>
+    <button class="reroll" type="button"><span class="die">\ud83c\udfb2</span> Generate new names</button>
+    <label class="count-wrap">Count
+      <select class="count"><option>12</option><option selected>24</option><option>48</option><option>100</option></select>
+    </label>
   </div>
-  ${nameList(names)}
-  <p class="hint">Click any name to copy it.</p>
+  <ul class="names">${names.map(n => `<li>${n}</li>`).join("")}</ul>
+  <p class="hint">Tap a name to copy \u00b7 tap \u2606 to save \u00b7 <span class="forged"><span class="forged-n">0</span> names forged</span></p>
 </section>`;
 }
 
 function related(raceKey) {
-  const others = Object.keys(RACES).filter(k => k !== raceKey).slice(0, 8);
-  return `<section class="related"><h2>More name generators</h2><ul class="links">
-  ${others.map(k => `<li><a href="/${slug(k)}-name-generator/">${RACES[k].label} name generator</a></li>`).join("")}
+  const mine = new Set(RACES[raceKey]?.genre || []);
+  const others = Object.entries(RACES).filter(([k]) => k !== raceKey)
+    .sort((a, b) => {
+      const ov = ([, R]) => (R.genre || []).filter(g => mine.has(g)).length;
+      return ov(b) - ov(a);
+    }).slice(0, 6);
+  return `<section class="related"><h2>More name forges</h2><ul class="cards">
+  ${others.map(([k, R]) => `<li><a href="/${slug(k)}-name-generator/"><strong>${R.label}</strong><span>${R.seeds.slice(0, 3).join(", ")}</span></a></li>`).join("")}
   </ul></section>`;
 }
 
@@ -61,15 +70,15 @@ for (const [key, R] of Object.entries(RACES)) {
     schema: { "@context":"https://schema.org","@type":"WebApplication",
       name:`${R.label} Name Generator`, applicationCategory:"GameApplication",
       operatingSystem:"Any", offers:{"@type":"Offer",price:"0",priceCurrency:"USD"} },
-    body: `<p class="lede">Generate authentic ${R.label.toLowerCase()} names in one click. Every name below is built from real ${R.label.toLowerCase()} phonetics — not random letters.</p>
+    body: `<p class="lede">Generate authentic ${R.label.toLowerCase()} names in one click. Every name is built from real ${R.label.toLowerCase()} phonetics — not random letters.</p>
 ${widget(key, "neutral", key)}
+<section class="related"><ul class="links filter-chips">
+${GENDERS.map(g => `<li><a href="/${s}-name-generator/${g}/">${g[0].toUpperCase()+g.slice(1)}</a></li>`).join("")}
+</ul></section>
+${related(key)}
 <section class="prose"><h2>How ${R.label.toLowerCase()} names work</h2><p>${R.lore}</p>
 <h3>Classic examples</h3><p>${R.seeds.join(" · ")}</p></section>
-<section class="related"><h2>By gender</h2><ul class="links">
-${GENDERS.map(g => `<li><a href="/${s}-name-generator/${g}/">${g[0].toUpperCase()+g.slice(1)} ${R.label.toLowerCase()} names</a></li>`).join("")}
-</ul></section>
-${letterLinks(key)}
-${related(key)}`
+${letterLinks(key)}`
   }));
 
   // ------------------------------------------------------------------ per gender
@@ -100,8 +109,8 @@ ${related(key)}`
       canonical: `/${s}-names-starting-with-${L}/`,
       h1: `${R.label} Names Starting With ${L.toUpperCase()}`,
       crumbs: [{href:"/",label:"Home"},{href:`/${s}-name-generator/`,label:`${R.label} names`},{label:L.toUpperCase()}],
-      body: `<p class="lede">${R.label} names beginning with <strong>${L.toUpperCase()}</strong>.</p>
-${nameList(pool)}
+      body: `<p class="lede">${R.label} names beginning with <strong>${L.toUpperCase()}</strong> — tap to copy, or forge a fresh batch.</p>
+${widget(key, "neutral", key + L + "seed", L)}
 <section class="prose"><h2>About these names</h2><p>${R.lore}</p></section>
 <section class="related"><h2>Need something else?</h2><ul class="links">
 <li><a href="/${s}-name-generator/">Full ${R.label.toLowerCase()} name generator</a></li>
@@ -168,25 +177,99 @@ console.log(`built ${urls.length} pages -> ${OUT}/`);
 const clientJs = `
 const RACES=${JSON.stringify(Object.fromEntries(Object.entries(RACES).map(([k,v])=>[k,
   {onset:v.onset,mid:v.mid,coda:v.coda,syl:v.syl,gendered:!!v.gendered,female:v.female||[],male:v.male||[]}])))};
-${fs.readFileSync("lib/generate.js","utf8").replace(/^import .*$/m,"").replace(/export /g,"")}
+${fs.readFileSync("lib/generate.js","utf8").replace(/^import .*$/gm,"").replace(/^export const RACES.*$/m,"").replace(/export /g,"")}
+// ============ UI layer v2: game-feel interactions ============
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const store={get k(){try{return JSON.parse(localStorage.getItem("dnn")||"{}")}catch(e){return{}}},
+  set(o){try{localStorage.setItem("dnn",JSON.stringify(o))}catch(e){}}};
+let state=store.k; state.saved=state.saved||[]; state.forged=state.forged||0;
+
+function toast(msg){
+  let t=$("#toast"); if(!t){t=document.createElement("div");t.id="toast";document.body.appendChild(t);}
+  t.textContent=msg; t.classList.remove("show"); void t.offsetWidth; t.classList.add("show");
+  clearTimeout(t._h); t._h=setTimeout(()=>t.classList.remove("show"),1400);
+}
+function updateForged(n){
+  state.forged+=n; store.set(state);
+  $$(".forged-n").forEach(e=>e.textContent=state.forged.toLocaleString());
+}
+function chip(name){
+  const saved=state.saved.includes(name);
+  return \`<li class="chip\${saved?" saved":""}" data-n="\${name}"><span class="nm">\${name}</span><button class="star" aria-label="save name">\${saved?"★":"☆"}</button></li>\`;
+}
+function renderNames(list,names){
+  list.innerHTML=names.map(chip).join("");
+  $$(".chip",list).forEach((c,i)=>{c.style.animationDelay=(i*28)+"ms";c.classList.add("pop");});
+}
+function renderSavedBar(){
+  const bar=$("#savedbar"); if(!bar) return;
+  const n=state.saved.length;
+  bar.classList.toggle("has",n>0);
+  $(".saved-count",bar).textContent=n;
+  const listEl=$("#savedlist");
+  if(listEl) listEl.innerHTML=state.saved.map(x=>\`<li class="chip saved" data-n="\${x}"><span class="nm">\${x}</span><button class="star" aria-label="remove">★</button></li>\`).join("");
+}
+function doGenerate(g){
+  const btn=$(".reroll",g), list=$(".names",g);
+  const n=+($(".count",g)?.value||12);
+  btn.classList.add("rolling"); g.classList.add("shaking");
+  setTimeout(()=>{
+    let names=generateSet(g.dataset.race,g.dataset.gender,"u"+Math.random(),g.dataset.letter?n*8:n);
+    if(g.dataset.letter) names=names.filter(x=>x[0].toLowerCase()===g.dataset.letter).slice(0,n);
+    // append-at-top: the hoard grows, clearing feels like a loss (cap DOM at 160)
+    const old=list.innerHTML;
+    list.innerHTML=names.map(chip).join("")+old;
+    $$(".chip",list).slice(0,names.length).forEach((c,i)=>{c.style.animationDelay=(i*28)+"ms";c.classList.add("pop");});
+    while(list.children.length>160)list.removeChild(list.lastChild);
+    updateForged(names.length);
+    btn.classList.remove("rolling"); g.classList.remove("shaking");
+  },420);
+}
 document.addEventListener("click",e=>{
+  const star=e.target.closest(".star");
+  if(star){
+    const li=star.closest(".chip"), name=li.dataset.n;
+    const i=state.saved.indexOf(name);
+    if(i>=0){state.saved.splice(i,1); li.classList.remove("saved"); star.textContent="☆"; toast("Removed");}
+    else{state.saved.unshift(name); if(state.saved.length>60)state.saved.pop();
+      li.classList.add("saved"); star.textContent="★"; star.classList.add("burst");
+      setTimeout(()=>star.classList.remove("burst"),500); toast("★ Saved");}
+    store.set(state); renderSavedBar(); return;
+  }
+  const li=e.target.closest(".chip,.names li");
+  if(li){
+    const name=li.dataset.n||li.textContent;
+    if(navigator.clipboard)navigator.clipboard.writeText(name);
+    li.classList.add("copied"); setTimeout(()=>li.classList.remove("copied"),600);
+    toast("Copied \u201C"+name+"\u201D"); return;
+  }
   const b=e.target.closest(".reroll");
-  if(b){const g=b.closest(".gen"),n=+g.querySelector(".count").value;
-    const list=g.querySelector(".names");
-    const names=generateSet(g.dataset.race,g.dataset.gender,"u"+Math.random(),n);
-    list.innerHTML=names.map(x=>"<li>"+x+"</li>").join("");return;}
-  const li=e.target.closest(".names li");
-  if(li){navigator.clipboard&&navigator.clipboard.writeText(li.textContent);
-    li.classList.add("copied");setTimeout(()=>li.classList.remove("copied"),700);}
-});`;
+  if(b){doGenerate(b.closest(".gen")); return;}
+  const fab=e.target.closest("#fab");
+  if(fab){const g=$(".gen"); if(g){g.scrollIntoView({behavior:"smooth",block:"center"}); doGenerate(g);} return;}
+  const st=e.target.closest("#savedbar .saved-toggle");
+  if(st){$("#savedbar").classList.toggle("open"); return;}
+  const cp=e.target.closest("#savedbar .copy-all");
+  if(cp&&state.saved.length){if(navigator.clipboard)navigator.clipboard.writeText(state.saved.join("\\n"));toast("Copied "+state.saved.length+" names");return;}
+});
+// convert legacy static name lists into interactive chips
+$$(".names").forEach(l=>{const names=$$("li",l).map(x=>x.textContent.trim()).filter(Boolean);
+  if(names.length&&!$(".chip",l)) renderNames(l,names);});
+document.addEventListener("keydown",e=>{
+  if((e.key===" "||e.key==="Enter")&&!e.target.closest("input,select,textarea,button,a")){
+    const g=$(".gen"); if(g){e.preventDefault(); doGenerate(g);}
+  }
+});
+renderSavedBar();
+$$(".forged-n").forEach(e=>e.textContent=state.forged.toLocaleString());
+// mobile FAB: show when generator is off-screen
+const rollBtn=$(".gen .reroll"), fabEl=$("#fab");
+if(rollBtn&&fabEl){
+  const updFab=()=>{const r=rollBtn.getBoundingClientRect();
+    fabEl.classList.toggle("show",r.bottom<0||r.top>innerHeight);};
+  addEventListener("scroll",updFab,{passive:true});
+  addEventListener("resize",updFab,{passive:true});
+  updFab();
+}
+`;
 fs.writeFileSync(path.join(OUT, "g.js"), clientJs);
-
-// ads.txt authorises Google to sell this site's inventory. A missing ads.txt
-// costs revenue and shows as "Not found" in the AdSense Sites list.
-fs.writeFileSync(path.join(OUT, "ads.txt"),
-  `google.com, ${SITE.adsenseClient.replace(/^ca-/, "")}, DIRECT, f08c47fec0942fa0\n`);
-
-// GitHub Pages needs a CNAME file in the published output to serve the custom domain.
-fs.writeFileSync(path.join(OUT, "CNAME"), SITE.domain + "\n");
-// Stop Jekyll from mangling the output (it ignores files/dirs beginning with _).
-fs.writeFileSync(path.join(OUT, ".nojekyll"), "");
