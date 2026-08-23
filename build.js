@@ -52,9 +52,24 @@ function related(raceKey) {
   </ul></section>`;
 }
 
+// Which letter pages can each race actually support? Computed with the same
+// generation + acceptance rules the writer uses, so navigation can never link
+// to a page that was pruned (this previously produced 5,075 dead internal links).
+function letterPool(raceKey, L) {
+  return generateSet(raceKey, "neutral", raceKey + L + "seed", 400)
+    .filter(n => n[0].toLowerCase() === L).slice(0, 30);
+}
+function letterPageExists(pool) {
+  if (pool.length < 6) return false;
+  return new Set(pool.map(n => n.slice(0, 4).toLowerCase())).size >= 2;
+}
+const VALID_LETTERS = Object.fromEntries(Object.keys(RACES).map(k =>
+  [k, LETTERS.filter(L => letterPageExists(letterPool(k, L)))]));
+
 function letterLinks(raceKey) {
+  if (!(VALID_LETTERS[raceKey] || []).length) return "";
   return `<section class="related"><h2>${RACES[raceKey].label} names by first letter</h2><ul class="links letters">
-  ${LETTERS.map(l => `<li><a href="/${slug(raceKey)}-names-starting-with-${l}/">${l.toUpperCase()}</a></li>`).join("")}
+  ${(VALID_LETTERS[raceKey] || []).map(l => `<li><a href="/${slug(raceKey)}-names-starting-with-${l}/">${l.toUpperCase()}</a></li>`).join("")}
   </ul></section>`;
 }
 
@@ -100,12 +115,8 @@ ${related(key)}`
   }
 
   // ---------------------------------------------------- per starting letter (x26)
-  for (const L of LETTERS) {
-    const pool = generateSet(key, "neutral", key + L + "seed", 400)
-      .filter(n => n[0].toLowerCase() === L).slice(0, 30);
-    if (pool.length < 6) continue;           // skip letters this phonology can't make
-    // skip degenerate pages where every name shares one stem (e.g. 28x "Cloud-")
-    if (new Set(pool.map(n => n.slice(0, 4).toLowerCase())).size < 2) continue;
+  for (const L of VALID_LETTERS[key]) {
+    const pool = letterPool(key, L);
     write(`/${s}-names-starting-with-${L}`, page({
       title: `${R.label} Names Starting With ${L.toUpperCase()} | ${SITE.name}`,
       desc: `${pool.length} ${R.label.toLowerCase()} names beginning with the letter ${L.toUpperCase()}, plus a free generator for more.`,
