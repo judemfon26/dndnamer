@@ -178,4 +178,210 @@ export const RACES3 = {
     ],
     "lore": "Tortle names are slow, round and open — long vowels, soft stops, nothing sharp. They echo island and coastal naming traditions: two or three unhurried syllables you could say with the tide. A tortle earns a longer name with age, adding a syllable at each great milestone."
   },
+  "aarakocra": {
+    "label": "Aarakocra",
+    "genre": [
+      "dnd"
+    ],
+    "onset": [
+      "Aera",
+      "Aial",
+      "Aur",
+      "Deka",
+      "Err",
+      "Heeo",
+      "Ikki",
+      "Kleeck",
+      "Oorr",
+      "Ouss",
+      "Quaf",
+      "Quierk",
+      "Salee",
+      "Urree",
+      "Zeed",
+      "Kree"
+    ],
+    "mid": [
+      "ee",
+      "aa",
+      "ii",
+      "rr",
+      "kk"
+    ],
+    "coda": [
+      "a",
+      "ee",
+      "ik",
+      "ra",
+      "li",
+      "rri",
+      "ss",
+      "ka",
+      "o"
+    ],
+    "syl": [
+      2,
+      3,
+      3
+    ],
+    "gendered": false,
+    "seeds": [
+      "Aera",
+      "Kleeck",
+      "Quierk",
+      "Salee",
+      "Urree",
+      "Zeed"
+    ],
+    "lore": "Aarakocra names are built to be screamed on the wind — doubled vowels and rolled r's that carry over distance, with clicks and shrills marked by double letters. The five-syllable ceremonial names shorten to two in flight, because the sky has no patience for long introductions."
+  },
+  "minotaur": {
+    "label": "Minotaur",
+    "genre": [
+      "dnd",
+      "fantasy"
+    ],
+    "onset": [
+      "Aster",
+      "Bront",
+      "Dael",
+      "Ghor",
+      "Kalk",
+      "Mavr",
+      "Rovag",
+      "Sten",
+      "Taur",
+      "Ther",
+      "Vrak",
+      "Zurr",
+      "Gor",
+      "Makh",
+      "Bhal",
+      "Dror"
+    ],
+    "mid": [
+      "an",
+      "ok",
+      "ar",
+      "ion",
+      "es",
+      "ur"
+    ],
+    "coda": [
+      "ios",
+      "on",
+      "os",
+      "ax",
+      "yr",
+      "es",
+      "ion",
+      "us",
+      "ar",
+      "or"
+    ],
+    "syl": [
+      2,
+      3,
+      3
+    ],
+    "gendered": true,
+    "female": [
+      "a",
+      "ia",
+      "essa",
+      "yra",
+      "ione"
+    ],
+    "male": [
+      "ios",
+      "on",
+      "os",
+      "ax",
+      "us",
+      "or"
+    ],
+    "seeds": [
+      "Asterion",
+      "Brontes",
+      "Ghoros",
+      "Kalkax",
+      "Mavros",
+      "Zurrion"
+    ],
+    "lore": "Minotaur names run Greek — fitting for a people born from Cretan myth. Expect -os, -ios and -ax endings on a heavy consonant base that sounds like hooves on stone. The first minotaur of legend was named <em>Asterion</em>, and minotaur naming has orbited that register ever since."
+  },
+  "centaur": {
+    "label": "Centaur",
+    "genre": [
+      "dnd",
+      "fantasy"
+    ],
+    "onset": [
+      "Chir",
+      "Phol",
+      "Ness",
+      "Eury",
+      "Hyl",
+      "Kryt",
+      "Lonn",
+      "Melan",
+      "Ocyr",
+      "Pher",
+      "Rhoe",
+      "Thess",
+      "Xanth",
+      "Bianor",
+      "Ael",
+      "Doral"
+    ],
+    "mid": [
+      "o",
+      "e",
+      "ia",
+      "yt",
+      "an"
+    ],
+    "coda": [
+      "on",
+      "us",
+      "os",
+      "ippe",
+      "ia",
+      "ios",
+      "eus",
+      "oe",
+      "ion",
+      "es"
+    ],
+    "syl": [
+      2,
+      3,
+      3
+    ],
+    "gendered": true,
+    "female": [
+      "ippe",
+      "ia",
+      "oe",
+      "eia",
+      "essa"
+    ],
+    "male": [
+      "on",
+      "us",
+      "os",
+      "ios",
+      "eus",
+      "ion"
+    ],
+    "seeds": [
+      "Chiron",
+      "Pholus",
+      "Nessus",
+      "Ocyrhoe",
+      "Xanthos",
+      "Hylonome"
+    ],
+    "lore": "Centaur names descend from the Greek myths that birthed them — <em>Chiron</em> the wise, <em>Nessus</em>, <em>Hylonome</em>. Male names close on -on, -os or -us; female names favour -ippe (horse) and -oe. The register is old, formal and a little wild, like the people."
+  },
 };
