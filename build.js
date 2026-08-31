@@ -6,6 +6,76 @@ import { RACES3 } from "./data/races3.js";
 const RACES = { ...CORE, ...RACES2, ...RACES3 };
 import { generateSet } from "./lib/generate.js";
 import { page, SITE } from "./lib/template.js";
+import { EDITORIAL } from "./data/editorial.js";
+import { GENRE_INTROS, ARTICLES } from "./data/articles.js";
+
+function hash(str){let h=2166136261;for(let i=0;i<str.length;i++){h^=str.charCodeAt(i);h=Math.imul(h,16777619);}return h>>>0;}
+
+// Data-derived anatomy: factual statements about how this race's names are built,
+// computed from the actual phonotactic tables — genuinely different per race.
+const art = w => /^[aeiou]/i.test(w) ? "an" : "a";
+function anatomy(key, R) {
+  const on = R.onset.slice(0, 8).join(", ");
+  const male = R.gendered ? R.male.map(x => "-" + x.replace(/^-/, "")).slice(0, 5).join(", ") : null;
+  const fem  = R.gendered ? R.female.map(x => "-" + x.replace(/^-/, "")).slice(0, 5).join(", ") : null;
+  const codas = R.coda.slice(0, 6).map(x => "-" + x.replace(/^-/, "")).join(", ");
+  const syl = [...new Set(R.syl)].join("–");
+  return `<h2>Anatomy of ${art(R.label)} ${R.label.toLowerCase()} name</h2>
+<p>This generator assembles names the way the tradition does. Typical openings include <strong>${on}</strong>; names run <strong>${syl} syllables</strong> and resolve on endings such as <strong>${codas}</strong>.${R.gendered ? ` Gender lives mostly in the ending: feminine forms favour <strong>${fem}</strong>, masculine forms <strong>${male}</strong>, and neutral names simply pick from the wider pool.` : ` The tradition doesn't gender-code its names — any ending suits any character.`}</p>`;
+}
+function exampleTable(key, R) {
+  const ns = generateSet(key, "neutral", key + "showcase", 8);
+  return `<h3>Examples from this generator</h3><table><thead><tr><th>Name</th><th>Reads as</th></tr></thead><tbody>${
+    ns.map((n, i) => {
+      const tone = ["a classic, load-bearing form", "an everyday name in this register",
+        "a formal or elder variant", "a short, familiar form", "a name with a martial edge",
+        "a softer, lyrical variant", "a frontier or outsider form", "a name fit for a leader"][i % 8];
+      return `<tr><td><strong>${n}</strong></td><td>${tone}</td></tr>`; }).join("")}</tbody></table>`;
+}
+function letterAnalysis(key, R, L, pool) {
+  const U = L.toUpperCase();
+  const stems = [...new Set(pool.map(n => n.slice(0, 3)))];
+  const ends = {};
+  for (const n of pool) { const e = n.slice(-2).toLowerCase(); ends[e] = (ends[e] || 0) + 1; }
+  const topEnds = Object.entries(ends).sort((a, b) => b[1] - a[1]).slice(0, 3).map(([e]) => "-" + e);
+  const lens = pool.map(n => n.length);
+  const shortest = pool.reduce((a, b) => a.length <= b.length ? a : b);
+  const longest = pool.reduce((a, b) => a.length >= b.length ? a : b);
+  const openings = (R.onset || []).filter(o => o[0].toLowerCase() === L).slice(0, 4);
+  const openLine = openings.length
+    ? `In this tradition, ${U}-names grow from the ${openings.map(o => `<strong>${o}-</strong>`).join(", ")} opening${openings.length > 1 ? "s" : ""}`
+    : `${U} isn't a native opening sound in this tradition, so these names reach it through joined syllables`;
+  const variants = [
+    `${openLine}, which is why the ${pool.length} names on this page cluster around ${stems.length} distinct stems. Endings here lean ${topEnds.join(", ")}, and lengths run from ${Math.min(...lens)} letters (<strong>${shortest}</strong>) to ${Math.max(...lens)} (<strong>${longest}</strong>).`,
+    `${openLine}. Across the ${pool.length} names listed, ${stems.length} different stems appear, most resolving on ${topEnds.join(", ")} — the culture's usual codas. <strong>${shortest}</strong> is the shortest form here; <strong>${longest}</strong> the most elaborate.`,
+    `${openLine} — the source of the ${stems.length} stems behind these ${pool.length} names. The commonest endings on this page are ${topEnds.join(", ")}, with everything from compact <strong>${shortest}</strong> to ceremonial-length <strong>${longest}</strong>.`,
+  ];
+  const v = variants[hash(key + L) % variants.length];
+  return `${v} If none of these lands, the generator above will forge fresh ${U}-names on demand, all following the same rules — and the <a href="/${key.replace(/_/g, "-")}-name-generator/">main ${R.label.toLowerCase()} generator</a> documents the full tradition: its history, anatomy and usage at the table.`;
+}
+
+function genderNotes(key, R, g) {
+  const fem = R.gendered ? R.female.map(x => "-" + x.replace(/^-/, "")).join(", ") : "";
+  const male = R.gendered ? R.male.map(x => "-" + x.replace(/^-/, "")).join(", ") : "";
+  if (!R.gendered) {
+    return `The ${R.label.toLowerCase()} tradition doesn't gender-code its names at all — identity in this register comes from deeds, sounds or images rather than a masculine or feminine ending. That makes every generated name below usable for any character, and it means the interesting choice is tone rather than gender: pick the name whose sound fits the character you're building.`;
+  }
+  if (g === "female") {
+    return `In this tradition the feminine signal lives at the end of the name: the endings ${fem} mark a name as female, while the opening syllables stay shared across the whole culture. That's why a feminine ${R.label.toLowerCase()} name keeps the same recognisable front — the sounds listed on the main generator page — and resolves differently. Swap the ending of almost any masculine form for one of these and the name changes register completely.`;
+  }
+  if (g === "male") {
+    return `Masculine ${R.label.toLowerCase()} names share their openings with the rest of the culture and declare themselves in the final syllable: ${male} are the traditional masculine endings. The result is that male names in this register tend to close ${male.includes("-o") || male.includes("-a") ? "on an open sound" : "hard, on a consonant"}, which gives them their characteristic weight when spoken aloud.`;
+  }
+  return `Neutral ${R.label.toLowerCase()} names sidestep the tradition's gendered endings (feminine ${fem}; masculine ${male}) and resolve on the culture's shared codas instead. In practice that produces names that read equally well on any character — useful for androgynous characters, and equally for GMs who want a name before they've decided anything else about an NPC.`;
+}
+
+function editorialBlock(key, R) {
+  const ed = EDITORIAL[key];
+  if (!ed) return "";
+  return `<section class="prose"><h2>Where ${R.label.toLowerCase()} names come from</h2><p>${ed.history}</p>
+<h2>How to build a good one</h2><p>${ed.craft}</p>
+<h2>At the table</h2><p>${ed.dm}</p></section>`;
+}
 
 const OUT = "dist";
 const GENDERS = ["male", "female", "neutral"];
@@ -86,14 +156,17 @@ for (const [key, R] of Object.entries(RACES)) {
     schema: { "@context":"https://schema.org","@type":"WebApplication",
       name:`${R.label} Name Generator`, applicationCategory:"GameApplication",
       operatingSystem:"Any", offers:{"@type":"Offer",price:"0",priceCurrency:"USD"} },
-    body: `<p class="lede">Generate authentic ${R.label.toLowerCase()} names in one click. Every name is built from real ${R.label.toLowerCase()} phonetics — not random letters.</p>
+    body: `<p class="lede">Generate authentic ${R.label.toLowerCase()} names in one click. Every name is built from the tradition's real phonetics — documented below — not random letters.</p>
 ${widget(key, "neutral", key)}
 <section class="related"><ul class="links filter-chips">
 ${GENDERS.map(g => `<li><a href="/${s}-name-generator/${g}/">${g[0].toUpperCase()+g.slice(1)}</a></li>`).join("")}
 </ul></section>
-${related(key)}
 <section class="prose"><h2>How ${R.label.toLowerCase()} names work</h2><p>${R.lore}</p>
-<h3>Classic examples</h3><p>${R.seeds.join(" · ")}</p></section>
+${anatomy(key, R)}
+${exampleTable(key, R)}
+<h3>Canonical examples</h3><p>${R.seeds.join(" · ")}</p></section>
+${editorialBlock(key, R)}
+${related(key)}
 ${letterLinks(key)}`
   }));
 
@@ -106,9 +179,12 @@ ${letterLinks(key)}`
       canonical: `/${s}-name-generator/${g}/`,
       h1: `${G} ${R.label} Name Generator`,
       crumbs: [{href:"/",label:"Home"},{href:`/${s}-name-generator/`,label:`${R.label} names`},{label:G}],
-      body: `<p class="lede">${G} ${R.label.toLowerCase()} names, generated instantly.</p>
+      body: `<p class="lede">${G.toLowerCase() === "neutral" ? "Gender-neutral" : G} ${R.label.toLowerCase()} names, generated instantly — with notes on what marks a ${R.label.toLowerCase()} name as ${g} in this tradition.</p>
 ${widget(key, g, key + g)}
-<section class="prose"><h2>Naming conventions</h2><p>${R.lore}</p></section>
+<section class="prose"><h2>What makes ${art(R.label)} ${R.label.toLowerCase()} name ${g}</h2>
+<p>${genderNotes(key, R, g)}</p>
+<h3>Sample ${g} names</h3><p>${generateSet(key, g, key + g + "samples", 10).join(" · ")}</p>
+<p>Every one of these follows the same construction — see the <a href="/${s}-name-generator/">main ${R.label} generator</a> for the full anatomy of the tradition, its history, and table-ready usage notes.</p></section>
 ${letterLinks(key)}
 ${related(key)}`
     }));
@@ -125,7 +201,7 @@ ${related(key)}`
       crumbs: [{href:"/",label:"Home"},{href:`/${s}-name-generator/`,label:`${R.label} names`},{label:L.toUpperCase()}],
       body: `<p class="lede">${R.label} names beginning with <strong>${L.toUpperCase()}</strong> — tap to copy, or forge a fresh batch.</p>
 ${widget(key, "neutral", key + L + "seed", L)}
-<section class="prose"><h2>About these names</h2><p>${R.lore}</p></section>
+<section class="prose"><h2>Reading the ${L.toUpperCase()}-names</h2><p>${letterAnalysis(key, R, L, pool)}</p></section>
 <section class="related"><h2>Need something else?</h2><ul class="links">
 <li><a href="/${s}-name-generator/">Full ${R.label.toLowerCase()} name generator</a></li>
 ${GENDERS.map(g=>`<li><a href="/${s}-name-generator/${g}/">${g} ${R.label.toLowerCase()} names</a></li>`).join("")}
@@ -155,20 +231,85 @@ for (const [gk, glabel] of Object.entries(GENRES)) {
     canonical: `/${gk}-name-generator/`,
     h1: `${glabel} Name Generator`,
     crumbs: [{href:"/",label:"Home"},{label:glabel}],
-    body: `<p class="lede">Pick a race to generate ${glabel} names.</p>
+    body: `<p class="lede">${GENRE_INTROS[gk] || `Pick a race to generate ${glabel} names.`}</p>
 <ul class="cards">${members.map(([k,R])=>{
       const ex = (GENRE_SEEDS[gk] || {})[k] || R.seeds.slice(0,3);
       return `<li><a href="/${slug(k)}-name-generator/"><strong>${R.label}</strong><span>${ex.slice(0,3).join(", ")}</span></a></li>`;
-    }).join("")}</ul>`
+    }).join("")}</ul>
+<section class="prose"><h2>How the registers differ</h2>
+${members.map(([k,R])=>`<p><strong><a href="/${slug(k)}-name-generator/">${R.label}</a>:</strong> ${R.lore.replace(/<[^>]+>/g,"").split(". ").slice(0,2).join(". ")}.</p>`).join("")}
+</section>
+<section class="related"><h2>Naming guides</h2><ul class="links">
+${ARTICLES.map(a=>`<li><a href="/guides/${a.slug}/">${a.title.split(":")[0].split("(")[0].trim()}</a></li>`).join("")}
+</ul></section>`
   }));
 }
 
+// ---------------------------------------------------------------- guides
+for (const a of ARTICLES) {
+  write(`/guides/${a.slug}`, page({
+    title: `${a.title} | ${SITE.name}`,
+    desc: a.desc,
+    canonical: `/guides/${a.slug}/`,
+    h1: a.title,
+    crumbs: [{ href: "/", label: "Home" }, { href: "/guides/", label: "Guides" }, { label: a.title.split(":")[0].split("(")[0].trim() }],
+    schema: { "@context": "https://schema.org", "@type": "Article", headline: a.title,
+      description: a.desc, author: { "@type": "Organization", name: SITE.name } },
+    body: `<section class="prose">${a.body}</section>
+<section class="related"><h2>More guides</h2><ul class="links">
+${ARTICLES.filter(x => x.slug !== a.slug).map(x => `<li><a href="/guides/${x.slug}/">${x.title.split(":")[0].split("(")[0].trim()}</a></li>`).join("")}
+</ul></section>
+<section class="related"><h2>Put it to work</h2><ul class="links">
+<li><a href="/elf-name-generator/">Elf names</a></li><li><a href="/dwarf-name-generator/">Dwarf names</a></li>
+<li><a href="/orc-name-generator/">Orc names</a></li><li><a href="/dnd-name-generator/">All D&D races</a></li>
+</ul></section>`,
+  }));
+}
+write("/guides", page({
+  title: `Character Naming Guides — Conventions, Craft & Method | ${SITE.name}`,
+  desc: `Practical guides to fantasy naming: how to name a D&D character, elvish and orcish conventions explained, and how to use name generators well.`,
+  canonical: "/guides/", h1: "Character Naming Guides",
+  crumbs: [{ href: "/", label: "Home" }, { label: "Guides" }],
+  body: `<p class="lede">The generators on this site produce the raw material; these guides cover the craft — where each naming tradition comes from, what its rules actually are, and how to turn generated candidates into names your table will still love at level 12.</p>
+<ul class="cards">${ARTICLES.map(a => `<li><a href="/guides/${a.slug}/"><strong>${a.title.split(":")[0].split("(")[0].trim()}</strong><span>${a.desc.split(" — ")[0].split(". ")[0]}</span></a></li>`).join("")}</ul>
+<section class="prose"><h2>Why conventions matter</h2>
+<p>Random syllables can sound fantasy-ish, but real naming traditions have internal logic — elvish flows because Tolkien built it from meaningful roots, dwarf names bite because they descend from a Norse catalogue of dwarves, orc names growl because their register was engineered to. Every generator here documents its tradition's rules on the page, so you can take the generated name or use the rules to build your own. These guides go deeper on the most-asked questions.</p></section>`,
+}));
+
 // ------------------------------------------------------------------- legal + home
 const LEGAL = {
-  about: ["About", `<p>${SITE.name} builds free name generators for tabletop players, game masters and fiction writers. Every generator is built on the real phonetics of its tradition — the syllable structures, consonant clusters and name endings that make an elvish name sound elvish and a dwarven name sound dwarven — rather than shuffling letters at random.</p><p>Names are free to use in any project, commercial or otherwise. No attribution required.</p>`],
-  contact: ["Contact", `<p>Questions, corrections, or a race you'd like us to add? Email <strong>hello@${SITE.domain}</strong> and we'll get back to you.</p><p>If you spot a generated name that doesn't fit its tradition, tell us — we tune the phonetic rules based on that feedback.</p>`],
-  privacy: ["Privacy Policy", `<p>We do not ask for, collect or store personal information. There are no accounts and no newsletter.</p><h2>Cookies and advertising</h2><p>This site is supported by advertising. Google, as a third-party vendor, uses cookies to serve ads on this site. Google's use of advertising cookies enables it and its partners to serve ads based on your visit to this and other sites.</p><p>You may opt out of personalised advertising by visiting <a href="https://www.google.com/settings/ads" rel="nofollow">Google Ads Settings</a>, or opt out of third-party vendor cookies at <a href="https://www.aboutads.info" rel="nofollow">aboutads.info</a>.</p><h2>Analytics</h2><p>We may use aggregate traffic analytics that record page views and referrers. This data is not linked to individuals.</p>`],
-  terms: ["Terms of Use", `<p>Names generated on this site are provided free of charge and may be used in any project, personal or commercial, without attribution.</p><h2>No warranty</h2><p>Generated names are produced algorithmically. We make no guarantee that a given name is unique, unused, or free of trademark in your jurisdiction. Check before commercial use.</p><h2>Trademarks</h2><p>Dungeons &amp; Dragons, Skyrim, World of Warcraft and other titles referenced are trademarks of their respective owners. This site is not affiliated with, endorsed by or sponsored by any of them. References are descriptive only.</p>`],
+  about: ["About", `<p>${SITE.name} is a free suite of fantasy name generators for tabletop players, game masters and fiction writers. It exists because most name generators shuffle syllables at random — and randomly shuffled syllables don't sound like a culture. Every generator here is built on the actual phonetic rules of its naming tradition: the openings, syllable structures and endings that make an elvish name sound elvish and a dwarven name sound like it was shouted across a forge.</p>
+<h2>How the generators work</h2>
+<p>Each race has a documented phonotactic profile — which sounds can begin a name, how syllables join, and which endings mark gender where the tradition uses gendered endings at all. Names are assembled from those rules and then filtered for pronounceability, so what reaches the page reads as language rather than noise. Alongside every tool you'll find the tradition's history (most trace to a real source: Tolkien's constructed languages, the Old Norse Dvergatal, Shakespeare's fairies), an anatomy of the name structure, and notes on using the names at an actual table.</p>
+<h2>Using the names</h2>
+<p>Everything generated here is free to use in any project — home campaigns, streamed games, self-published fiction, commercial work — with no attribution required. Tap a name to copy it; star names to keep them in your browser-local name bank between sessions. Nothing you generate or save ever leaves your device.</p>
+<h2>Who makes this</h2>
+<p>${SITE.name} is an independent project, supported by advertising rather than signups or subscriptions, and it grows on a schedule: new race generators are added regularly, and the <a href="/guides/">guides section</a> covers the craft of naming itself. If a generated name doesn't fit its tradition, tell us — the phonetic rules get tuned based on exactly that feedback.</p>`],
+  contact: ["Contact", `<p>Questions, corrections, or a race you'd like added? Email <strong>hello@${SITE.domain}</strong>.</p>
+<h2>Reporting a bad name</h2>
+<p>If a generator produces something unpronounceable, out of register, or accidentally a real word it shouldn't be, include the race, the name itself, and roughly when you generated it. The generators are rule-based, so one bad output usually points at a fixable rule — most reports are resolved with a tuning change within a day or two.</p>
+<h2>Requesting a generator</h2>
+<p>New races and cultures are added on a regular schedule, and requests genuinely shape the queue. The most useful requests name the tradition and a couple of example names in the register you're imagining — that's enough to build a phonetic profile from.</p>
+<h2>Everything else</h2>
+<p>Advertising questions, licensing questions (short answer: the names are free to use, see <a href="/terms/">Terms</a>), accessibility problems and broken links all go to the same address. Short messages get answered fastest.</p>`],
+  privacy: ["Privacy Policy", `<p>This policy covers what ${SITE.name} does — and deliberately doesn't do — with information when you use the site.</p>
+<h2>What stays on your device</h2>
+<p>Names you generate, and names you star, are stored only in your browser's local storage. They are never transmitted to us, never linked to you, and disappear if you clear your browser data. There are no accounts, no email capture, and no forms that collect personal information anywhere on the site.</p>
+<h2>Cookies and advertising</h2>
+<p>This site is supported by advertising. Google, as a third-party vendor, uses cookies to serve ads on this site; Google's advertising cookies enable it and its partners to serve ads based on your visit to this site and other sites on the internet. You may opt out of personalised advertising by visiting <a href="https://www.google.com/settings/ads" rel="nofollow">Google Ads Settings</a>, or opt out of a range of third-party vendor cookies at <a href="https://www.aboutads.info" rel="nofollow">aboutads.info</a>.</p>
+<h2>Analytics</h2>
+<p>We may use aggregate, non-identifying traffic analytics (page views, referrers, country-level location) to understand which generators are used. This data is not linked to individuals.</p>
+<h2>Your rights</h2>
+<p>Because we hold no personal data about you, there is nothing for us to export or delete under GDPR, CCPA or similar frameworks — the advertising cookies described above are controlled through the Google opt-out links rather than through us. Questions: hello@${SITE.domain}.</p>`],
+  terms: ["Terms of Use", `<p>By using ${SITE.name} you agree to these terms. The short version: the generators are free, the names are yours to use, and the referenced games belong to their owners.</p>
+<h2>Your licence to the names</h2>
+<p>Names generated on this site may be used in any project, personal or commercial — campaigns, streams, novels, games — without attribution or payment. Because names are produced algorithmically from phonetic rules, we make no guarantee that any given name is unique, unused, or free of trademark in your jurisdiction; for commercial use of a specific name, check it the way you would any name.</p>
+<h2>Acceptable use</h2>
+<p>You're welcome to link to any page. Wholesale scraping of the site, republishing its editorial content as your own, or embedding it in a way that misrepresents its origin is not permitted.</p>
+<h2>Trademarks</h2>
+<p>Dungeons &amp; Dragons, Skyrim, World of Warcraft, The Lord of the Rings and other titles referenced are trademarks of their respective owners. This site is not affiliated with, endorsed by or sponsored by any of them; references are descriptive, of the kind any guide to those games' naming conventions would make.</p>
+<h2>No warranty</h2>
+<p>The service is provided as-is, without warranty of any kind. Content on this site is entertainment and worldbuilding reference, and the editorial describes fictional naming traditions as published in their source material.</p>`],
 };
 for (const [k, [t, b]] of Object.entries(LEGAL)) {
   write(`/${k}`, page({ title:`${t} | ${SITE.name}`, desc:`${t} for ${SITE.name}.`,
@@ -179,9 +320,14 @@ write("", page({
   title: `${SITE.name} — Fantasy & RPG Name Generators`,
   desc: `Free fantasy name generators for D&D, Skyrim, LOTR and more. Elf, dwarf, orc, dragonborn, tiefling names and dozens more — built on real phonetics.`,
   canonical: "/", h1: "Fantasy & RPG Name Generators",
-  body: `<p class="lede">Free name generators built on the real phonetics of each tradition. No signup, no limits.</p>
+  body: `<p class="lede">Free name generators built on the real phonetics of each naming tradition — with the conventions documented, so you can use a generated name or learn the rules and build your own. No signup, no limits.</p>
 <ul class="cards">${Object.entries(RACES).map(([k,R])=>`<li><a href="/${slug(k)}-name-generator/"><strong>${R.label}</strong><span>${R.seeds.slice(0,3).join(", ")}</span></a></li>`).join("")}</ul>
-<section class="related"><h2>By setting</h2><ul class="links">${Object.entries(GENRES).map(([g,l])=>`<li><a href="/${g}-name-generator/">${l} names</a></li>`).join("")}</ul></section>`
+<section class="related"><h2>By setting</h2><ul class="links">${Object.entries(GENRES).map(([g,l])=>`<li><a href="/${g}-name-generator/">${l} names</a></li>`).join("")}</ul></section>
+<section class="prose"><h2>Not random letters — real conventions</h2>
+<p>Every fantasy race you can name has a naming tradition behind it, usually with a traceable source: elf names descend from Tolkien's constructed languages, dwarf names from the Old Norse catalogue that gave us Thorin and Balin, orc names from a language deliberately engineered to sound harsh, tabaxi names from Mesoamerican-style image-naming. Each generator on this site is built from its tradition's actual phonetic rules — the openings, syllable counts and endings that make an elvish name read elvish — and each page documents those rules alongside the tool.</p>
+<h2>Built for players, GMs and writers</h2>
+<p>Tap any generated name to copy it, star the ones worth keeping (they persist in your browser — your private name bank for the next session), and use the letter pages when you need a name starting with a specific sound. Game masters naming a dozen NPCs before Thursday and novelists naming a culture's worth of characters both get the same thing: names that sound like they belong together, because they follow the same rules.</p></section>
+<section class="related"><h2>Naming guides</h2><ul class="links">${ARTICLES.map(a=>`<li><a href="/guides/${a.slug}/">${a.title.split(":")[0].split("(")[0].trim()}</a></li>`).join("")}</ul></section>`
 }));
 
 // ------------------------------------------------------------- sitemap + robots

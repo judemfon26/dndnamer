@@ -60,3 +60,35 @@ if (deadLinks) {
   process.exit(1);
 }
 console.log("internal links: all resolve");
+
+// Content-depth floors — direct countermeasure to the "Low value content" verdict.
+import path4 from "path";
+const floors = [
+  [/-names-starting-with-/, 190, "letter"],
+  [/\/guides\/.+\//, 450, "article"],
+  [/^\/(about|contact|privacy|terms)\/$/, 180, "legal"],
+  [/-name-generator\/(male|female|neutral)\/$/, 240, "gender"],
+  [/-name-generator\/$/, 200, "hub/race"],  // genre hubs are the low end
+];
+let thin = [];
+(function sweep(d) {
+  for (const e of fs2.readdirSync(d, { withFileTypes: true })) {
+    const p = path4.join(d, e.name);
+    if (e.isDirectory()) sweep(p);
+    else if (e.name === "index.html") {
+      const route = "/" + path4.relative("dist", d).split(path4.sep).join("/") + "/";
+      const clean = route === "/./" ? "/" : route;
+      const txt = fs2.readFileSync(p, "utf8")
+        .replace(/<script[\s\S]*?<\/script>/g, "").replace(/<[^>]+>/g, " ");
+      const w = txt.split(/\s+/).filter(Boolean).length;
+      for (const [re, floor, label] of floors) {
+        if (re.test(clean)) { if (w < floor) thin.push(`${clean}: ${w}w < ${floor} (${label})`); break; }
+      }
+    }
+  }
+})("dist");
+if (thin.length) {
+  console.error("GATE: thin pages:\n" + thin.slice(0, 12).map(x => " - " + x).join("\n"));
+  process.exit(1);
+}
+console.log("content depth floors met on all pages");
