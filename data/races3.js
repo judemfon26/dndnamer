@@ -384,4 +384,189 @@ export const RACES3 = {
     ],
     "lore": "Centaur names descend from the Greek myths that birthed them — <em>Chiron</em> the wise, <em>Nessus</em>, <em>Hylonome</em>. Male names close on -on, -os or -us; female names favour -ippe (horse) and -oe. The register is old, formal and a little wild, like the people."
   },
+  "changeling": {
+    "label": "Changeling",
+    "genre": [
+      "dnd"
+    ],
+    "onset": [
+      "Ash",
+      "Bin",
+      "Cas",
+      "Dor",
+      "Fei",
+      "Gray",
+      "Hazel",
+      "Jin",
+      "Lark",
+      "Mist",
+      "Nell",
+      "Pale",
+      "Quill",
+      "Rue",
+      "Sable",
+      "Vey",
+      "Wisp",
+      "Sel"
+    ],
+    "mid": [
+      "a",
+      "e",
+      "i",
+      "o"
+    ],
+    "coda": [
+      "en",
+      "a",
+      "ien",
+      "iel",
+      "wyn",
+      "ey",
+      "o",
+      "ette",
+      "yn",
+      "ara"
+    ],
+    "syl": [
+      2
+    ],
+    "gendered": false,
+    "seeds": [
+      "Ash",
+      "Fei",
+      "Gray",
+      "Lark",
+      "Rue",
+      "Vey"
+    ],
+    "lore": "Changelings wear names the way they wear faces — lightly, and in numbers. Their true names are short, soft and deliberately unremarkable: one or two syllables that slip through memory. Most keep a private name for themselves and a wardrobe of disposable ones for everyone else."
+  },
+  "triton": {
+    "label": "Triton",
+    "genre": [
+      "dnd"
+    ],
+    "onset": [
+      "Coral",
+      "Delph",
+      "Aqua",
+      "Mar",
+      "Nerei",
+      "Ond",
+      "Pelag",
+      "Thal",
+      "Tris",
+      "Vell",
+      "Zar",
+      "Cor",
+      "Nautil",
+      "Sirr",
+      "Okean",
+      "Tyde"
+    ],
+    "mid": [
+      "a",
+      "ei",
+      "io",
+      "al",
+      "en"
+    ],
+    "coda": [
+      "on",
+      "us",
+      "ia",
+      "yn",
+      "eus",
+      "is",
+      "ea",
+      "or",
+      "ios",
+      "ene"
+    ],
+    "syl": [
+      2,
+      3,
+      3
+    ],
+    "gendered": true,
+    "female": [
+      "ia",
+      "ea",
+      "ene",
+      "yn",
+      "is"
+    ],
+    "male": [
+      "on",
+      "us",
+      "eus",
+      "or",
+      "ios"
+    ],
+    "seeds": [
+      "Delphon",
+      "Thalassa",
+      "Pelagius",
+      "Nereia",
+      "Okeanos",
+      "Vellyn"
+    ],
+    "lore": "Triton names flow from the Mediterranean deep — Greek sea-roots like <em>thalassa</em> (sea), <em>pelagos</em> (open water) and <em>Nereus</em> shaped into flowing, vowel-forward names. They sound formal because triton society is formal: an ancient undersea protectorate that never stopped using its ceremonial register."
+  },
+  "githyanki": {
+    "label": "Githyanki",
+    "genre": [
+      "dnd"
+    ],
+    "onset": [
+      "B'rak",
+      "Duurth",
+      "Gith",
+      "Kar'i",
+      "Quith",
+      "Rak",
+      "Sith",
+      "Vlaak",
+      "Xam",
+      "Yrlakka",
+      "Zar",
+      "Kessh",
+      "Tropos",
+      "Nakvi",
+      "Dak"
+    ],
+    "mid": [
+      "'a",
+      "ith",
+      "ak",
+      "ur",
+      "esh"
+    ],
+    "coda": [
+      "ath",
+      "esh",
+      "ik",
+      "ur",
+      "aak",
+      "ith",
+      "ss",
+      "ka",
+      "ek"
+    ],
+    "syl": [
+      2,
+      2,
+      3
+    ],
+    "gendered": false,
+    "seeds": [
+      "Duurth",
+      "Quith",
+      "Vlaak",
+      "Yrlakka",
+      "Kessh",
+      "Xamodas"
+    ],
+    "lore": "Githyanki names are harsh, apostrophe-scarred and alien — the sound of a language built in the Astral Plane by a people who freed themselves from mind flayers and never softened again. Doubled vowels, glottal breaks and hard k endings dominate. Say one aloud and it sounds like a challenge, which is usually accurate."
+  },
 };
