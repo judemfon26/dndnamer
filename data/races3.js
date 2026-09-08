@@ -569,4 +569,189 @@ export const RACES3 = {
     ],
     "lore": "Githyanki names are harsh, apostrophe-scarred and alien — the sound of a language built in the Astral Plane by a people who freed themselves from mind flayers and never softened again. Doubled vowels, glottal breaks and hard k endings dominate. Say one aloud and it sounds like a challenge, which is usually accurate."
   },
+  "bugbear": {
+    "label": "Bugbear",
+    "genre": [
+      "dnd"
+    ],
+    "onset": [
+      "Brug",
+      "Dhurg",
+      "Gnash",
+      "Grol",
+      "Hark",
+      "Klarg",
+      "Morg",
+      "Rukh",
+      "Skarr",
+      "Thokk",
+      "Urgh",
+      "Vrash",
+      "Yeek",
+      "Zogg",
+      "Drenz",
+      "Mosk"
+    ],
+    "mid": [
+      "ug",
+      "ar",
+      "ok",
+      "ur"
+    ],
+    "coda": [
+      "mash",
+      "gor",
+      "tusk",
+      "nak",
+      "rot",
+      "bash",
+      "guz",
+      "ruk",
+      "fang",
+      "gob",
+      "dur"
+    ],
+    "syl": [
+      2,
+      2
+    ],
+    "gendered": false,
+    "seeds": [
+      "Klarg",
+      "Grolmash",
+      "Skarrtusk",
+      "Thokk",
+      "Vrashgor",
+      "Zoggbash"
+    ],
+    "lore": "Bugbear names sound like violence in progress — thick consonant clusters, grunted vowels, and endings borrowed from the noise of a raid: bash, mash, tusk. They sit one register deeper than goblin names, befitting the biggest of the goblinoids, and are usually earned mid-ambush."
+  },
+  "hobgoblin": {
+    "label": "Hobgoblin",
+    "genre": [
+      "dnd"
+    ],
+    "onset": [
+      "Azrok",
+      "Drak",
+      "Ghor",
+      "Julk",
+      "Kavv",
+      "Margr",
+      "Norr",
+      "Ozzok",
+      "Rhukar",
+      "Skorv",
+      "Tharn",
+      "Vorr",
+      "Zanth",
+      "Krev",
+      "Durn",
+      "Molgr"
+    ],
+    "mid": [
+      "ar",
+      "ok",
+      "ur",
+      "an",
+      "ez"
+    ],
+    "coda": [
+      "ash",
+      "gar",
+      "ek",
+      "orn",
+      "uz",
+      "ath",
+      "ir",
+      "ok",
+      "an",
+      "ust"
+    ],
+    "syl": [
+      2,
+      2,
+      3
+    ],
+    "gendered": false,
+    "seeds": [
+      "Azrok",
+      "Drakgar",
+      "Rhukar",
+      "Skorvek",
+      "Tharnash",
+      "Vorruz"
+    ],
+    "lore": "Hobgoblin names are goblinoid sounds put through military discipline — the same hard consonants as their smaller cousins, but ordered, clipped and rank-conscious. A hobgoblin's legion name matters more than the personal one, and both are spoken like orders."
+  },
+  "half_orc": {
+    "label": "Half-Orc",
+    "genre": [
+      "dnd"
+    ],
+    "onset": [
+      "Brug",
+      "Dench",
+      "Feng",
+      "Gell",
+      "Henk",
+      "Holg",
+      "Imsh",
+      "Keth",
+      "Krusk",
+      "Mhurren",
+      "Ront",
+      "Shump",
+      "Thokk",
+      "Ovak",
+      "Grash",
+      "Varg"
+    ],
+    "mid": [
+      "a",
+      "e",
+      "u",
+      "ar"
+    ],
+    "coda": [
+      "",
+      "a",
+      "en",
+      "uk",
+      "ar",
+      "esh",
+      "o",
+      "ash",
+      "ek"
+    ],
+    "syl": [
+      2,
+      2
+    ],
+    "gendered": true,
+    "female": [
+      "a",
+      "en",
+      "esh",
+      "ovak",
+      "anna"
+    ],
+    "male": [
+      "",
+      "uk",
+      "ar",
+      "o",
+      "ek",
+      "ash"
+    ],
+    "seeds": [
+      "Dench",
+      "Feng",
+      "Holg",
+      "Krusk",
+      "Mhurren",
+      "Shump"
+    ],
+    "lore": "Half-orc names split the difference between two worlds: blunt orcish single-syllables (<em>Dench</em>, <em>Feng</em>, <em>Krusk</em>) worn in human company, or human names worn among orcs — whichever face the half-orc leads with. The official D&D lists lean into short, punchy names that work in both rooms."
+  },
 };
