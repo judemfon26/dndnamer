@@ -93,3 +93,14 @@ if (thin.length) {
   process.exit(1);
 }
 console.log("content depth floors met on all pages");
+
+// Every live race must ship with hand-written editorial (history/craft/dm).
+// The weekly drop once shipped 12 races without it — pages at half depth mid-review.
+const { EDITORIAL } = await import("../data/editorial.js");
+const { RACES: ALL_RACES } = await import("../lib/generate.js");
+const noEd = Object.keys(ALL_RACES).filter(k => {
+  const e = EDITORIAL[k];
+  return !e || !e.history || !e.craft || !e.dm || (e.history + e.craft + e.dm).split(/\s+/).length < 150;
+});
+if (noEd.length) { console.error("GATE: races missing editorial (data/editorial.js): " + noEd.join(", ")); process.exit(1); }
+console.log(`editorial present for all ${Object.keys(ALL_RACES).length} races`);

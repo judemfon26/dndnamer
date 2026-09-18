@@ -6,6 +6,9 @@ via GitHub Actions to GitHub Pages at https://dndnamer.com). AdSense pub-6956651
 ## Standard drop (every run)
 1. `cd ~/utility-sites/namegen && git pull --ff-only origin main`
 2. `node scripts/promote.js 3`        # moves 3 races backlog -> live
+3a. For EACH promoted race, add a hand-written entry to data/editorial.js keyed by the race
+    key: { history, craft, dm } — ~3 sentences each, unique prose grounded in the race's real
+    published lore/naming source. The gate FAILS without it (AdSense "low value content" guard).
 3. `node scripts/quality-gate.js`     # MUST pass; if it fails, fix the offending race data
                                       # (data/races3.js) or demote it back, never ship a failure
 4. `node build.js`                    # page count should GROW by roughly 50-70

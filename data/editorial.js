@@ -132,4 +132,64 @@ export const EDITORIAL = {
     craft: `Two unhurried syllables, open vowels (a, o, u), soft consonants (b, d, l, m, k at gentlest): Balo, Omu, Kupa, Dolu. Nothing sharp, nothing long, nothing that requires urgency to pronounce. For elders, add a third syllable rather than a title — age earns length, not rank. If the name could be said mid-yawn on a warm beach and lose nothing, it is correct.`,
     dm: `A tortle name sets tempo: NPCs with these slow, round names give you licence to play them patient and unbothered, which makes them perfect quest-givers for wisdom beats — and comedy gold when the one urgent tortle in the campaign finally moves fast.`,
   },
+  aarakocra: {
+    history: `Aarakocra naming is built for open air: D&D's birdfolk come from mountain eyries and the Elemental Plane of Air, and their published names (Aera, Quierk, Kleeck, Salee) carry doubled vowels and trilled r's that survive being shouted across a canyon. The lore describes names as long, whistle-and-click ceremonial strings that outsiders compress into two or three pronounceable syllables — so every aarakocra name you hear at a tavern table is already a translation.`,
+    craft: `Double a vowel (ee, aa), add one rolled or clicked consonant (kl, qu, rr), and keep the total to two or three syllables: Kreeka, Aarik, Quellee. Endings on -ee, -ik and -ra carry the birdcall quality. Avoid heavy stops and long consonant clusters; a good aarakocra name should be shoutable while flying.`,
+    dm: `Let the name reflect altitude: aarakocra NPCs who have lived among groundlings use the shortened form, while elders from the high eyries correct everyone with the full whistled version. It's a one-line way to signal how far a character has drifted from the sky.`,
+  },
+  minotaur: {
+    history: `Minotaur names run Greek because the race was born in Greek myth: the original Minotaur of Crete was named Asterion, "the starry one," and fantasy minotaurs have orbited that register ever since. D&D's minotaurs — especially the seafaring Krynn tradition — added heavy, honour-bound naming with clan affiliations, producing names that sound like they were carved into stone rather than spoken.`,
+    craft: `Heavy consonants (B, K, T, Dr) at the front, Greek-style endings at the back (-os, -ios, -ax, -on): Brontes, Kalkax, Asterion. Two to three syllables, and every one of them should land like a hoof. Female names soften only the ending (-a, -ia, -ione) while keeping the heavy opening.`,
+    dm: `Minotaur names pair naturally with maze and honour imagery — give an NPC a name echoing Asterion and your players will start wondering about labyrinths before you've drawn one. For Krynn-style minotaurs, let clan names carry martial pride and use them in every formal introduction.`,
+  },
+  centaur: {
+    history: `Centaur names come almost directly from Greek mythology: Chiron the wise teacher, Pholus the host, Nessus of the poisoned cloak, and Hylonome, one of the few named female centaurs. D&D centaurs kept that classical register while softening the wildness, which is why centaur names sound formal and old even when their bearers are rangers living far from any city.`,
+    craft: `Greek structure throughout: masculine endings -on, -us, -os, -eus; feminine -ippe (from the Greek for horse) and -oe. Two or three syllables with open vowels. The -ippe ending is the single strongest centaur signal available — Leucippe, Melanippe — and it's grounded in real Greek naming.`,
+    dm: `Centaurs are natural teachers and guides in myth, so a centaur NPC with a Chiron-style name primes players to expect wisdom — which you can deliver or subvert. Herd names can follow landscapes they roam, giving each herd a place to be from.`,
+  },
+  changeling: {
+    history: `Changelings arrived as a playable race through Eberron, and their naming follows their nature: they wear identities the way others wear clothes. The published lore describes changelings as having a true name kept private, plus a wardrobe of personas — each with its own name, voice and history — used in public. Their true names are short and soft, and deliberately unremarkable.`,
+    craft: `Keep true names to one or two soft syllables: Ash, Fel, Vey, Sel. Persona names can be anything — that's the point — so the craft lies in the contrast: a changeling's true name should sound quieter and simpler than every persona they wear.`,
+    dm: `Give a changeling NPC three names across a campaign and let players slowly work out which one is real. And when a changeling player reveals their true name to the party, treat it as a trust event — the most intimate thing a changeling can share.`,
+  },
+  triton: {
+    history: `Triton names come from the Mediterranean deep: the race takes its name from Triton, son of Poseidon, and their names draw on Greek sea-words — thalassa (sea), pelagos (open water), and Nereus, the old man of the sea. D&D's tritons are formal guardians of the ocean depths, and their names read as ceremonial because triton society still uses them ceremonially.`,
+    craft: `Flowing vowel-forward names with Greek sea roots: Thalassa, Pelagius, Nereia, Okeanos. Masculine endings -on, -us, -eus; feminine -ia, -ea, -ene. Three syllables suits the formality. Avoid hard stops at the end — triton names should resolve like a wave settling.`,
+    dm: `Tritons in D&D lore are a little out of touch with the surface world, so play the formality: a triton introducing themselves by full name and lineage to a bemused tavern crowd is a character moment that writes itself.`,
+  },
+  githyanki: {
+    history: `Githyanki names are among the harshest in D&D by design: the race escaped mind-flayer slavery, built an empire in the Astral Plane under their lich-queen Vlaakith, and their names — Vlaakith, Zetch'r'r, Duurth — sound like a people who refuse to be soft ever again. Apostrophes mark glottal stops and doubled vowels mark stress, and the overall effect is martial and alien.`,
+    craft: `Hard consonants (V, Z, K, Q, Dr) with doubled vowels (aa, uu) and at most one apostrophe where a real glottal break would fall. Two syllables, sometimes three: Vlaakar, Duurzen, Kess'ra. The name should sound like an order being given.`,
+    dm: `Githyanki names carry the empire with them — a githyanki who introduces themselves with a rank and a sword-name is signalling loyalty to Vlaakith. One who drops the rank has defected, and players should feel the weight of that choice in a single introduction.`,
+  },
+  bugbear: {
+    history: `Bugbear names inherit the goblinoid register at its lowest pitch: the biggest of the goblin family, bugbears in D&D lore are stealthy brutes, and their names are short, thick and violent — Klarg, the bugbear boss of the classic Lost Mine of Phandelver adventure, is the archetype. Clan and deed-names do the rest.`,
+    craft: `One or two thick syllables built on hard consonant clusters (Gr, Kl, Br, Sk) with dark vowels: Klarg, Grolmash, Bruzk. Compound a violent noun for an epithet if needed — Skulltaker, Mudmaw. The name should sound like something heard just before an ambush.`,
+    dm: `Bugbears are ambushers, so their names are often heard before they are seen — a shouted name from the dark is a great horror beat. Use Klarg-style names for bosses and give underlings shorter, grunted versions to establish hierarchy by sound.`,
+  },
+  hobgoblin: {
+    history: `Hobgoblins are the disciplined wing of the goblinoid family — militaristic, organised into legions, obsessed with rank — and their names reflect it: the same harsh phonemes as goblins, but ordered and clipped, like names read off a muster roll. In D&D lore a hobgoblin's legion affiliation often matters more than the personal name.`,
+    craft: `Keep goblinoid consonants (K, G, Z, Dr) but make every syllable crisp and deliberate: Azrok, Tharnash, Draveth. Two or three syllables. Add a rank or legion name for formal use — the pairing of personal name and unit is the hobgoblin signature.`,
+    dm: `Introduce hobgoblins by rank and legion first, name second. Players will quickly learn to read the military structure of an enemy force from introductions alone — and a hobgoblin who refuses to give their legion is a deserter with a story.`,
+  },
+  half_orc: {
+    history: `Half-orc naming reflects a life between two cultures: D&D's official lists give half-orcs short, blunt names (Dench, Feng, Krusk, Holg) that work in both orcish and human company. Half-orcs raised among humans often carry human names; those raised among orcs carry orcish ones; and many carry both, choosing which to use depending on the room.`,
+    craft: `Short and blunt: one or two syllables with a hard consonant — Dench, Krusk, Mhurren, Shump. Feminine forms add -a or -en endings. If you want to show a split upbringing, give the character both a human name and an orcish name and decide which they lead with.`,
+    dm: `Which name does your half-orc use in the city, and which in the war camp? That single question gives a half-orc character a built-in identity arc. For NPCs, a half-orc introducing themselves by an orcish name in a human town is making a statement.`,
+  },
+  half_elf: {
+    history: `Half-elf names are the most flexible in D&D because half-elves are raised in either culture — or neither. The official lore notes that half-elves usually take names from whichever parent's society raised them, and sometimes blend the two: an elvish name with a human surname, or a human first name with elvish cadence. The result is a register that sits between the flowing elvish style and ordinary human naming.`,
+    craft: `Borrow elvish flow but keep it shorter and more grounded: two syllables, soft consonants, endings like -an, -ra, -en or -iel. Blends work well — an elvish given name with a plain human family name tells a whole story. Avoid fully elvish four-syllable names unless the character was raised entirely among elves.`,
+    dm: `Half-elf names are a quick way to show where a character belongs — or doesn't. A half-elf who uses a human name among elves, or an elvish one among humans, is choosing which side of themselves to show, and players respond to that immediately.`,
+  },
+  duergar: {
+    history: `Duergar are the grey dwarves of the Underdark — dwarves who were enslaved by mind flayers and emerged grim, psionic and resentful — and their names take the dwarven template and strip the warmth out of it. The same Norse-derived hard stops remain, but the heroic endings give way to darker, heavier sounds that suit a people who build without joy.`,
+    craft: `Start from dwarven structure — two syllables, hard consonants — then darken it: Drak, Grund, Morthrak, Vurgrim. Use harsher clusters and fewer open vowels than surface dwarves. Clan names can reference the Underdark: stone, dark, iron, depth.`,
+    dm: `Pair duergar and surface dwarves in the same campaign and let players hear the difference: Thorin versus Grundmoor. The echo tells players these are cousins before the lore does — and makes a duergar betrayal feel like family.`,
+  },
+  dragon: {
+    history: `Dragon names in fantasy are built for grandeur and fear: Tolkien's Smaug and Glaurung set the template of heavy, sibilant names, and D&D's great wyrms — Tiamat, Ashardalon, Klauth — pushed dragon names toward long, draconic constructions full of hard consonants and hissing endings. In D&D lore a dragon's true name has power, so dragons often go by titles or epithets in company.`,
+    craft: `Long and heavy: three or more syllables mixing hard stops (K, T, D) with sibilants (s, th, x). Endings like -ax, -ion, -arth, -rix give weight. Add an epithet for use in company — "the Crimson Doom" — and keep the true name hidden.`,
+    dm: `Treat the dragon's true name as a campaign treasure. Players who learn it gain leverage — and a dragon who hears its true name spoken by a mortal is a scene that ends in either an alliance or a massacre. Let the epithet do the introductions until then.`,
+  },
 };
