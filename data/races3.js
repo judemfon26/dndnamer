@@ -754,4 +754,207 @@ export const RACES3 = {
     ],
     "lore": "Half-orc names split the difference between two worlds: blunt orcish single-syllables (<em>Dench</em>, <em>Feng</em>, <em>Krusk</em>) worn in human company, or human names worn among orcs — whichever face the half-orc leads with. The official D&D lists lean into short, punchy names that work in both rooms."
   },
+  "half_elf": {
+    "label": "Half-Elf",
+    "genre": [
+      "dnd",
+      "fantasy"
+    ],
+    "onset": [
+      "Aer",
+      "Bre",
+      "Cor",
+      "Dae",
+      "Elu",
+      "Fen",
+      "Gal",
+      "Ilm",
+      "Jor",
+      "Kae",
+      "Lia",
+      "Mel",
+      "Ner",
+      "Riel",
+      "Sar",
+      "Thal",
+      "Vae",
+      "Wyn"
+    ],
+    "mid": [
+      "a",
+      "e",
+      "ri",
+      "la",
+      "the",
+      "ma"
+    ],
+    "coda": [
+      "iel",
+      "an",
+      "wen",
+      "ar",
+      "is",
+      "ora",
+      "yn",
+      "dris"
+    ],
+    "syl": [
+      2,
+      2,
+      3
+    ],
+    "gendered": true,
+    "male": [
+      "an",
+      "ion",
+      "dor",
+      "ric",
+      "us",
+      "iel",
+      "ard",
+      "en"
+    ],
+    "female": [
+      "a",
+      "ia",
+      "wen",
+      "riel",
+      "ine",
+      "lyn",
+      "ara",
+      "eth"
+    ],
+    "seeds": [
+      "Aerion",
+      "Brelyn",
+      "Corwen",
+      "Daeriel",
+      "Melara",
+      "Thaldor"
+    ],
+    "lore": "Half-elf names are borrowed twice over. Most carry an elven name from one parent — flowing, vowel-heavy, ending in <em>-iel</em>, <em>-wen</em> or <em>-dor</em> — and answer to a blunter human one in the towns where elvish draws stares. The result is a name that sounds slightly foreign in both halls."
+  },
+  "duergar": {
+    "label": "Duergar",
+    "genre": [
+      "dnd",
+      "fantasy"
+    ],
+    "onset": [
+      "Bru",
+      "Dorn",
+      "Grum",
+      "Hrag",
+      "Khaz",
+      "Mor",
+      "Nul",
+      "Skor",
+      "Thur",
+      "Ulg",
+      "Vorn",
+      "Zar",
+      "Drak",
+      "Grim",
+      "Muz",
+      "Harn"
+    ],
+    "mid": [
+      "un",
+      "ar",
+      "or",
+      "az",
+      "ul"
+    ],
+    "coda": [
+      "dar",
+      "grim",
+      "nak",
+      "thak",
+      "dun",
+      "mor",
+      "zur",
+      "gral",
+      "bek",
+      "rund",
+      "kar"
+    ],
+    "syl": [
+      2,
+      2,
+      3
+    ],
+    "gendered": false,
+    "seeds": [
+      "Khazgrim",
+      "Morzur",
+      "Thurdun",
+      "Bruthak",
+      "Skorbek",
+      "Ulgnak"
+    ],
+    "lore": "Duergar names are dwarvish stripped of warmth: the same hard stops and clan-suffixes, ground down by centuries in the Underdark. Where a shield dwarf's name honours a forge or an ancestor, a gray dwarf's honours a debt, a depth or a grudge — <em>Khazgrim</em>, <em>Morzur</em>, <em>Thurdun</em>."
+  },
+  "dragon": {
+    "label": "Dragon",
+    "genre": [
+      "dnd",
+      "fantasy"
+    ],
+    "onset": [
+      "Aur",
+      "Bala",
+      "Cala",
+      "Dree",
+      "Emb",
+      "Faer",
+      "Ghaz",
+      "Igni",
+      "Kal",
+      "Mal",
+      "Nyx",
+      "Oro",
+      "Pyr",
+      "Ryth",
+      "Sar",
+      "Tia",
+      "Vor",
+      "Zar"
+    ],
+    "mid": [
+      "a",
+      "o",
+      "az",
+      "ir",
+      "ath",
+      "en"
+    ],
+    "coda": [
+      "rax",
+      "gos",
+      "thyx",
+      "ion",
+      "mir",
+      "xis",
+      "goth",
+      "zar",
+      "drex",
+      "yss",
+      "thra"
+    ],
+    "syl": [
+      2,
+      2,
+      3
+    ],
+    "gendered": false,
+    "seeds": [
+      "Balagos",
+      "Malrax",
+      "Aurthra",
+      "Nyxion",
+      "Pyrgoth",
+      "Rythmir"
+    ],
+    "lore": "Dragon names are built to be spoken in Draconic — a language of hisses, hard stops and drawn-out finals. They run long and grand, favouring endings like <em>-rax</em>, <em>-gos</em> and <em>-xis</em>, because a wyrm's name is meant to fill a cavern and outlive the tongue that first said it."
+  },
 };

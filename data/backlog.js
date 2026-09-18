@@ -1,209 +1,6 @@
 // Pre-authored race backlog. The weekly drop promotes the first N entries into
 // data/races3.js (live) via scripts/promote.js. Same schema as data/races.js.
 export const BACKLOG = {
-  "half_elf": {
-    "label": "Half-Elf",
-    "genre": [
-      "dnd",
-      "fantasy"
-    ],
-    "onset": [
-      "Aer",
-      "Bre",
-      "Cor",
-      "Dae",
-      "Elu",
-      "Fen",
-      "Gal",
-      "Ilm",
-      "Jor",
-      "Kae",
-      "Lia",
-      "Mel",
-      "Ner",
-      "Riel",
-      "Sar",
-      "Thal",
-      "Vae",
-      "Wyn"
-    ],
-    "mid": [
-      "a",
-      "e",
-      "ri",
-      "la",
-      "the",
-      "ma"
-    ],
-    "coda": [
-      "iel",
-      "an",
-      "wen",
-      "ar",
-      "is",
-      "ora",
-      "yn",
-      "dris"
-    ],
-    "syl": [
-      2,
-      2,
-      3
-    ],
-    "gendered": true,
-    "male": [
-      "an",
-      "ion",
-      "dor",
-      "ric",
-      "us",
-      "iel",
-      "ard",
-      "en"
-    ],
-    "female": [
-      "a",
-      "ia",
-      "wen",
-      "riel",
-      "ine",
-      "lyn",
-      "ara",
-      "eth"
-    ],
-    "seeds": [
-      "Aerion",
-      "Brelyn",
-      "Corwen",
-      "Daeriel",
-      "Melara",
-      "Thaldor"
-    ],
-    "lore": "Half-elf names are borrowed twice over. Most carry an elven name from one parent — flowing, vowel-heavy, ending in <em>-iel</em>, <em>-wen</em> or <em>-dor</em> — and answer to a blunter human one in the towns where elvish draws stares. The result is a name that sounds slightly foreign in both halls."
-  },
-  "duergar": {
-    "label": "Duergar",
-    "genre": [
-      "dnd",
-      "fantasy"
-    ],
-    "onset": [
-      "Bru",
-      "Dorn",
-      "Grum",
-      "Hrag",
-      "Khaz",
-      "Mor",
-      "Nul",
-      "Skor",
-      "Thur",
-      "Ulg",
-      "Vorn",
-      "Zar",
-      "Drak",
-      "Grim",
-      "Muz",
-      "Harn"
-    ],
-    "mid": [
-      "un",
-      "ar",
-      "or",
-      "az",
-      "ul"
-    ],
-    "coda": [
-      "dar",
-      "grim",
-      "nak",
-      "thak",
-      "dun",
-      "mor",
-      "zur",
-      "gral",
-      "bek",
-      "rund",
-      "kar"
-    ],
-    "syl": [
-      2,
-      2,
-      3
-    ],
-    "gendered": false,
-    "seeds": [
-      "Khazgrim",
-      "Morzur",
-      "Thurdun",
-      "Bruthak",
-      "Skorbek",
-      "Ulgnak"
-    ],
-    "lore": "Duergar names are dwarvish stripped of warmth: the same hard stops and clan-suffixes, ground down by centuries in the Underdark. Where a shield dwarf's name honours a forge or an ancestor, a gray dwarf's honours a debt, a depth or a grudge — <em>Khazgrim</em>, <em>Morzur</em>, <em>Thurdun</em>."
-  },
-  "dragon": {
-    "label": "Dragon",
-    "genre": [
-      "dnd",
-      "fantasy"
-    ],
-    "onset": [
-      "Aur",
-      "Bala",
-      "Cala",
-      "Dree",
-      "Emb",
-      "Faer",
-      "Ghaz",
-      "Igni",
-      "Kal",
-      "Mal",
-      "Nyx",
-      "Oro",
-      "Pyr",
-      "Ryth",
-      "Sar",
-      "Tia",
-      "Vor",
-      "Zar"
-    ],
-    "mid": [
-      "a",
-      "o",
-      "az",
-      "ir",
-      "ath",
-      "en"
-    ],
-    "coda": [
-      "rax",
-      "gos",
-      "thyx",
-      "ion",
-      "mir",
-      "xis",
-      "goth",
-      "zar",
-      "drex",
-      "yss",
-      "thra"
-    ],
-    "syl": [
-      2,
-      2,
-      3
-    ],
-    "gendered": false,
-    "seeds": [
-      "Balagos",
-      "Malrax",
-      "Aurthra",
-      "Nyxion",
-      "Pyrgoth",
-      "Rythmir"
-    ],
-    "lore": "Dragon names are built to be spoken in Draconic — a language of hisses, hard stops and drawn-out finals. They run long and grand, favouring endings like <em>-rax</em>, <em>-gos</em> and <em>-xis</em>, because a wyrm's name is meant to fill a cavern and outlive the tongue that first said it."
-  },
   "demon": {
     "label": "Demon",
     "genre": [
@@ -383,5 +180,589 @@ export const BACKLOG = {
       "Odamura"
     ],
     "lore": "Samurai names are compounds of place and lineage: a clan element drawn from landscape — <em>yama</em> (mountain), <em>kuro</em> (black), <em>ishi</em> (stone) — welded to a given element like <em>-hiro</em>, <em>-shige</em> or <em>-moto</em>. Read literally, most warrior names are a map of where the family stood."
+  },
+  "wizard": {
+    "label": "Wizard",
+    "genre": [
+      "dnd",
+      "fantasy"
+    ],
+    "onset": [
+      "Al",
+      "Ar",
+      "Bel",
+      "Cas",
+      "Dra",
+      "El",
+      "Elm",
+      "Gan",
+      "Kel",
+      "Mal",
+      "Mer",
+      "Mor",
+      "Nyd",
+      "Or",
+      "Pel",
+      "Rai",
+      "Sar",
+      "Tas",
+      "Ul",
+      "Vel",
+      "Xan",
+      "Zal",
+      "Ig",
+      "Oth",
+      "Rin"
+    ],
+    "mid": [
+      "da",
+      "mi",
+      "ra",
+      "en",
+      "li",
+      "so",
+      "tha",
+      "vo",
+      "ke",
+      "ur",
+      "is"
+    ],
+    "coda": [
+      "dalf",
+      "lin",
+      "ster",
+      "kainen",
+      "mund",
+      "thar",
+      "gast",
+      "wynd",
+      "dor",
+      "eus",
+      "ion",
+      "orn",
+      "ath",
+      "ius"
+    ],
+    "syl": [
+      2,
+      3,
+      3
+    ],
+    "gendered": true,
+    "female": [
+      "a",
+      "ra",
+      "wyn",
+      "ia",
+      "is",
+      "ella"
+    ],
+    "male": [
+      "dalf",
+      "lin",
+      "ster",
+      "gast",
+      "dor",
+      "ius",
+      "ath"
+    ],
+    "seeds": [
+      "Gandalf",
+      "Merlin",
+      "Elminster",
+      "Mordenkainen",
+      "Tasha",
+      "Raistlin",
+      "Saruman",
+      "Bigby"
+    ],
+    "lore": "Wizard names are built to be intoned. They favour long open vowels, a sonorous middle and a weighty final syllable — <em>Gandalf</em>, <em>Elminster</em>, <em>Mordenkainen</em> — because the register descends from Merlin and the Latin of the grimoire: names that sound like they were written in a book before they were spoken. Endings in -dalf, -ster, -ius and -dor mark the archmage; a single soft syllable (Tasha, Bigby) marks the practical spellcaster who publishes."
+  },
+  "roman": {
+    "label": "Roman",
+    "genre": [
+      "historical",
+      "fantasy"
+    ],
+    "onset": [
+      "Jul",
+      "Luc",
+      "Marc",
+      "Corn",
+      "Oct",
+      "Publ",
+      "Quint",
+      "Sept",
+      "Serv",
+      "Tib",
+      "Val",
+      "Vib",
+      "Ael",
+      "Ant",
+      "Hor",
+      "Liv",
+      "Dom",
+      "Cass",
+      "Dec",
+      "Flav",
+      "Max",
+      "Aur",
+      "Claud",
+      "Tull",
+      "Fab",
+      "Sext"
+    ],
+    "mid": [
+      "i",
+      "e",
+      "eli",
+      "eri",
+      "av",
+      "ent",
+      "on",
+      "il",
+      "ul",
+      "emi"
+    ],
+    "coda": [
+      "us",
+      "ius",
+      "ianus",
+      "inus",
+      "a",
+      "ia",
+      "illa",
+      "ina",
+      "o",
+      "ix",
+      "ax",
+      "ilius",
+      "imus",
+      "ella"
+    ],
+    "syl": [
+      2,
+      2,
+      3,
+      3
+    ],
+    "gendered": true,
+    "female": [
+      "a",
+      "ia",
+      "illa",
+      "ina",
+      "ella",
+      "itia"
+    ],
+    "male": [
+      "us",
+      "ius",
+      "ianus",
+      "inus",
+      "ix",
+      "imus"
+    ],
+    "seeds": [
+      "Gaius",
+      "Lucius",
+      "Octavia",
+      "Julia",
+      "Marcus",
+      "Valeria",
+      "Tiberius",
+      "Cornelia"
+    ],
+    "lore": "Roman names ran on a three-part system: a personal <em>praenomen</em> (Gaius, Lucius, Marcus — there were barely twenty in use), a clan <em>nomen</em> in -ius (Julius, Cornelius), and a branch or nickname <em>cognomen</em> (Caesar, Cicero — 'chickpea'). Women took the feminine of the clan name, so every daughter of the Julii was Julia. The sound is Latin: hard c, clear vowels, and masculine -us against feminine -a."
+  },
+  "egyptian": {
+    "label": "Egyptian",
+    "genre": [
+      "historical",
+      "fantasy"
+    ],
+    "onset": [
+      "Ah",
+      "Amen",
+      "Ankh",
+      "Hat",
+      "Hor",
+      "Kha",
+      "Meri",
+      "Neb",
+      "Nefer",
+      "Pta",
+      "Ra",
+      "Sen",
+      "Set",
+      "Tut",
+      "Ahm",
+      "Kam",
+      "Men",
+      "Nakht",
+      "Sob",
+      "Ti",
+      "Us",
+      "Ini",
+      "Bak"
+    ],
+    "mid": [
+      "em",
+      "ho",
+      "nef",
+      "ka",
+      "ra",
+      "tep",
+      "mo",
+      "se",
+      "en",
+      "ipt"
+    ],
+    "coda": [
+      "hotep",
+      "mose",
+      "ankh",
+      "tari",
+      "ret",
+      "emhat",
+      "ese",
+      "kare",
+      "ti",
+      "nefer",
+      "khet",
+      "amun",
+      "hor",
+      "mut"
+    ],
+    "syl": [
+      2,
+      3,
+      3
+    ],
+    "gendered": true,
+    "female": [
+      "tari",
+      "ese",
+      "et",
+      "ti",
+      "nefru",
+      "iti"
+    ],
+    "male": [
+      "hotep",
+      "mose",
+      "ankh",
+      "kare",
+      "amun",
+      "khet",
+      "hor"
+    ],
+    "seeds": [
+      "Nefertari",
+      "Ramose",
+      "Amenhotep",
+      "Hatshepsut",
+      "Tutankhamun",
+      "Ankhesenamun",
+      "Senenmut",
+      "Khaemwaset"
+    ],
+    "lore": "Egyptian names are sentences. <em>Tutankhamun</em> is 'living image of Amun', <em>Ramose</em> is 'born of Ra', <em>Nefertari</em> is 'the most beautiful' — each stacks a god's name or a virtue onto a short grammatical element like -mose (born of), -hotep (is satisfied) or ankh- (life). The written record kept no vowels, so the modern sound is a reconstruction: clipped consonant clusters (kh, nkh, pt) around long, open a and e."
+  },
+  "japanese": {
+    "label": "Japanese",
+    "genre": [
+      "historical",
+      "fantasy"
+    ],
+    "onset": [
+      "A",
+      "Ha",
+      "Hi",
+      "Ka",
+      "Ke",
+      "Ki",
+      "Ma",
+      "Mi",
+      "Na",
+      "No",
+      "Ri",
+      "Sa",
+      "Ta",
+      "To",
+      "Yo",
+      "Yu",
+      "Re",
+      "Ko",
+      "Ku",
+      "Sho",
+      "Chi",
+      "Tsu",
+      "Ge",
+      "Ra",
+      "I",
+      "O",
+      "Su",
+      "Fu"
+    ],
+    "mid": [
+      "ka",
+      "ki",
+      "ko",
+      "ma",
+      "mi",
+      "na",
+      "no",
+      "ru",
+      "sa",
+      "shi",
+      "ta",
+      "to",
+      "ra",
+      "ri",
+      "ge",
+      "zu",
+      "ne",
+      "tsu",
+      "chi"
+    ],
+    "coda": [
+      "ko",
+      "mi",
+      "ka",
+      "ro",
+      "shi",
+      "to",
+      "ki",
+      "na",
+      "ru",
+      "e",
+      "o",
+      "hiko",
+      "hime",
+      "maru",
+      "suke",
+      "tsu"
+    ],
+    "syl": [
+      2,
+      3,
+      3,
+      4
+    ],
+    "gendered": true,
+    "female": [
+      "ko",
+      "mi",
+      "ka",
+      "na",
+      "e",
+      "hime",
+      "ne"
+    ],
+    "male": [
+      "ro",
+      "shi",
+      "to",
+      "ki",
+      "maru",
+      "hiko",
+      "suke"
+    ],
+    "seeds": [
+      "Hiroshi",
+      "Akira",
+      "Sakura",
+      "Yuki",
+      "Kenji",
+      "Haruka",
+      "Takeshi",
+      "Ayame"
+    ],
+    "lore": "Japanese names are strings of open syllables — consonant plus vowel, never a cluster, never a closed ending except -n — which is why they read so evenly to an English eye. Meaning lives in the kanji, not the sound: <em>Haruka</em> can be 'distant' or 'spring flower' depending on how it is written. Feminine names traditionally close on -ko (child), -mi (beauty) or -e; masculine names on -ro, -shi, -to or the samurai-flavoured -maru and -suke."
+  },
+  "genie": {
+    "label": "Genie",
+    "genre": [
+      "dnd",
+      "fantasy"
+    ],
+    "onset": [
+      "Ab",
+      "Al",
+      "Ash",
+      "Az",
+      "Da",
+      "Fa",
+      "Ha",
+      "Ib",
+      "Ja",
+      "Kha",
+      "Ma",
+      "Na",
+      "Qa",
+      "Ra",
+      "Sa",
+      "Sha",
+      "Su",
+      "Ta",
+      "Za",
+      "Zu",
+      "Om",
+      "Ya",
+      "Fir",
+      "Mar"
+    ],
+    "mid": [
+      "li",
+      "ri",
+      "ma",
+      "di",
+      "sa",
+      "hi",
+      "ra",
+      "mi",
+      "la",
+      "ka"
+    ],
+    "coda": [
+      "rah",
+      "mir",
+      "fir",
+      "lim",
+      "dir",
+      "zad",
+      "hab",
+      "sim",
+      "sul",
+      "dun",
+      "kar",
+      "rim",
+      "im",
+      "ir",
+      "id"
+    ],
+    "syl": [
+      2,
+      3,
+      3
+    ],
+    "gendered": true,
+    "female": [
+      "rah",
+      "ra",
+      "ima",
+      "ida",
+      "ina",
+      "iya",
+      "la"
+    ],
+    "male": [
+      "mir",
+      "fir",
+      "lim",
+      "dir",
+      "zad",
+      "sim",
+      "im"
+    ],
+    "seeds": [
+      "Zafir",
+      "Jamil",
+      "Nadira",
+      "Zahra",
+      "Ashraf",
+      "Kalila",
+      "Sulayman",
+      "Nasir"
+    ],
+    "lore": "Genie names draw on the Arabic and Persian sources of the <em>jinn</em>: the One Thousand and One Nights, the Qur'anic Sulayman who bound them, and the efreet and marid of D&D's elemental courts. The phonology is Semitic — a strong glottal or fricative opening (Kha-, Sha-, Az-), a rolling middle, and clipped endings in -ir, -im, -mir and -zad for males, -rah, -ida and -ima for females. Names sound like oaths because, in the stories, they usually were."
+  },
+  "svirfneblin": {
+    "label": "Svirfneblin",
+    "genre": [
+      "dnd"
+    ],
+    "onset": [
+      "Bel",
+      "Bur",
+      "Diss",
+      "Fir",
+      "Glim",
+      "Kri",
+      "Nib",
+      "Pel",
+      "Snik",
+      "Trun",
+      "Ulm",
+      "Wurm",
+      "Zig",
+      "Krum",
+      "Bril",
+      "Grod",
+      "Nyx",
+      "Ort",
+      "Pim",
+      "Dun"
+    ],
+    "mid": [
+      "war",
+      "en",
+      "ick",
+      "ul",
+      "ra",
+      "ob",
+      "ik",
+      "el",
+      "ur"
+    ],
+    "coda": [
+      "war",
+      "ble",
+      "tick",
+      "ger",
+      "gulp",
+      "bry",
+      "mra",
+      "nik",
+      "dle",
+      "dorn",
+      "rick",
+      "stock",
+      "ip",
+      "bur"
+    ],
+    "syl": [
+      2,
+      2,
+      3
+    ],
+    "gendered": true,
+    "female": [
+      "bry",
+      "mra",
+      "la",
+      "ik",
+      "ra",
+      "elle"
+    ],
+    "male": [
+      "war",
+      "tick",
+      "ger",
+      "gulp",
+      "nik",
+      "dorn",
+      "rick"
+    ],
+    "seeds": [
+      "Belwar",
+      "Firble",
+      "Krieger",
+      "Ulmra",
+      "Bilbry",
+      "Dissengulp"
+    ],
+    "lore": "Svirfneblin — deep gnome — names keep the surface gnome's clattering consonants but strip out the whimsy: fewer -zz and -kin, more hard -ck, -gulp and -dorn, and a Germanic weight that suits a people who mine the Underdark beside the drow. The canonical <em>Belwar Dissengulp</em> sets the pattern: a two-syllable personal name and a surname that sounds like a rockfall. Female names soften to -bry, -mra and -elle without ever becoming pretty."
   },
 };

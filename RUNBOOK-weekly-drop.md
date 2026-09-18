@@ -24,11 +24,19 @@ kobold clans, duergar, svirfneblin, genie, angel, demon, dragon, griffon-rider,
 barbarian-clan, wizard, druid, monk, samurai, viking-clan, roman, egyptian, japanese.
 
 ## Month-2 roadmap (start ~2026-09-15): new generator TYPES
-One per week, using the compound-word engine pattern (see warforged/pirate in races2.js):
-tavern names -> guild names -> city names -> ship names -> kingdom names.
-Each gets its own hub page + letter pages, e.g. /tavern-name-generator/.
-These are separate keyword universes ("tavern name generator" has large volume) — build
-them as new race-like entries with genre ["places"] and a new genre hub.
+One per week, using the compound-word engine pattern:
+tavern names (SHIPPED 2026-09-17) -> guild names -> city names -> ship names -> kingdom names.
+Each gets its own main page + letter pages, e.g. /tavern-name-generator/, and lives in
+data/places.js with genre ["place"] (hub: /place-name-generator/ — "place name generator"
+is the searched phrase, so the genre key is singular). Place entries set `sep: " "`, which
+switches lib/generate.js into compound-word mode: onset/coda are whole words joined with a
+space, each word is pronounceability-checked on its own, names cap at 24 chars, and
+build.js skips the male/female/neutral pages (a "male tavern name" page would be filler).
+Quality bar for a new type: 60+ first words and 60+ second words (letter coverage),
+a real convention in the lore (tavern = medieval signboard adjective+beast), an EDITORIAL
+entry (history/craft/dm) and a GENRE_INTROS line if a new hub is needed.
+Next up: guild names (e.g. "Order of the Gilded Quill" — needs a prefix/preposition pattern;
+consider a `frame` field like "The {a} {b}" / "{b} of the {a}" if plain adjective+noun is too thin).
 
 ## Guardrails
 - NEVER remove or rename existing live URLs (breaks indexed pages).

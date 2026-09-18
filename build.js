@@ -3,7 +3,8 @@ import path from "path";
 import { RACES as CORE, VARIANTS } from "./data/races.js";
 import { RACES2 } from "./data/races2.js";
 import { RACES3 } from "./data/races3.js";
-const RACES = { ...CORE, ...RACES2, ...RACES3 };
+import { PLACES } from "./data/places.js";
+const RACES = { ...CORE, ...RACES2, ...RACES3, ...PLACES };
 import { generateSet } from "./lib/generate.js";
 import { page, SITE } from "./lib/template.js";
 import { EDITORIAL } from "./data/editorial.js";
@@ -20,6 +21,8 @@ function anatomy(key, R) {
   const fem  = R.gendered ? R.female.map(x => "-" + x.replace(/^-/, "")).slice(0, 5).join(", ") : null;
   const codas = R.coda.slice(0, 6).map(x => "-" + x.replace(/^-/, "")).join(", ");
   const syl = [...new Set(R.syl)].join("–");
+  if (R.sep) return `<h2>Anatomy of ${art(R.label)} ${R.label.toLowerCase()} name</h2>
+<p>This generator builds names the way a sign-painter would: a first word such as <strong>${on}</strong>, joined to a second such as <strong>${R.coda.slice(0, 6).join(", ")}</strong>. Names run <strong>${syl} words</strong>; every first word pairs with every second, which is how a modest word list yields thousands of distinct signboards. Colour and creature is the commonest pairing, object and state of repair the second.</p>`;
   return `<h2>Anatomy of ${art(R.label)} ${R.label.toLowerCase()} name</h2>
 <p>This generator assembles names the way the tradition does. Typical openings include <strong>${on}</strong>; names run <strong>${syl} syllables</strong> and resolve on endings such as <strong>${codas}</strong>.${R.gendered ? ` Gender lives mostly in the ending: feminine forms favour <strong>${fem}</strong>, masculine forms <strong>${male}</strong>, and neutral names simply pick from the wider pool.` : ` The tradition doesn't gender-code its names — any ending suits any character.`}</p>`;
 }
@@ -27,9 +30,12 @@ function exampleTable(key, R) {
   const ns = generateSet(key, "neutral", key + "showcase", 8);
   return `<h3>Examples from this generator</h3><table><thead><tr><th>Name</th><th>Reads as</th></tr></thead><tbody>${
     ns.map((n, i) => {
-      const tone = ["a classic, load-bearing form", "an everyday name in this register",
+      const tone = (R.sep ? ["a classic roadside inn", "a dockside dive", "a respectable coaching house",
+        "a hidden back-alley bar", "a rowdy soldiers' tavern", "a quiet scholars' haunt",
+        "a frontier waystation", "the finest inn in the capital"]
+      : ["a classic, load-bearing form", "an everyday name in this register",
         "a formal or elder variant", "a short, familiar form", "a name with a martial edge",
-        "a softer, lyrical variant", "a frontier or outsider form", "a name fit for a leader"][i % 8];
+        "a softer, lyrical variant", "a frontier or outsider form", "a name fit for a leader"])[i % 8];
       return `<tr><td><strong>${n}</strong></td><td>${tone}</td></tr>`; }).join("")}</tbody></table>`;
 }
 function letterAnalysis(key, R, L, pool) {
@@ -149,18 +155,20 @@ for (const [key, R] of Object.entries(RACES)) {
   const crumbs = [{ href: "/", label: "Home" }, { label: `${R.label} name generator` }];
   write(`/${s}-name-generator`, page({
     title: `${R.label} Name Generator — 1000s of ${R.label} Names | ${SITE.name}`,
-    desc: `Free ${R.label.toLowerCase()} name generator. Instantly create authentic ${R.label.toLowerCase()} names for D&D, fantasy writing and RPG characters. Male, female and gender-neutral.`,
+    desc: R.sep
+      ? `Free ${R.label.toLowerCase()} name generator. Instantly create authentic ${R.label.toLowerCase()} names for D&D campaigns, fantasy worldbuilding and RPG settings — built from real signboard conventions.`
+      : `Free ${R.label.toLowerCase()} name generator. Instantly create authentic ${R.label.toLowerCase()} names for D&D, fantasy writing and RPG characters. Male, female and gender-neutral.`,
     canonical: `/${s}-name-generator/`,
     h1: `${R.label} Name Generator`,
     crumbs,
     schema: { "@context":"https://schema.org","@type":"WebApplication",
       name:`${R.label} Name Generator`, applicationCategory:"GameApplication",
       operatingSystem:"Any", offers:{"@type":"Offer",price:"0",priceCurrency:"USD"} },
-    body: `<p class="lede">Generate authentic ${R.label.toLowerCase()} names in one click. Every name is built from the tradition's real phonetics — documented below — not random letters.</p>
+    body: `<p class="lede">Generate authentic ${R.label.toLowerCase()} names in one click. Every name is built from the tradition's real ${R.sep ? "naming conventions" : "phonetics"} — documented below — not random ${R.sep ? "words" : "letters"}.</p>
 ${widget(key, "neutral", key)}
-<section class="related"><ul class="links filter-chips">
+${R.sep ? "" : `<section class="related"><ul class="links filter-chips">
 ${GENDERS.map(g => `<li><a href="/${s}-name-generator/${g}/">${g[0].toUpperCase()+g.slice(1)}</a></li>`).join("")}
-</ul></section>
+</ul></section>`}
 <section class="prose"><h2>How ${R.label.toLowerCase()} names work</h2><p>${R.lore}</p>
 ${anatomy(key, R)}
 ${exampleTable(key, R)}
@@ -171,7 +179,8 @@ ${letterLinks(key)}`
   }));
 
   // ------------------------------------------------------------------ per gender
-  for (const g of GENDERS) {
+  // (places have no gender — a "male tavern name" page would be filler)
+  for (const g of R.sep ? [] : GENDERS) {
     const G = g[0].toUpperCase() + g.slice(1);
     write(`/${s}-name-generator/${g}`, page({
       title: `${G} ${R.label} Names — ${R.label} Name Generator | ${SITE.name}`,
@@ -204,7 +213,7 @@ ${widget(key, "neutral", key + L + "seed", L)}
 <section class="prose"><h2>Reading the ${L.toUpperCase()}-names</h2><p>${letterAnalysis(key, R, L, pool)}</p></section>
 <section class="related"><h2>Need something else?</h2><ul class="links">
 <li><a href="/${s}-name-generator/">Full ${R.label.toLowerCase()} name generator</a></li>
-${GENDERS.map(g=>`<li><a href="/${s}-name-generator/${g}/">${g} ${R.label.toLowerCase()} names</a></li>`).join("")}
+${R.sep ? "" : GENDERS.map(g=>`<li><a href="/${s}-name-generator/${g}/">${g} ${R.label.toLowerCase()} names</a></li>`).join("")}
 </ul></section>
 ${letterLinks(key)}`
     }));
@@ -221,17 +230,20 @@ const GENRE_SEEDS = {
     human_nordic: ["Ulfric", "Ralof", "Lydia"],
   },
 };
-const GENRES = { dnd:"D&D", fantasy:"Fantasy", lotr:"Lord of the Rings", skyrim:"Skyrim", wow:"World of Warcraft", viking:"Viking", historical:"Historical", druid:"Druid" };
+const GENRES = { dnd:"D&D", fantasy:"Fantasy", lotr:"Lord of the Rings", skyrim:"Skyrim", wow:"World of Warcraft", viking:"Viking", historical:"Historical", druid:"Druid", place:"Place" };
+const PLACE_HUBS = new Set(["place"]); // hubs of establishments/locations, not races
 for (const [gk, glabel] of Object.entries(GENRES)) {
   const members = Object.entries(RACES).filter(([, R]) => (R.genre||[]).includes(gk));
   if (!members.length) continue;
+  const isPlace = PLACE_HUBS.has(gk);
   write(`/${gk}-name-generator`, page({
-    title: `${glabel} Name Generator — Every Race | ${SITE.name}`,
-    desc: `Free ${glabel} name generators for every race. Create character names for your campaign in seconds.`,
+    title: isPlace ? `${glabel} Name Generator — Taverns, Inns & More | ${SITE.name}` : `${glabel} Name Generator — Every Race | ${SITE.name}`,
+    desc: isPlace ? `Free fantasy ${glabel.toLowerCase()} name generators — taverns, inns and more to come. Name the locations of your campaign in seconds.`
+                  : `Free ${glabel} name generators for every race. Create character names for your campaign in seconds.`,
     canonical: `/${gk}-name-generator/`,
     h1: `${glabel} Name Generator`,
     crumbs: [{href:"/",label:"Home"},{label:glabel}],
-    body: `<p class="lede">${GENRE_INTROS[gk] || `Pick a race to generate ${glabel} names.`}</p>
+    body: `<p class="lede">${GENRE_INTROS[gk] || `Pick a ${isPlace ? "type" : "race"} to generate ${glabel} names.`}</p>
 <ul class="cards">${members.map(([k,R])=>{
       const ex = (GENRE_SEEDS[gk] || {})[k] || R.seeds.slice(0,3);
       return `<li><a href="/${slug(k)}-name-generator/"><strong>${R.label}</strong><span>${ex.slice(0,3).join(", ")}</span></a></li>`;
@@ -348,7 +360,7 @@ console.log(`built ${urls.length} pages -> ${OUT}/`);
 // ---- client bundle: same phonotactics as the build, so re-rolls match the pages ----
 const clientJs = `
 const RACES=${JSON.stringify(Object.fromEntries(Object.entries(RACES).map(([k,v])=>[k,
-  {onset:v.onset,mid:v.mid,coda:v.coda,syl:v.syl,gendered:!!v.gendered,female:v.female||[],male:v.male||[]}])))};
+  {onset:v.onset,mid:v.mid,coda:v.coda,syl:v.syl,gendered:!!v.gendered,female:v.female||[],male:v.male||[],...(v.sep?{sep:v.sep}:{})}])))};
 ${fs.readFileSync("lib/generate.js","utf8").replace(/^import .*$/gm,"").replace(/^export const RACES.*$/m,"").replace(/export /g,"")}
 // ============ UI layer v2: game-feel interactions ============
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];

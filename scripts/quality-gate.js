@@ -7,10 +7,11 @@ for (const key of Object.keys(RACES)) {
   if (names.length < 40) bad.push(`${key}: only ${names.length}/60 names generated`);
   const letters = new Set(names.map(n => n[0].toLowerCase()));
   if (letters.size < 4) bad.push(`${key}: only ${letters.size} distinct first letters`);
-  for (const n of names) {
-    if (n.length > 14 || /(.)\1\1/.test(n.toLowerCase())) { bad.push(`${key}: suspect name "${n}"`); break; }
-  }
   const R = RACES[key];
+  const maxLen = R.sep ? 24 : 14; // compound place names are two whole words
+  for (const n of names) {
+    if (n.length > maxLen || /(.)\1\1/.test(n.toLowerCase())) { bad.push(`${key}: suspect name "${n}"`); break; }
+  }
   if (!R.lore || R.lore.length < 120) bad.push(`${key}: lore too thin`);
   if (!R.seeds || R.seeds.length < 4) bad.push(`${key}: needs >=4 seed examples`);
 }
