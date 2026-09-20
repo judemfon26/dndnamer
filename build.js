@@ -89,11 +89,14 @@ const LETTERS = "abcdefghijklmnopqrstuvwxyz".split("");
 const urls = [];
 
 fs.rmSync(OUT, { recursive: true, force: true });
-const write = (route, html) => {
+const write = (route, html, { indexable = true } = {}) => {
   const dir = path.join(OUT, route);
   fs.mkdirSync(dir, { recursive: true });
   fs.writeFileSync(path.join(dir, "index.html"), html);
-  urls.push(route.endsWith("/") ? route : route + "/");
+  // Templated variation tiers stay live and linked for humans, but are kept out
+  // of the sitemap and marked noindex: they were 89% of the site and dominated
+  // what AdSense reviewers sampled.
+  if (indexable) urls.push(route.endsWith("/") ? route : route + "/");
 };
 const slug = k => k.replace(/_/g, "-");
 const nameList = (names, cls = "names") =>
@@ -195,8 +198,9 @@ ${widget(key, g, key + g)}
 <h3>Sample ${g} names</h3><p>${generateSet(key, g, key + g + "samples", 10).join(" · ")}</p>
 <p>Every one of these follows the same construction — see the <a href="/${s}-name-generator/">main ${R.label} generator</a> for the full anatomy of the tradition, its history, and table-ready usage notes.</p></section>
 ${letterLinks(key)}
-${related(key)}`
-    }));
+${related(key)}`,
+      noindex: true,
+    }), { indexable: false });
   }
 
   // ---------------------------------------------------- per starting letter (x26)
@@ -215,8 +219,9 @@ ${widget(key, "neutral", key + L + "seed", L)}
 <li><a href="/${s}-name-generator/">Full ${R.label.toLowerCase()} name generator</a></li>
 ${R.sep ? "" : GENDERS.map(g=>`<li><a href="/${s}-name-generator/${g}/">${g} ${R.label.toLowerCase()} names</a></li>`).join("")}
 </ul></section>
-${letterLinks(key)}`
-    }));
+${letterLinks(key)}`,
+      noindex: true,
+    }), { indexable: false });
   }
 }
 
@@ -251,6 +256,11 @@ for (const [gk, glabel] of Object.entries(GENRES)) {
 <section class="prose"><h2>How the registers differ</h2>
 ${members.map(([k,R])=>`<p><strong><a href="/${slug(k)}-name-generator/">${R.label}</a>:</strong> ${R.lore.replace(/<[^>]+>/g,"").split(". ").slice(0,2).join(". ")}.</p>`).join("")}
 </section>
+<section class="prose"><h2>Choosing between these ${glabel} generators</h2>
+<p>If you already know the race, go straight to its generator — each one documents that tradition's phonetics, history and table usage beneath the tool. If you're still deciding, read the register notes above and pick by sound: the name you'll enjoy saying every session matters more than the lore fit, because you will say it several hundred times before the character retires.</p>
+<p>Every generator here works the same way. Tap a name to copy it, star the ones worth keeping — they stay in your browser between sessions, which makes a useful name bank for the next time you need an NPC on no notice — and use the count selector when you want a longer list to choose from. Nothing is stored on our servers and nothing needs an account.</p>
+<h2>Naming a whole ${glabel} cast</h2>
+<p>One name is easy; a consistent cast is the harder problem. The trick used by most worldbuilders is to fix a sound palette per culture and stay inside it: if one faction's names lean on soft l and r sounds, its rival's should not. Generate in bulk, shortlist the names that share a family resemblance, and keep the rejects — today's discarded name is next month's innkeeper. The <a href="/guides/using-name-generators-well/">worldbuilder's method guide</a> covers this in full.</p></section>
 <section class="related"><h2>Naming guides</h2><ul class="links">
 ${ARTICLES.map(a=>`<li><a href="/guides/${a.slug}/">${a.title.split(":")[0].split("(")[0].trim()}</a></li>`).join("")}
 </ul></section>`
@@ -285,6 +295,8 @@ write("/guides", page({
   body: `<p class="lede">The generators on this site produce the raw material; these guides cover the craft — where each naming tradition comes from, what its rules actually are, and how to turn generated candidates into names your table will still love at level 12.</p>
 <ul class="cards">${ARTICLES.map(a => `<li><a href="/guides/${a.slug}/"><strong>${a.title.split(":")[0].split("(")[0].trim()}</strong><span>${a.desc.split(" — ")[0].split(". ")[0]}</span></a></li>`).join("")}</ul>
 <section class="prose"><h2>Why conventions matter</h2>
+<p>The four guides above go deep on the questions players and writers actually ask. Start with the character-naming method if you're building a character tonight; read the elvish or orcish conventions if you want to understand a tradition well enough to invent names by hand; and read the worldbuilder's method if you're naming a whole cast and want them to sound like they come from the same place.</p>
+<h2>Why conventions matter</h2>
 <p>Random syllables can sound fantasy-ish, but real naming traditions have internal logic — elvish flows because Tolkien built it from meaningful roots, dwarf names bite because they descend from a Norse catalogue of dwarves, orc names growl because their register was engineered to. Every generator here documents its tradition's rules on the page, so you can take the generated name or use the rules to build your own. These guides go deeper on the most-asked questions.</p></section>`,
 }));
 
@@ -303,7 +315,11 @@ const LEGAL = {
 <h2>Requesting a generator</h2>
 <p>New races and cultures are added on a regular schedule, and requests genuinely shape the queue. The most useful requests name the tradition and a couple of example names in the register you're imagining — that's enough to build a phonetic profile from.</p>
 <h2>Everything else</h2>
-<p>Advertising questions, licensing questions (short answer: the names are free to use, see <a href="/terms/">Terms</a>), accessibility problems and broken links all go to the same address. Short messages get answered fastest.</p>`],
+<p>Advertising questions, licensing questions (short answer: the names are free to use, see <a href="/terms/">Terms</a>), accessibility problems and broken links all go to the same address. Short messages get answered fastest.</p>
+<h2>What we can't help with</h2>
+<p>We can't tell you whether a name is trademarked in your country, and we can't grant permission for names belonging to published settings — the generators here produce fresh names built from phonetic rules, which is a different thing from clearing an existing name for commercial use. If you're naming something commercial, check it the way you would any brand name.</p>
+<h2>Response times</h2>
+<p>This is a small independent project rather than a company, so replies come from one person and usually land within a day or two. Bug reports and wrong-sounding names get priority because they make the tool better for everyone; requests for new races go into a queue that's worked through in the order it arrives, with the most-requested traditions jumping ahead.</p>`],
   privacy: ["Privacy Policy", `<p>This policy covers what ${SITE.name} does — and deliberately doesn't do — with information when you use the site.</p>
 <h2>What stays on your device</h2>
 <p>Names you generate, and names you star, are stored only in your browser's local storage. They are never transmitted to us, never linked to you, and disappear if you clear your browser data. There are no accounts, no email capture, and no forms that collect personal information anywhere on the site.</p>

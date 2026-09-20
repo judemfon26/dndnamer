@@ -104,3 +104,37 @@ const noEd = Object.keys(ALL_RACES).filter(k => {
 });
 if (noEd.length) { console.error("GATE: races missing editorial (data/editorial.js): " + noEd.join(", ")); process.exit(1); }
 console.log(`editorial present for all ${Object.keys(ALL_RACES).length} races`);
+
+// Indexable surface guard — the site was rejected twice for "low value content"
+// while 89% of pages were templated variations. Thin tiers must stay noindexed
+// and out of the sitemap; everything Google IS asked to judge must be deep.
+import path5 from "path";
+const sitemapXml = fs2.readFileSync("dist/sitemap-0.xml", "utf8");
+if (/starting-with|\/(male|female|neutral)\//.test(sitemapXml)) {
+  console.error("GATE: templated variation URLs found in sitemap — they must be excluded");
+  process.exit(1);
+}
+const thinIndexable = [];
+let indexableCount = 0;
+(function sweep2(d) {
+  for (const e of fs2.readdirSync(d, { withFileTypes: true })) {
+    const p = path5.join(d, e.name);
+    if (e.isDirectory()) { sweep2(p); continue; }
+    if (e.name !== "index.html") continue;
+    const html = fs2.readFileSync(p, "utf8");
+    const route = ("/" + path5.relative("dist", d).split(path5.sep).join("/") + "/").replace(/^\/\.?\/$/, "/");
+    const isThinTier = /starting-with|\/(male|female|neutral)\/$/.test(route);
+    const hasNoindex = /content="noindex/.test(html);
+    if (isThinTier && !hasNoindex) { console.error(`GATE: ${route} is a templated variation but is indexable`); process.exit(1); }
+    if (hasNoindex) continue;
+    indexableCount++;
+    const w = html.replace(/<script[\s\S]*?<\/script>/g, "").replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length;
+    const floor = /^\/(privacy|terms|about|contact)\//.test(route) ? 250 : 300;
+    if (w < floor) thinIndexable.push(`${route}: ${w}w < ${floor}`);
+  }
+})("dist");
+if (thinIndexable.length) {
+  console.error("GATE: thin INDEXABLE pages:\n" + thinIndexable.map(x => " - " + x).join("\n"));
+  process.exit(1);
+}
+console.log(`indexable surface: ${indexableCount} pages, all above floor; thin tiers noindexed`);
