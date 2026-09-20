@@ -219,9 +219,8 @@ ${widget(key, "neutral", key + L + "seed", L)}
 <li><a href="/${s}-name-generator/">Full ${R.label.toLowerCase()} name generator</a></li>
 ${R.sep ? "" : GENDERS.map(g=>`<li><a href="/${s}-name-generator/${g}/">${g} ${R.label.toLowerCase()} names</a></li>`).join("")}
 </ul></section>
-${letterLinks(key)}`,
-      noindex: true,
-    }), { indexable: false });
+${letterLinks(key)}`
+    }));
   }
 }
 

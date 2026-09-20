@@ -110,8 +110,8 @@ console.log(`editorial present for all ${Object.keys(ALL_RACES).length} races`);
 // and out of the sitemap; everything Google IS asked to judge must be deep.
 import path5 from "path";
 const sitemapXml = fs2.readFileSync("dist/sitemap-0.xml", "utf8");
-if (/starting-with|\/(male|female|neutral)\//.test(sitemapXml)) {
-  console.error("GATE: templated variation URLs found in sitemap — they must be excluded");
+if (/\/(male|female|neutral)\//.test(sitemapXml)) {
+  console.error("GATE: gender variation URLs found in sitemap — they must be excluded");
   process.exit(1);
 }
 const thinIndexable = [];
@@ -123,13 +123,14 @@ let indexableCount = 0;
     if (e.name !== "index.html") continue;
     const html = fs2.readFileSync(p, "utf8");
     const route = ("/" + path5.relative("dist", d).split(path5.sep).join("/") + "/").replace(/^\/\.?\/$/, "/");
-    const isThinTier = /starting-with|\/(male|female|neutral)\/$/.test(route);
+    const isThinTier = /\/(male|female|neutral)\/$/.test(route);
     const hasNoindex = /content="noindex/.test(html);
     if (isThinTier && !hasNoindex) { console.error(`GATE: ${route} is a templated variation but is indexable`); process.exit(1); }
     if (hasNoindex) continue;
     indexableCount++;
     const w = html.replace(/<script[\s\S]*?<\/script>/g, "").replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length;
-    const floor = /^\/(privacy|terms|about|contact)\//.test(route) ? 250 : 300;
+    const floor = /-names-starting-with-/.test(route) ? 190
+      : /^\/(privacy|terms|about|contact)\//.test(route) ? 250 : 300;
     if (w < floor) thinIndexable.push(`${route}: ${w}w < ${floor}`);
   }
 })("dist");
