@@ -22,7 +22,7 @@ function anatomy(key, R) {
   const codas = R.coda.slice(0, 6).map(x => "-" + x.replace(/^-/, "")).join(", ");
   const syl = [...new Set(R.syl)].join("–");
   if (R.sep) return `<h2>Anatomy of ${art(R.label)} ${R.label.toLowerCase()} name</h2>
-<p>This generator builds names the way a sign-painter would: a first word such as <strong>${on}</strong>, joined to a second such as <strong>${R.coda.slice(0, 6).join(", ")}</strong>. Names run <strong>${syl} words</strong>; every first word pairs with every second, which is how a modest word list yields thousands of distinct signboards. Colour and creature is the commonest pairing, object and state of repair the second.</p>`;
+<p>This generator builds names the way the tradition does: a first word such as <strong>${on}</strong>, joined to a second such as <strong>${R.coda.slice(0, 6).join(", ")}</strong>. Names run <strong>${syl} words</strong>; every first word pairs with every second, which is how a modest word list yields thousands of distinct results. ${R.anatomyNote || ""}</p>`;
   return `<h2>Anatomy of ${art(R.label)} ${R.label.toLowerCase()} name</h2>
 <p>This generator assembles names the way the tradition does. Typical openings include <strong>${on}</strong>; names run <strong>${syl} syllables</strong> and resolve on endings such as <strong>${codas}</strong>.${R.gendered ? ` Gender lives mostly in the ending: feminine forms favour <strong>${fem}</strong>, masculine forms <strong>${male}</strong>, and neutral names simply pick from the wider pool.` : ` The tradition doesn't gender-code its names — any ending suits any character.`}</p>`;
 }
@@ -30,9 +30,7 @@ function exampleTable(key, R) {
   const ns = generateSet(key, "neutral", key + "showcase", 8);
   return `<h3>Examples from this generator</h3><table><thead><tr><th>Name</th><th>Reads as</th></tr></thead><tbody>${
     ns.map((n, i) => {
-      const tone = (R.sep ? ["a classic roadside inn", "a dockside dive", "a respectable coaching house",
-        "a hidden back-alley bar", "a rowdy soldiers' tavern", "a quiet scholars' haunt",
-        "a frontier waystation", "the finest inn in the capital"]
+      const tone = (R.sep ? R.tones
       : ["a classic, load-bearing form", "an everyday name in this register",
         "a formal or elder variant", "a short, familiar form", "a name with a martial edge",
         "a softer, lyrical variant", "a frontier or outsider form", "a name fit for a leader"])[i % 8];
@@ -159,7 +157,7 @@ for (const [key, R] of Object.entries(RACES)) {
   write(`/${s}-name-generator`, page({
     title: `${R.label} Name Generator — 1000s of ${R.label} Names | ${SITE.name}`,
     desc: R.sep
-      ? `Free ${R.label.toLowerCase()} name generator. Instantly create authentic ${R.label.toLowerCase()} names for D&D campaigns, fantasy worldbuilding and RPG settings — built from real signboard conventions.`
+      ? `Free ${R.label.toLowerCase()} name generator. Instantly create authentic ${R.label.toLowerCase()} names for D&D campaigns, fantasy worldbuilding and RPG settings — ${R.descNote || "built from real naming conventions"}.`
       : `Free ${R.label.toLowerCase()} name generator. Instantly create authentic ${R.label.toLowerCase()} names for D&D, fantasy writing and RPG characters. Male, female and gender-neutral.`,
     canonical: `/${s}-name-generator/`,
     h1: `${R.label} Name Generator`,

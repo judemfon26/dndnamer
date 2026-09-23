@@ -957,4 +957,184 @@ export const RACES3 = {
     ],
     "lore": "Dragon names are built to be spoken in Draconic — a language of hisses, hard stops and drawn-out finals. They run long and grand, favouring endings like <em>-rax</em>, <em>-gos</em> and <em>-xis</em>, because a wyrm's name is meant to fill a cavern and outlive the tongue that first said it."
   },
+  "demon": {
+    "label": "Demon",
+    "genre": [
+      "dnd",
+      "fantasy"
+    ],
+    "onset": [
+      "Az",
+      "Bel",
+      "Cruo",
+      "Dag",
+      "Gor",
+      "Hazz",
+      "Kal",
+      "Mal",
+      "Nekh",
+      "Orn",
+      "Paz",
+      "Rham",
+      "Sam",
+      "Tha",
+      "Ulz",
+      "Vex",
+      "Xaph",
+      "Zeph"
+    ],
+    "mid": [
+      "a",
+      "o",
+      "az",
+      "el",
+      "ur",
+      "ith"
+    ],
+    "coda": [
+      "goth",
+      "zul",
+      "rax",
+      "phel",
+      "moth",
+      "kar",
+      "rion",
+      "thul",
+      "zeb",
+      "nak"
+    ],
+    "syl": [
+      2,
+      2,
+      3
+    ],
+    "gendered": false,
+    "seeds": [
+      "Azgoth",
+      "Belzul",
+      "Nekhrax",
+      "Vexmoth",
+      "Rhamthul",
+      "Zephkar"
+    ],
+    "lore": "Demon names come out of the grimoire tradition: a guttural root welded to an ending that sounds like a seal being broken — <em>-goth</em>, <em>-zul</em>, <em>-moth</em>, <em>-rion</em>. They are deliberately hard to say by accident, since in most settings speaking one correctly is halfway to a summoning."
+  },
+  "angel": {
+    "label": "Angel",
+    "genre": [
+      "dnd",
+      "fantasy"
+    ],
+    "onset": [
+      "Ari",
+      "Cam",
+      "Dum",
+      "Gab",
+      "Han",
+      "Ioph",
+      "Jeh",
+      "Kush",
+      "Mik",
+      "Nath",
+      "Orph",
+      "Raph",
+      "Sar",
+      "Uri",
+      "Zad",
+      "Ser",
+      "Ith",
+      "Veh"
+    ],
+    "mid": [
+      "a",
+      "e",
+      "i",
+      "ha",
+      "ri"
+    ],
+    "coda": [
+      "el",
+      "iel",
+      "ael",
+      "phon",
+      "oth",
+      "im",
+      "niel",
+      "riel"
+    ],
+    "syl": [
+      2,
+      2,
+      3
+    ],
+    "gendered": false,
+    "seeds": [
+      "Ariel",
+      "Gabriel",
+      "Mikael",
+      "Zadkiel",
+      "Uriphon",
+      "Serahim"
+    ],
+    "lore": "Angelic names follow the Hebrew-Enochian pattern that gave us Michael, Gabriel and Raphael: a root describing a virtue or an act, closed with <em>-el</em> or <em>-iel</em>, the divine name itself. The suffix is the point — it marks the bearer as a sentence spoken by heaven rather than a person."
+  },
+  "samurai": {
+    "label": "Samurai",
+    "genre": [
+      "historical",
+      "fantasy"
+    ],
+    "onset": [
+      "Aka",
+      "Hara",
+      "Ishi",
+      "Kane",
+      "Kuro",
+      "Mina",
+      "Naga",
+      "Oda",
+      "Saka",
+      "Take",
+      "Toku",
+      "Ume",
+      "Yama",
+      "Yoshi",
+      "Shira",
+      "Hoso"
+    ],
+    "mid": [
+      "no",
+      "da",
+      "mo",
+      "ka",
+      "ri"
+    ],
+    "coda": [
+      "moto",
+      "shige",
+      "hiro",
+      "kado",
+      "zaki",
+      "mura",
+      "tada",
+      "nari",
+      "yuki",
+      "masa"
+    ],
+    "syl": [
+      2,
+      2,
+      3
+    ],
+    "gendered": false,
+    "seeds": [
+      "Akashige",
+      "Kuromoto",
+      "Ishihiro",
+      "Takezaki",
+      "Minanari",
+      "Odamura"
+    ],
+    "lore": "Samurai names are compounds of place and lineage: a clan element drawn from landscape — <em>yama</em> (mountain), <em>kuro</em> (black), <em>ishi</em> (stone) — welded to a given element like <em>-hiro</em>, <em>-shige</em> or <em>-moto</em>. Read literally, most warrior names are a map of where the family stood."
+  },
 };
