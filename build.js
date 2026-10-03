@@ -373,7 +373,7 @@ console.log(`built ${urls.length} pages -> ${OUT}/`);
 // ---- client bundle: same phonotactics as the build, so re-rolls match the pages ----
 const clientJs = `
 const RACES=${JSON.stringify(Object.fromEntries(Object.entries(RACES).map(([k,v])=>[k,
-  {onset:v.onset,mid:v.mid,coda:v.coda,syl:v.syl,gendered:!!v.gendered,female:v.female||[],male:v.male||[],...(v.sep?{sep:v.sep}:{})}])))};
+  {onset:v.onset,mid:v.mid,coda:v.coda,syl:v.syl,gendered:!!v.gendered,female:v.female||[],male:v.male||[],...(v.sep?{sep:v.sep}:{}),...(v.fuse?{fuse:true}:{})}])))};
 ${fs.readFileSync("lib/generate.js","utf8").replace(/^import .*$/gm,"").replace(/^export const RACES.*$/m,"").replace(/export /g,"")}
 // ============ UI layer v2: game-feel interactions ============
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
