@@ -6,17 +6,23 @@ via GitHub Actions to GitHub Pages at https://dndnamer.com). AdSense pub-6956651
 ## Standard drop (every run)
 1. `cd ~/utility-sites/namegen && git pull --ff-only origin main`
 2. `node scripts/promote.js 3`        # moves 3 races backlog -> live
-3a. For EACH promoted race, add a hand-written entry to data/editorial.js keyed by the race
-    key: { history, craft, dm } — ~3 sentences each, unique prose grounded in the race's real
-    published lore/naming source. The gate FAILS without it (AdSense "low value content" guard).
-3. `node scripts/quality-gate.js`     # MUST pass; if it fails, fix the offending race data
+3. For EACH promoted race, add a hand-written entry to `data/editorial.js` keyed by the race
+   key: `{ history, craft, dm }` — ~3 sentences each, unique prose grounded in the race's real
+   published lore/naming source. The gate FAILS without it (AdSense "low value content" guard).
+4. Prepend an entry to `data/changelog.js`: `date` (ship date, ISO), `title`, and a `body` of
+   50-120 words on what actually changed. Any claim about how a generator works MUST be checked
+   against that race's real table in `data/races*.js` first — the page's whole value is that
+   it's accurate, and a wrong claim there is worse than no page. The "Last updated" stamp in
+   every page footer is generated from the newest entry, and the gate FAILS if it is >45 days old.
+5. `node scripts/quality-gate.js`     # MUST pass; if it fails, fix the offending race data
                                       # (data/races3.js) or demote it back, never ship a failure
-4. `node build.js`                    # page count should GROW by roughly 50-70
-5. Spot-check: `node --input-type=module -e "import('./lib/generate.js').then(({generateSet})=>console.log(generateSet('<newrace>','neutral','x',10)))"` — names must look like the race's tradition, not noise.
-6. Commit with a message listing the promoted races, push origin main.
-7. Wait for the Actions run to succeed (`gh run list --limit 1`), then verify live:
+                                      # check $? directly — do NOT pipe to `tail`, it hides the exit code
+6. `node build.js`                    # page count should GROW by roughly 50-70
+7. Spot-check: `node --input-type=module -e "import('./lib/generate.js').then(({generateSet})=>console.log(generateSet('<newrace>','neutral','x',10)))"` — names must look like the race's tradition, not noise.
+8. Commit with a message listing the promoted races, push origin main.
+9. Wait for the Actions run to succeed (`gh run list --limit 1`), then verify live:
    `curl -s https://dndnamer.com/<newrace>-name-generator/ | grep -c adsbygoogle` (expect >=1)
-8. Log one line to Command Center: `~/command-center/cc add "dndnamer drop shipped: <races>"`
+10. Log one line to Command Center: `~/command-center/cc add "dndnamer drop shipped: <races>"`
 
 ## When backlog is low (< 6 races left)
 Author 6 more into data/backlog.js following the exact schema in data/races.js.

@@ -1,0 +1,186 @@
+{
+ "name_pins": [
+  {
+   "slug": "pin-elf",
+   "label": "Elf<br>Names",
+   "kicker": "18 Names for Your Next Character",
+   "names": [
+    "Arath",
+    "Thradryn",
+    "Laereth",
+    "Vael",
+    "Celwenlaur",
+    "Yaviel",
+    "Laesaur",
+    "Aeyor",
+    "Linlas",
+    "Elamyn",
+    "Fidodreriel",
+    "Naelithaur",
+    "Celwenyn",
+    "Aldredeth",
+    "Laenion",
+    "Aelrion",
+    "Yasedir",
+    "Nimlas"
+   ],
+   "noun": "elf"
+  },
+  {
+   "slug": "pin-dwarf",
+   "label": "Dwarf<br>Names",
+   "kicker": "18 Names for Your Next Character",
+   "names": [
+    "Thradin",
+    "Bruli",
+    "Morain",
+    "Nalrim",
+    "Dainar",
+    "Farnar",
+    "Brigrim",
+    "Thordin",
+    "Balokli",
+    "Dainur",
+    "Bomorain",
+    "Glorim",
+    "Kazunli",
+    "Bofokli",
+    "Oinadain",
+    "Gronar",
+    "Bomrim",
+    "Durin"
+   ],
+   "noun": "dwarf"
+  },
+  {
+   "slug": "pin-tiefling",
+   "label": "Tiefling<br>Names",
+   "kicker": "18 Names for Your Next Character",
+   "names": [
+    "Earor",
+    "Pelriel",
+    "Skor",
+    "Barlozar",
+    "Skonia",
+    "Nemzeth",
+    "Rievazar",
+    "Helus",
+    "Malia",
+    "Kairyn",
+    "Pelsekos",
+    "Criziris",
+    "Aksia",
+    "Helyn",
+    "Mornos",
+    "Valyn",
+    "Malkria",
+    "Orikos"
+   ],
+   "noun": "tiefling"
+  },
+  {
+   "slug": "pin-dragonborn",
+   "label": "Dragonborn<br>Names",
+   "kicker": "18 Names for Your Next Character",
+   "names": [
+    "Patresh",
+    "Arjesthar",
+    "Balion",
+    "Patrinkar",
+    "Zekrash",
+    "Rhoguraan",
+    "Rhogathinn",
+    "Mehenrinion",
+    "Shamrinash",
+    "Rhogrinurn",
+    "Krisurax",
+    "Balathkar",
+    "Patrinesh",
+    "Turninn",
+    "Shamash",
+    "Balrinar",
+    "Kepeshathar",
+    "Zekesax"
+   ],
+   "noun": "dragonborn"
+  },
+  {
+   "slug": "pin-tabaxi",
+   "label": "Tabaxi<br>Names",
+   "kicker": "18 Names for Your Next Character",
+   "names": [
+    "Purrtail",
+    "Jadetail",
+    "Swiftpaw",
+    "Cindersong",
+    "Cinderpaw",
+    "Shadowhisker",
+    "Jadehunter",
+    "Pounceclaw",
+    "Whishunter",
+    "Shadowsong",
+    "Skitpurr",
+    "Cinderchaser",
+    "Rustpounce",
+    "Amberprowl",
+    "Shadowprowl",
+    "Pouncestep",
+    "Silentpurr",
+    "Swiftsong"
+   ],
+   "noun": "tabaxi"
+  },
+  {
+   "slug": "pin-orc",
+   "label": "Orc<br>Names",
+   "kicker": "18 Names for Your Next Character",
+   "names": [
+    "Nazgagrum",
+    "Gulthak",
+    "Gorgash",
+    "Lugzog",
+    "Thokthak",
+    "Grishmozog",
+    "Bolgash",
+    "Grunak",
+    "Lugash",
+    "Gruzog",
+    "Zagzog",
+    "Gulnak",
+    "Mogzog",
+    "Zagrak",
+    "Oknagrum",
+    "Bolnak",
+    "Lugdugrum",
+    "Urak"
+   ],
+   "noun": "orc"
+  }
+ ],
+ "tip_pins": [
+  {
+   "slug": "pin-tip-naming",
+   "kicker": "D&D Character Tips",
+   "title": "How to Name a<br>Character You<br>Won't Regret",
+   "bullets": [
+    "<b>Say it out loud five times.</b> If it trips, shorten it.",
+    "<b>The shout test:</b> can your party scream it mid-battle?",
+    "<b>The barkeep test:</b> does it sound silly ordering a room?",
+    "<b>Check the party roster</b> \u2014 two similar names cause chaos.",
+    "<b>Pick the nickname yourself</b>, or the table will pick one."
+   ]
+  },
+  {
+   "slug": "pin-tip-dm",
+   "kicker": "For Dungeon Masters",
+   "title": "Name 12 NPCs<br>Before Thursday",
+   "bullets": [
+    "<b>One sound palette per culture</b> \u2014 keep a region consistent.",
+    "<b>Generate in bulk</b>, shortlist, keep the rejects.",
+    "<b>Save a name bank</b> for improvising on the spot.",
+    "<b>Earned epithets</b> beat surnames for orcs and goliaths.",
+    "<b>Clan name first</b> for dragonborn \u2014 it signals the culture."
+   ]
+  }
+ ]
+}

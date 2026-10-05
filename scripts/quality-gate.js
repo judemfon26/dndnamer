@@ -139,3 +139,25 @@ if (thinIndexable.length) {
   process.exit(1);
 }
 console.log(`indexable surface: ${indexableCount} pages, all above floor; thin tiers noindexed`);
+
+// ---------------------------------------------------------------- changelog
+// The footer stamps "Last updated <date>" on every page from CHANGELOG[0].
+// A stale stamp is worse than no stamp — it advertises an abandoned site to
+// exactly the reviewers we want to convince — so block the deploy if the newest
+// entry has gone stale, or if the page stopped shipping.
+{
+  const { CHANGELOG } = await import("../data/changelog.js");
+  const newest = CHANGELOG[0]?.date;
+  if (!newest) { console.error("GATE: changelog is empty"); process.exit(1); }
+  const ageDays = Math.floor((Date.now() - Date.parse(newest + "T12:00:00Z")) / 86400000);
+  if (ageDays > 45) {
+    console.error(`GATE: newest changelog entry is ${ageDays} days old (${newest}).`);
+    console.error("      Every weekly drop must add an entry to data/changelog.js —");
+    console.error("      the footer's 'Last updated' stamp is generated from it.");
+    process.exit(1);
+  }
+  if (!fs2.existsSync("dist/changelog/index.html")) {
+    console.error("GATE: /changelog/ did not build"); process.exit(1);
+  }
+  console.log(`changelog: ${CHANGELOG.length} entries, newest ${newest} (${ageDays}d old)`);
+}

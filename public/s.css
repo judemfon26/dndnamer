@@ -132,6 +132,15 @@ footer{border-top:1px solid var(--border);padding:1.6rem 1.25rem calc(1.6rem + e
 footer nav{display:flex;gap:1.1rem;justify-content:center;flex-wrap:wrap;margin-bottom:.6rem;font-weight:700}
 footer a{color:var(--text-3)}
 
+/* ---------- changelog ---------- */
+footer .updated{margin:.2rem 0 0;font-size:.8rem;opacity:.9}
+.release{padding:1.1rem 0 1.2rem;border-bottom:1px solid var(--border)}
+.release:last-child{border-bottom:0}
+.release h2{margin:0 0 .15rem}
+.release-date{margin:0 0 .6rem;font-size:.82rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--acc-deep)}
+.release p{margin:0 0 .7rem}
+.release p:last-child{margin-bottom:0}
+
 /* ---------- ripple ---------- */
 .ripple{position:absolute;border-radius:50%;background:hsl(38deg 92% 50% / .30);transform:scale(0);animation:ripple 450ms var(--ease-out) forwards;pointer-events:none}
 

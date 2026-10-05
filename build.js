@@ -9,6 +9,7 @@ import { generateSet } from "./lib/generate.js";
 import { page, SITE } from "./lib/template.js";
 import { EDITORIAL } from "./data/editorial.js";
 import { GENRE_INTROS, ARTICLES } from "./data/articles.js";
+import { CHANGELOG } from "./data/changelog.js";
 
 function hash(str){let h=2166136261;for(let i=0;i<str.length;i++){h^=str.charCodeAt(i);h=Math.imul(h,16777619);}return h>>>0;}
 
@@ -340,6 +341,34 @@ for (const [k, [t, b]] of Object.entries(LEGAL)) {
   write(`/${k}`, page({ title:`${t} | ${SITE.name}`, desc:`${t} for ${SITE.name}.`,
     canonical:`/${k}/`, h1:t, crumbs:[{href:"/",label:"Home"},{label:t}], body:`<section class="prose">${b}</section>` }));
 }
+
+// ------------------------------------------------------------- changelog
+const escT = v => String(v).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const fmtDate = d => new Date(d + "T12:00:00Z").toLocaleDateString("en-GB",
+  { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
+
+write("/changelog", page({
+  title: `What's New | ${SITE.name}`,
+  desc: `Release history for ${SITE.name} — every generator added, every table rewritten, with the date it shipped and what actually changed.`,
+  canonical: "/changelog/", h1: "What's New",
+  crumbs: [{ href: "/", label: "Home" }, { label: "What's New" }],
+  body: `<p class="lede">This site is maintained on a schedule rather than published once and left alone. New naming traditions are added most weeks, and existing tables get rewritten when the output stops sounding right. Everything below shipped on the date shown.</p>
+<section class="prose">
+${CHANGELOG.map(e => `<article class="release">
+<h2>${escT(e.title)}</h2>
+<p class="release-date"><time datetime="${e.date}">${fmtDate(e.date)}</time></p>
+${e.body.split("\n\n").map(par => `<p>${par}</p>`).join("")}
+</article>`).join("")}
+</section>
+<section class="prose"><h2>How changes get made</h2>
+<p>Each generator is a hand-written phonotactic table: the consonant clusters a name in that tradition may open on, how many syllables it may run to, and the endings it is allowed to resolve on. Adding a race means researching where its naming convention actually comes from and writing that table by hand, which is why three races is a normal week rather than thirty.</p>
+<p>Every deploy runs a quality gate before it ships. The gate fails the build if any page falls below its word floor, if any internal link on the site points at a page that doesn't exist, if a race is missing its written editorial, or if the generated names for a race collide with each other too often. A failing gate blocks the release outright, which is the only reason the weekly cadence above has gaps in it.</p></section>
+<section class="related"><h2>Start here</h2><ul class="links">
+<li><a href="/">All name generators</a></li>
+<li><a href="/guides/">Naming guides</a></li>
+<li><a href="/about/">About this site</a></li>
+</ul></section>`,
+}));
 
 write("", page({
   title: `${SITE.name} — Fantasy & RPG Name Generators`,
