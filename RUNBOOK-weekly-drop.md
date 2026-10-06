@@ -34,7 +34,7 @@ barbarian-clan, wizard, druid, monk, samurai, viking-clan, roman, egyptian, japa
 
 ## Month-2 roadmap (start ~2026-09-15): new generator TYPES
 One per week, using the compound-word engine pattern:
-tavern names (SHIPPED 2026-09-17) -> guild names (SHIPPED 2026-09-22) -> city names (SHIPPED 2026-10-02, uses `fuse: true` to weld elements into one word) -> ship names -> kingdom names.
+tavern names (SHIPPED 2026-09-17) -> guild names (SHIPPED 2026-09-22) -> city names (SHIPPED 2026-10-02, uses `fuse: true` to weld elements into one word) -> ship names (SHIPPED 2026-10-06, plain two-word quality+namesake) -> kingdom names.
 Each gets its own main page + letter pages, e.g. /tavern-name-generator/, and lives in
 data/places.js with genre ["place"] (hub: /place-name-generator/ — "place name generator"
 is the searched phrase, so the genre key is singular). Place entries set `sep: " "`, which

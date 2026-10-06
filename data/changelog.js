@@ -3,6 +3,11 @@
 // the phonotactic table that actually ships.
 export const CHANGELOG = [
   {
+    date: "2026-10-06",
+    title: "Japanese, genie and svirfneblin generators, plus ship names",
+    body: `The Japanese set is built strictly from open syllables — consonant plus vowel, no clusters — and closes on the real gendered endings: <em>-ko</em>, <em>-mi</em> and <em>-hime</em> for women, <em>-ro</em>, <em>-shi</em>, <em>-maru</em> and <em>-suke</em> for men. Genie names open on Arabic-register fricatives (<em>Kha-</em>, <em>Sha-</em>, <em>Az-</em>) and close short on <em>-ir</em>, <em>-mir</em> and <em>-zad</em>. Svirfneblin get their own table rather than the gnome one because deep-gnome names land hard: <em>-tick</em>, <em>-gulp</em>, <em>-dorn</em>, after Belwar Dissengulp. A ship-name generator joins the place tools, pairing a quality with a namesake the way real ships from the <em>Golden Hind</em> onward were named.`,
+  },
+  {
     date: "2026-10-02",
     title: "Wizard, Roman and Egyptian generators, plus city names",
     body: `Three new traditions, each with its own phonotactic table rather than a reskin of an existing one. The Egyptian set is built from theophoric compounds — the god-elements that most real Egyptian personal names were assembled around, which is why it opens on <em>Amen-</em>, <em>Hor-</em> and <em>Ankh-</em> and closes on <em>-hotep</em>, <em>-mose</em> and <em>-tari</em>. The Roman set uses the Latin nomen endings (<em>-us</em>, <em>-ius</em>, <em>-ianus</em>, <em>-a</em>) that mark grammatical gender, so masculine and feminine forms differ the way they actually did. The wizard set is reverse-engineered from the endings that carry the archetype in fiction — <em>-dalf</em>, <em>-lin</em>, <em>-ster</em>, <em>-kainen</em>. A compound city-name generator shipped alongside them.`,
