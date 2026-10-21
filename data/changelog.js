@@ -3,6 +3,11 @@
 // the phonotactic table that actually ships.
 export const CHANGELOG = [
   {
+    date: "2026-10-21",
+    title: "Monk, barbarian and warlock generators, plus kingdom names",
+    body: `Three class-flavoured traditions join the race set. Monk names follow the Theravada <em>dharma name</em> practice: open Pali syllables with aspirated <em>Bha-</em> and <em>Dha-</em> openings, closing on <em>-nanda</em>, <em>-pala</em> and <em>-mitta</em> for men and <em>-vati</em>, <em>-ika</em> and <em>-ani</em> for women. Barbarian names are built the way the Goths and Vandals built theirs, two elements welded together — <em>Al-</em>, <em>Theud-</em>, <em>Gais-</em> onto <em>-ric</em>, <em>-mund</em>, <em>-wulf</em>, <em>-hild</em>. Warlock names open sharp (<em>Hex-</em>, <em>Vex-</em>, <em>Nyx-</em>) and close whispered (<em>-iss</em>, <em>-rath</em>, <em>-wyn</em>). The kingdom generator completes the Month-2 place set: it fuses a root onto a territory ending — Germanic <em>-land</em> and <em>-mark</em>, Latin <em>-ania</em> and <em>-oria</em>, Tolkien's <em>-dor</em>.`,
+  },
+  {
     date: "2026-10-06",
     title: "Japanese, genie and svirfneblin generators, plus ship names",
     body: `The Japanese set is built strictly from open syllables — consonant plus vowel, no clusters — and closes on the real gendered endings: <em>-ko</em>, <em>-mi</em> and <em>-hime</em> for women, <em>-ro</em>, <em>-shi</em>, <em>-maru</em> and <em>-suke</em> for men. Genie names open on Arabic-register fricatives (<em>Kha-</em>, <em>Sha-</em>, <em>Az-</em>) and close short on <em>-ir</em>, <em>-mir</em> and <em>-zad</em>. Svirfneblin get their own table rather than the gnome one because deep-gnome names land hard: <em>-tick</em>, <em>-gulp</em>, <em>-dorn</em>, after Belwar Dissengulp. A ship-name generator joins the place tools, pairing a quality with a namesake the way real ships from the <em>Golden Hind</em> onward were named.`,

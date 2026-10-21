@@ -1,297 +1,6 @@
 // Pre-authored race backlog. The weekly drop promotes the first N entries into
 // data/races3.js (live) via scripts/promote.js. Same schema as data/races.js.
 export const BACKLOG = {
-  "monk": {
-    "label": "Monk",
-    "genre": [
-      "dnd",
-      "fantasy"
-    ],
-    "onset": [
-      "A",
-      "Ana",
-      "Bha",
-      "Bo",
-      "Dha",
-      "Ka",
-      "Khe",
-      "Ma",
-      "Me",
-      "Na",
-      "Pu",
-      "Ra",
-      "Sa",
-      "Si",
-      "Su",
-      "Ti",
-      "Upa",
-      "Vi",
-      "Ja",
-      "Go",
-      "Ni",
-      "Ya"
-    ],
-    "mid": [
-      "nan",
-      "mi",
-      "ri",
-      "da",
-      "ka",
-      "pa",
-      "la",
-      "va",
-      "su",
-      "ti"
-    ],
-    "coda": [
-      "nanda",
-      "mitta",
-      "pala",
-      "sena",
-      "deva",
-      "vira",
-      "rata",
-      "ka",
-      "ma",
-      "la",
-      "ika",
-      "vati",
-      "ani",
-      "ra",
-      "dhi",
-      "ita"
-    ],
-    "syl": [
-      2,
-      3,
-      3
-    ],
-    "gendered": true,
-    "female": [
-      "ma",
-      "la",
-      "ika",
-      "vati",
-      "ani",
-      "ra",
-      "nanda"
-    ],
-    "male": [
-      "nanda",
-      "mitta",
-      "pala",
-      "sena",
-      "deva",
-      "vira",
-      "ita"
-    ],
-    "seeds": [
-      "Ananda",
-      "Sariputta",
-      "Upali",
-      "Khema",
-      "Sumedha",
-      "Dhammika",
-      "Nanda",
-      "Mahapajapati"
-    ],
-    "lore": "Monk names in this generator follow the real <em>dharma name</em> tradition of Theravada Buddhism: a novice receives a new name in Pali at ordination, usually built from a virtue or teaching — Ananda (joy), Sumedha (wise), Khema (security). The sound is soft and syllabic, with aspirated dh and bh, open vowels and endings like -nanda, -pala and -mitta. It suits D&D's way-of-the-open-hand monk better than any surname: the old name is left at the monastery gate."
-  },
-  "barbarian": {
-    "label": "Barbarian",
-    "genre": [
-      "dnd",
-      "fantasy"
-    ],
-    "onset": [
-      "Al",
-      "Ar",
-      "Bor",
-      "Brun",
-      "Dag",
-      "Gar",
-      "Grim",
-      "Hal",
-      "Kor",
-      "Rag",
-      "Theud",
-      "Gais",
-      "Od",
-      "Herm",
-      "Arn",
-      "Brand",
-      "Gund",
-      "Sig",
-      "Rad",
-      "Ulf",
-      "Kon",
-      "Thor",
-      "Wal",
-      "Ead",
-      "Hild",
-      "Gud",
-      "Rot"
-    ],
-    "mid": [
-      "a",
-      "o",
-      "e",
-      "i"
-    ],
-    "coda": [
-      "ric",
-      "mund",
-      "wulf",
-      "bald",
-      "hard",
-      "gar",
-      "ulf",
-      "ax",
-      "rak",
-      "gund",
-      "ar",
-      "an",
-      "hild",
-      "run",
-      "gard",
-      "wyn",
-      "a",
-      "da",
-      "ith"
-    ],
-    "syl": [
-      2,
-      2,
-      3
-    ],
-    "gendered": true,
-    "female": [
-      "hild",
-      "run",
-      "gard",
-      "wyn",
-      "a",
-      "da",
-      "ith"
-    ],
-    "male": [
-      "ric",
-      "mund",
-      "wulf",
-      "bald",
-      "hard",
-      "gar",
-      "ulf",
-      "ax",
-      "rak",
-      "gund",
-      "ar",
-      "an"
-    ],
-    "seeds": [
-      "Alaric",
-      "Theodoric",
-      "Gaiseric",
-      "Brunhild",
-      "Arminius",
-      "Conan",
-      "Gudrun",
-      "Odoacer"
-    ],
-    "lore": "Barbarian names take their weight from the real <em>Germanic tribes</em> who broke Rome — Alaric the Goth, Gaiseric the Vandal, Odoacer, Theodoric — whose names were two welded words: <em>ric</em> (ruler), <em>mund</em> (protection), <em>wulf</em> (wolf), <em>hild</em> (battle). Robert E. Howard's Conan and D&D's rage-fuelled class kept that blunt two-beat sound: hard stops, short vowels, a final consonant you could swing like an axe."
-  },
-  "warlock": {
-    "label": "Warlock",
-    "genre": [
-      "dnd",
-      "fantasy"
-    ],
-    "onset": [
-      "Hex",
-      "Mor",
-      "Vex",
-      "Sab",
-      "Nyx",
-      "Cor",
-      "Ash",
-      "Bel",
-      "Dre",
-      "Ez",
-      "Gri",
-      "Ith",
-      "Lil",
-      "Mal",
-      "Nev",
-      "Ori",
-      "Rav",
-      "Sil",
-      "Tem",
-      "Ul",
-      "Vor",
-      "Zeph",
-      "Ka"
-    ],
-    "mid": [
-      "a",
-      "e",
-      "i",
-      "o",
-      "ra",
-      "le"
-    ],
-    "coda": [
-      "rel",
-      "wyn",
-      "eth",
-      "ane",
-      "os",
-      "ix",
-      "ia",
-      "iss",
-      "ora",
-      "rath",
-      "eus",
-      "ine",
-      "ael",
-      "on",
-      "ys"
-    ],
-    "syl": [
-      2,
-      2,
-      3
-    ],
-    "gendered": true,
-    "female": [
-      "wyn",
-      "ane",
-      "ia",
-      "iss",
-      "ora",
-      "ine",
-      "ys"
-    ],
-    "male": [
-      "rel",
-      "eth",
-      "os",
-      "ix",
-      "rath",
-      "eus",
-      "on"
-    ],
-    "seeds": [
-      "Morwen",
-      "Hexley",
-      "Saberine",
-      "Vexander",
-      "Isolde",
-      "Nyxen",
-      "Corvus",
-      "Lilith"
-    ],
-    "lore": "Warlock comes from Old English <em>wǣrloga</em> — 'oath-breaker' — and warlock names keep that sense of a bargain made. In D&D a warlock's power is borrowed from a patron, and many take a pact name the way early-modern cunning folk and accused witches were recorded under aliases: short, sibilant, slightly too smooth. Hard x and v openings, liquid middles and endings like -iss, -rath and -wyn make a name that sounds like it was whispered back."
-  },
   "greek": {
     "label": "Greek",
     "genre": [
@@ -547,5 +256,83 @@ export const BACKLOG = {
       "Xochiquetzal"
     ],
     "lore": "Aztec names are Nahuatl words used whole: <em>Xochitl</em> is 'flower', <em>Citlali</em> 'star', <em>Itzcoatl</em> 'obsidian serpent'. Many children were named for their day-sign in the 260-day ritual calendar, and nobles added the honorific <em>-tzin</em> ('revered'). The sound is unmistakable — the tl and tz clusters, x pronounced 'sh', and stress on the second-to-last syllable — and the meaning is always concrete: a creature, a stone, a sign in the sky."
+  },
+  "persian": {
+    "label": "Persian",
+    "genre": ["fantasy", "historical"],
+    "onset": ["Ard","Dar","Kho","Shah","Rox","Far","Bah","Es","Jam","Kav","Mith","Nar","Pari","Ros","Sor","Tah","Vish","Xer","Yaz","Zar","Bar","Mehr","Ar","Fir","Gol","Hor","Kam","Lal","Nus","Pur"],
+    "mid": ["a","i","e","u","ya","da","van"],
+    "coda": ["shid","ram","yar","van","dad","zad","oush","mehr","an","ana","ine","naz","bano","dokht","rez","ush"],
+    "syl": [2, 2, 3],
+    "gendered": true,
+    "female": ["ana","ine","naz","bano","dokht","gol","ara"],
+    "male": ["shid","ram","yar","van","dad","zad","oush","mehr","rez"],
+    "seeds": ["Darius","Cyrus","Roxana","Rostam","Sohrab","Esfandiar","Jamshid","Shirin"],
+    "lore": "Persian names run from the Achaemenid kings the Greeks wrote about — Cyrus, Darius, Xerxes, Roxana — to the heroes of Ferdowsi's <em>Shahnameh</em>, the Book of Kings: Rostam, Sohrab, Esfandiar. The real elements still show through: <em>-shid</em> (radiant, as in Jamshid), <em>-yar</em> (friend), <em>-zad</em> (born of), <em>-dokht</em> (daughter) and <em>-bano</em> (lady). The sound is courtly — long open vowels, soft <em>sh</em> and <em>kh</em>, a stress that falls late — and it suits any setting with a great king, a garden and a rival at the gate."
+  },
+  "mongol": {
+    "label": "Mongol",
+    "genre": ["fantasy", "historical"],
+    "onset": ["Tem","Bor","Sub","Jo","Og","Tol","Bat","Chag","Hul","Kub","Mon","Ar","Yes","Oyu","Tum","Khas","Nar","Sar","Alt","Bay","Dor","Erd","Gan","Mun","Zol","Och","Bul","Ser"],
+    "mid": ["u","a","e","o","ge","ba","chi","da"],
+    "coda": ["ujin","te","tai","chi","dei","gei","ghai","khan","bek","tar","un","gan","ulan","gerel","bold","bat","jargal","tuya","naran"],
+    "syl": [2, 3, 3],
+    "gendered": true,
+    "female": ["te","ujin","gerel","ulan","tuya","naran","maa","jin"],
+    "male": ["tai","chi","dei","gei","khan","bek","bold","bat","gan","jargal"],
+    "seeds": ["Temujin","Borte","Subutai","Jochi","Ogedei","Hulegu","Khutulun","Sorghaghtani"],
+    "lore": "Mongol names from the age of the Great Khans were plain words with the meaning left showing: <em>Temujin</em> is 'of iron', <em>Borte</em> 'grey-blue', <em>Subutai</em> from a word for the wild horse. Modern Mongolian keeps the habit — <em>Bold</em> (steel), <em>Gerel</em> (light), <em>Naran</em> (sun), <em>Tuya</em> (ray) — and favours two-part compounds. The sound is steppe-flat and consonant-rich: back vowels, <em>kh</em> and <em>ch</em>, endings like <em>-tai</em>, <em>-dei</em> and <em>-ujin</em>. It is the register for horse-lords, khanates and any empire built from the saddle."
+  },
+  "knight": {
+    "label": "Knight",
+    "genre": ["dnd", "fantasy"],
+    "onset": ["Gal","Lan","Per","Gaw","Bed","Tris","Lio","Bor","Kay","Ag","Dag","Pel","Uri","Ec","Lam","Sag","Bal","Gar","Ger","Flor","Mel","Ros","Isol","Eni","Guin","Lyn","Mor","Cal","Bran","Yv"],
+    "mid": ["a","e","i","o","ha","ra","li"],
+    "coda": ["ahad","celot","ival","ain","ivere","tan","eth","hault","ion","ard","amor","ivale","ien","ant","ette","elle","evere","ia","iene","ide"],
+    "syl": [2, 2, 3],
+    "gendered": true,
+    "female": ["ette","elle","evere","ia","iene","ide","isse","ane"],
+    "male": ["ahad","celot","ival","ain","ivere","tan","eth","hault","ion","ard","amor","ant"],
+    "seeds": ["Galahad","Lancelot","Percival","Gawain","Bedivere","Tristan","Guinevere","Isolde"],
+    "lore": "Knightly names come from the Arthurian romances, and they are a blend by birth: Welsh heroes (<em>Gwalchmai</em>, <em>Bedwyr</em>, <em>Peredur</em>) were re-spelled by French poets into Gawain, Bedivere and Percival, then handed on to Malory and English. That is why the register mixes soft Welsh openings with French endings — <em>-celot</em>, <em>-ivere</em>, <em>-hault</em>, <em>-ette</em>. Two or three syllables, a liquid middle and an ending that could be sung by a troubadour: the sound of a name that belongs on a shield."
+  },
+  "giant": {
+    "label": "Giant",
+    "genre": ["dnd", "fantasy", "viking"],
+    "onset": ["Ym","Thry","Sur","Ska","Hrung","Thja","Gerd","Aeg","Bergel","Hym","Geir","Ang","Far","Gym","Hrym","Jarn","Mok","Bel","Sut","Thok","Vaf","Bol","Fenj","Ut","Lok","Hrod","Grid","Rind","Olv"],
+    "mid": ["a","i","u","ur","ga","el"],
+    "coda": ["mir","nir","gard","ur","rokk","nar","mod","gelmir","thrym","dis","laug","hild","kel","grim","i","a","un","ja"],
+    "syl": [2, 2, 3],
+    "gendered": true,
+    "female": ["a","dis","laug","hild","un","ja","i"],
+    "male": ["mir","nir","ur","rokk","mod","grim","kel","thrym","nar"],
+    "seeds": ["Ymir","Thrym","Surtr","Skadi","Hrungnir","Bergelmir","Gerd","Thiazi"],
+    "lore": "Giant names in D&D descend from the <em>jötnar</em> of Norse myth, the elder race the gods were born from and fought forever: <em>Ymir</em>, whose body became the world, <em>Thrym</em> who stole Thor's hammer, <em>Surtr</em> of the fire, <em>Skadi</em> of the snowshoes, <em>Hrungnir</em> with the stone heart. The register is Old Norse at its most massive — cluster openings like <em>Hr-</em>, <em>Thr-</em>, <em>Sk-</em>, dark vowels, and endings such as <em>-mir</em>, <em>-nir</em> and <em>-grim</em> that sound like rockfall. Fire, frost, storm and hill giants can all share it; the giantesses soften only at the very end."
+  },
+  "necromancer": {
+    "label": "Necromancer",
+    "genre": ["dnd", "fantasy"],
+    "onset": ["Vec","Mor","Kel","Thuz","Nek","Az","Xan","Vor","Mal","Zar","Dra","Sza","Kha","Ner","Oth","Gul","Rha","Sor","Thal","Ver","Noc","Ebon","Ign","Bal","Lar","Nag","Acer","Zol","Ulr"],
+    "mid": ["a","e","o","i","ra","ze","ka","lo"],
+    "coda": ["ath","mor","gul","thas","zuul","ius","oth","ael","ith","ra","ax","mir","rath","is","ek","ora","ia","loch","na"],
+    "syl": [2, 2, 3],
+    "gendered": true,
+    "female": ["ra","ora","ia","ith","is","ael","na"],
+    "male": ["ath","mor","gul","thas","ius","oth","ek","rath","mir","loch"],
+    "seeds": ["Vecna","Kel'Thuzad","Szass Tam","Larloch","Acererak","Nagash","Xykon","Azalin"],
+    "lore": "Necromancer names are a fantasy invention with a consistent grammar, set by the great liches of the game: <em>Vecna</em>, <em>Acererak</em>, <em>Szass Tam</em>, <em>Larloch</em>, <em>Azalin</em>, and Warcraft's <em>Kel'Thuzad</em>. They open on a sound that scrapes — <em>Vec-</em>, <em>Thuz-</em>, <em>Xan-</em>, <em>Sza-</em> — and close on a dead-air ending: <em>-ath</em>, <em>-gul</em>, <em>-thas</em>, <em>-zuul</em>, <em>-loch</em>. Sibilants and <em>z</em> do most of the work, with the occasional Latinate <em>-ius</em> to suggest a scholar who read the wrong book. Short, dry and final, the way a name should be when it outlives its owner."
+  },
+  "bard": {
+    "label": "Bard",
+    "genre": ["dnd", "fantasy", "druid"],
+    "onset": ["Tal","An","Myr","Am","Os","Cer","Gwyd","Rhi","Bran","Cath","Fin","Lleu","Ael","Daf","Ior","Eir","Mab","Nia","Sef","Car","Gwen","Hew","Idr","Oll","Teg","Ur","Wyn","Mer","Ang","Dyl"],
+    "mid": ["i","a","e","wy","ei","y","an"],
+    "coda": ["iesin","eirin","ddin","wen","ion","an","ydd","gan","wyn","eth","ith","ys","ai","adoc","wenna","ella","enwy","ona"],
+    "syl": [2, 2, 3],
+    "gendered": true,
+    "female": ["wen","wenna","ella","enwy","ith","ys","ona","a"],
+    "male": ["iesin","eirin","ddin","ion","an","ydd","gan","wyn","adoc","eth"],
+    "seeds": ["Taliesin","Aneirin","Myrddin","Amergin","Ossian","Cathbad","Llywarch","Gwydion"],
+    "lore": "The bard was a real office before it was a class: in early Wales and Ireland the <em>bardd</em> and <em>fili</em> were trained poets who kept a lord's genealogy and reputation in verse. Their names are the oldest in the Celtic record — <em>Taliesin</em> ('radiant brow'), <em>Aneirin</em>, <em>Myrddin</em> (who became Merlin), <em>Amergin</em> who sang Ireland into being, <em>Llywarch Hen</em>. The sound is Welsh at heart: the <em>dd</em> and <em>ll</em>, the <em>-wyn</em> and <em>-wen</em> endings, vowels that glide. It suits a D&D bard better than a lute-shaped pun, and it sits naturally beside the Celtic and druid generators."
   },
 };
