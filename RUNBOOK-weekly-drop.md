@@ -34,7 +34,10 @@ barbarian-clan, wizard, druid, monk, samurai, viking-clan, roman, egyptian, japa
 
 ## Month-2 roadmap (start ~2026-09-15): new generator TYPES
 One per week, using the compound-word engine pattern:
-tavern names (SHIPPED 2026-09-17) -> guild names (SHIPPED 2026-09-22) -> city names (SHIPPED 2026-10-02, uses `fuse: true` to weld elements into one word) -> ship names (SHIPPED 2026-10-06, plain two-word quality+namesake) -> kingdom names.
+tavern names (SHIPPED 2026-09-17) -> guild names (SHIPPED 2026-09-22) -> city names (SHIPPED 2026-10-02, uses `fuse: true` to weld elements into one word) -> ship names (SHIPPED 2026-10-06, plain two-word quality+namesake) -> kingdom names (SHIPPED 2026-10-21, `fuse: true` root + territory ending: -land/-mark/-ania/-dor).
+ROADMAP COMPLETE. Month-3 candidates if a sixth type is wanted (one per week, same bar):
+inn/shop names (sign-painter formula, distinct from tavern), weapon names (Excalibur/Sting
+pattern: epithet + noun), deity/pantheon names, continent/region names, noble-house names.
 Each gets its own main page + letter pages, e.g. /tavern-name-generator/, and lives in
 data/places.js with genre ["place"] (hub: /place-name-generator/ — "place name generator"
 is the searched phrase, so the genre key is singular). Place entries set `sep: " "`, which
@@ -44,8 +47,10 @@ build.js skips the male/female/neutral pages (a "male tavern name" page would be
 Quality bar for a new type: 60+ first words and 60+ second words (letter coverage),
 a real convention in the lore (tavern = medieval signboard adjective+beast), an EDITORIAL
 entry (history/craft/dm) and a GENRE_INTROS line if a new hub is needed.
-Next up: guild names (e.g. "Order of the Gilded Quill" — needs a prefix/preposition pattern;
-consider a `frame` field like "The {a} {b}" / "{b} of the {a}" if plain adjective+noun is too thin).
+Lesson from kingdom (2026-10-21): in `fuse` mode each half is pronounceability-checked alone,
+not the welded word, so a cluster-final root + cluster-initial ending ("Hildthia") slips through.
+Prefer roots ending in a single consonant. Also sample the promoted races for accidental English
+words before shipping (warlock -on gave "Moron", barbarian -ax gave "Thorax"; both swapped).
 
 ## Guardrails
 - NEVER remove or rename existing live URLs (breaks indexed pages).
