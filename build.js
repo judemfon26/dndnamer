@@ -104,7 +104,7 @@ const nameList = (names, cls = "names") =>
 // ---- generator widget: pre-rendered names for Google, re-roll button for humans ----
 function widget(raceKey, gender, seed, letter = null) {
   const names = letter
-    ? generateSet(raceKey, gender, seed, 400).filter(n => n[0].toLowerCase() === letter).slice(0, 18)
+    ? generateSet(raceKey, gender, seed, 400).filter(n => n[0].toLowerCase() === letter).slice(0, LETTER_PAGE_NAMES)
     : generateSet(raceKey, gender, seed, 24);
   return `<section class="gen card" data-race="${raceKey}" data-gender="${gender}"${letter ? ` data-letter="${letter}"` : ""}>
   <div class="controls">
@@ -133,9 +133,14 @@ function related(raceKey) {
 // Which letter pages can each race actually support? Computed with the same
 // generation + acceptance rules the writer uses, so navigation can never link
 // to a page that was pruned (this previously produced 5,075 dead internal links).
+// How many names a letter page shows. The widget, the meta description and the
+// prose analysis MUST all use this one number: they previously disagreed (widget
+// rendered 18, pool/description/prose claimed up to 30), so every letter page
+// promised in search results more names than it actually displayed.
+const LETTER_PAGE_NAMES = 30;
 function letterPool(raceKey, L) {
   return generateSet(raceKey, "neutral", raceKey + L + "seed", 400)
-    .filter(n => n[0].toLowerCase() === L).slice(0, 30);
+    .filter(n => n[0].toLowerCase() === L).slice(0, LETTER_PAGE_NAMES);
 }
 function letterPageExists(pool) {
   if (pool.length < 6) return false;

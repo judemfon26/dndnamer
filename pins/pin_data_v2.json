@@ -1,0 +1,303 @@
+{
+ "initial_pins": [
+  {
+   "slug": "v2-initial-elf",
+   "race": "Elf",
+   "letters": [
+    "a",
+    "c",
+    "e",
+    "f",
+    "g",
+    "i",
+    "l",
+    "m",
+    "n",
+    "r",
+    "s",
+    "t",
+    "v",
+    "y"
+   ],
+   "total": "8,600+",
+   "url": "https://dndnamer.com/elf-name-generator/",
+   "eg_letter": "A",
+   "eg_names": "Aelwenyara &middot; Arvanil &middot; Alvath",
+   "eg_rest": 15
+  },
+  {
+   "slug": "v2-initial-tiefling",
+   "race": "Tiefling",
+   "letters": [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "h",
+    "i",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "r",
+    "s",
+    "v",
+    "x",
+    "z"
+   ],
+   "total": "2,500+",
+   "url": "https://dndnamer.com/tiefling-name-generator/",
+   "eg_letter": "A",
+   "eg_names": "Amthakos &middot; Akvia &middot; Amkos",
+   "eg_rest": 15
+  },
+  {
+   "slug": "v2-initial-halfling",
+   "race": "Halfling",
+   "letters": [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "r",
+    "s",
+    "t",
+    "w"
+   ],
+   "total": "2,400+",
+   "url": "https://dndnamer.com/halfling-name-generator/",
+   "eg_letter": "B",
+   "eg_names": "Bilgewise &middot; Banbuck &middot; Bungdo",
+   "eg_rest": 15
+  },
+  {
+   "slug": "v2-initial-drow",
+   "race": "Drow",
+   "letters": [
+    "a",
+    "b",
+    "d",
+    "e",
+    "f",
+    "i",
+    "m",
+    "n",
+    "q",
+    "r",
+    "s",
+    "t",
+    "v",
+    "y",
+    "z"
+   ],
+   "total": "1,800+",
+   "url": "https://dndnamer.com/drow-name-generator/",
+   "eg_letter": "A",
+   "eg_names": "Alarune &middot; Alael &middot; Alathune",
+   "eg_rest": 15
+  },
+  {
+   "slug": "v2-initial-orc",
+   "race": "Orc",
+   "letters": [
+    "a",
+    "b",
+    "d",
+    "g",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "r",
+    "s",
+    "u",
+    "v",
+    "z"
+   ],
+   "total": "2,500+",
+   "url": "https://dndnamer.com/orc-name-generator/",
+   "eg_letter": "A",
+   "eg_names": "Azog &middot; Azgrum &middot; Azdush",
+   "eg_rest": 15
+  },
+  {
+   "slug": "v2-initial-dwarf",
+   "race": "Dwarf",
+   "letters": [
+    "b",
+    "d",
+    "f",
+    "g",
+    "k",
+    "m",
+    "n",
+    "o",
+    "t"
+   ],
+   "total": "2,600+",
+   "url": "https://dndnamer.com/dwarf-name-generator/",
+   "eg_letter": "B",
+   "eg_names": "Bomadrim &middot; Bofarli &middot; Bomli",
+   "eg_rest": 15
+  }
+ ],
+ "tease_pins": [
+  {
+   "slug": "v2-tease-elf",
+   "race": "Elf",
+   "picks": [
+    [
+     "Riyavath",
+     "a classic, load-bearing form"
+    ],
+    [
+     "Legmaur",
+     "an everyday name in this register"
+    ],
+    [
+     "Mirilas",
+     "a formal or elder variant"
+    ],
+    [
+     "Riraril",
+     "a short, familiar form"
+    ]
+   ],
+   "total": "8,600+",
+   "url": "https://dndnamer.com/elf-name-generator/"
+  },
+  {
+   "slug": "v2-tease-tiefling",
+   "race": "Tiefling",
+   "picks": [
+    [
+     "Thersekos",
+     "a classic, load-bearing form"
+    ],
+    [
+     "Skothus",
+     "an everyday name in this register"
+    ],
+    [
+     "Helkrizar",
+     "a formal or elder variant"
+    ],
+    [
+     "Morzeth",
+     "a short, familiar form"
+    ]
+   ],
+   "total": "2,500+",
+   "url": "https://dndnamer.com/tiefling-name-generator/"
+  },
+  {
+   "slug": "v2-tease-halfling",
+   "race": "Halfling",
+   "picks": [
+    [
+     "Faldole",
+     "a classic, load-bearing form"
+    ],
+    [
+     "Milrituck",
+     "an everyday name in this register"
+    ],
+    [
+     "Samic",
+     "a formal or elder variant"
+    ],
+    [
+     "Wilo",
+     "a short, familiar form"
+    ]
+   ],
+   "total": "2,400+",
+   "url": "https://dndnamer.com/halfling-name-generator/"
+  },
+  {
+   "slug": "v2-tease-drow",
+   "race": "Drow",
+   "picks": [
+    [
+     "Quinkra",
+     "a classic, load-bearing form"
+    ],
+    [
+     "Triraryn",
+     "an everyday name in this register"
+    ],
+    [
+     "Pharinryn",
+     "a formal or elder variant"
+    ],
+    [
+     "Ilvnakra",
+     "a short, familiar form"
+    ]
+   ],
+   "total": "1,800+",
+   "url": "https://dndnamer.com/drow-name-generator/"
+  },
+  {
+   "slug": "v2-tease-orc",
+   "race": "Orc",
+   "picks": [
+    [
+     "Guluk",
+     "a classic, load-bearing form"
+    ],
+    [
+     "Zagdush",
+     "an everyday name in this register"
+    ],
+    [
+     "Nazduhai",
+     "a formal or elder variant"
+    ],
+    [
+     "Muznak",
+     "a short, familiar form"
+    ]
+   ],
+   "total": "2,500+",
+   "url": "https://dndnamer.com/orc-name-generator/"
+  },
+  {
+   "slug": "v2-tease-dwarf",
+   "race": "Dwarf",
+   "picks": [
+    [
+     "Nornar",
+     "a classic, load-bearing form"
+    ],
+    [
+     "Durunin",
+     "an everyday name in this register"
+    ],
+    [
+     "Groborg",
+     "a formal or elder variant"
+    ],
+    [
+     "Durdan",
+     "a short, familiar form"
+    ]
+   ],
+   "total": "2,600+",
+   "url": "https://dndnamer.com/dwarf-name-generator/"
+  }
+ ]
+}

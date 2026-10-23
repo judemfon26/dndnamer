@@ -161,3 +161,38 @@ console.log(`indexable surface: ${indexableCount} pages, all above floor; thin t
   }
   console.log(`changelog: ${CHANGELOG.length} entries, newest ${newest} (${ageDays}d old)`);
 }
+
+// ---- letter pages: what the page promises must equal what it shows ----------
+// These pages are this site's traffic engine (every top-clicked page in GSC is
+// one). They previously rendered 18 names while the meta description and the
+// prose analysis both claimed up to 30, so every search result over-promised.
+{
+  const letterFiles = [];
+  (function sweep(d) {
+    for (const e of fs2.readdirSync(d, { withFileTypes: true })) {
+      const p3 = path5.join(d, e.name);
+      if (e.isDirectory()) sweep(p3);
+      else if (e.name === "index.html" && /-names-starting-with-/.test(p3)) letterFiles.push(p3);
+    }
+  })("dist");
+  let checked = 0;
+  for (const f of letterFiles) {
+    const h = fs2.readFileSync(f, "utf8");
+    const listM = h.match(/<ul class="names"[\s\S]*?<\/ul>/);
+    const descM = h.match(/name="description" content="(\d+) /);
+    if (!listM || !descM) continue;
+    const shown = (listM[0].match(/<li>/g) || []).length;
+    const claimed = +descM[1];
+    if (shown !== claimed) {
+      console.error(`GATE: ${f} shows ${shown} names but its description claims ${claimed}`);
+      process.exit(1);
+    }
+    const proseM = h.match(/(?:the|Across the|behind these) (\d+) names/);
+    if (proseM && +proseM[1] !== shown) {
+      console.error(`GATE: ${f} shows ${shown} names but its prose says ${proseM[1]}`);
+      process.exit(1);
+    }
+    checked++;
+  }
+  console.log(`letter pages: ${checked} checked, shown count matches description and prose`);
+}
