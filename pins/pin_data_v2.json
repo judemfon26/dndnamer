@@ -23,7 +23,7 @@
    "url": "https://dndnamer.com/elf-name-generator/",
    "eg_letter": "A",
    "eg_names": "Aelwenyara &middot; Arvanil &middot; Alvath",
-   "eg_rest": 15
+   "eg_rest": 27
   },
   {
    "slug": "v2-initial-tiefling",
@@ -52,7 +52,7 @@
    "url": "https://dndnamer.com/tiefling-name-generator/",
    "eg_letter": "A",
    "eg_names": "Amthakos &middot; Akvia &middot; Amkos",
-   "eg_rest": 15
+   "eg_rest": 27
   },
   {
    "slug": "v2-initial-halfling",
@@ -80,7 +80,7 @@
    "url": "https://dndnamer.com/halfling-name-generator/",
    "eg_letter": "B",
    "eg_names": "Bilgewise &middot; Banbuck &middot; Bungdo",
-   "eg_rest": 15
+   "eg_rest": 27
   },
   {
    "slug": "v2-initial-drow",
@@ -104,9 +104,9 @@
    ],
    "total": "1,800+",
    "url": "https://dndnamer.com/drow-name-generator/",
-   "eg_letter": "A",
-   "eg_names": "Alarune &middot; Alael &middot; Alathune",
-   "eg_rest": 15
+   "eg_letter": "N",
+   "eg_names": "Nymdra &middot; Nalrazzt &middot; Nalssune",
+   "eg_rest": 27
   },
   {
    "slug": "v2-initial-orc",
@@ -129,9 +129,9 @@
    ],
    "total": "2,500+",
    "url": "https://dndnamer.com/orc-name-generator/",
-   "eg_letter": "A",
-   "eg_names": "Azog &middot; Azgrum &middot; Azdush",
-   "eg_rest": 15
+   "eg_letter": "G",
+   "eg_names": "Goruluk &middot; Gulkar &middot; Grishai",
+   "eg_rest": 27
   },
   {
    "slug": "v2-initial-dwarf",
@@ -151,7 +151,7 @@
    "url": "https://dndnamer.com/dwarf-name-generator/",
    "eg_letter": "B",
    "eg_names": "Bomadrim &middot; Bofarli &middot; Bomli",
-   "eg_rest": 15
+   "eg_rest": 27
   }
  ],
  "tease_pins": [
