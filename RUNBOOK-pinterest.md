@@ -29,9 +29,11 @@ the need it created, so there was nothing left to click for.
 Pinterest throttles bulk posting and a 12-pin dump from one account reads as spam.
 **2–3 pins per week, spaced.** The point is a steady drip, not a launch.
 
-Queue is in `pins/COPY_v2.json`. Published so far (all 2026-10-23):
-- [x] v2-initial-elf, -tiefling, -orc, -dwarf, -drow, -halfling
-- [ ] v2-tease-elf, -tiefling, -halfling, -drow, -orc, -dwarf
+Queue is in `pins/COPY_v2.json`. Published so far:
+- [x] v2-initial-elf, -tiefling, -orc, -dwarf, -drow, -halfling (2026-10-23)
+- [x] v2-tease-elf (2026-10-30, pin 897905244478738710)
+- [x] v2-tease-tiefling (2026-10-30, pin 897905244478738737)
+- [ ] v2-tease-halfling, -drow, -orc, -dwarf
 
 ## Publishing one pin
 
