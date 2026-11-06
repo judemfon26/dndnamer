@@ -33,7 +33,12 @@ Queue is in `pins/COPY_v2.json`. Published so far:
 - [x] v2-initial-elf, -tiefling, -orc, -dwarf, -drow, -halfling (2026-10-23)
 - [x] v2-tease-elf (2026-10-30, pin 897905244478738710)
 - [x] v2-tease-tiefling (2026-10-30, pin 897905244478738737)
-- [ ] v2-tease-halfling, -drow, -orc, -dwarf
+- [x] v2-tease-halfling (2026-11-06, pin 897905244478936197)
+- [x] v2-tease-drow (2026-11-06, pin 897905244478936227)
+- [ ] v2-tease-orc, -dwarf
+
+Note (2026-11-06): `file_upload` only reads session-allowed folders — copy the png to
+`/tmp/dndnamer-pins/` first, then upload from there.
 
 ## Publishing one pin
 
