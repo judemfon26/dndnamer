@@ -3,6 +3,11 @@
 // the phonotactic table that actually ships.
 export const CHANGELOG = [
   {
+    date: "2026-11-10",
+    title: "Greek, Slavic and Aztec generators",
+    body: `Three historical traditions join the set, each with its own phonotactic table. Greek names are gendered by their endings: <em>-andros</em>, <em>-okles</em>, <em>-ippos</em> and the patronymic <em>-ides</em> for men, <em>-a</em>, <em>-ope</em>, <em>-ine</em> and <em>-ora</em> for women, spelled with <em>k</em> as the Greeks wrote them. Slavic names weld a root to an ending through a linking vowel — <em>Bog-</em>, <em>Rad-</em>, <em>Yaro-</em> onto <em>-slav</em>, <em>-mir</em>, <em>-gost</em> — with feminine forms in <em>-slava</em>, <em>-mira</em> and <em>-mila</em>. Aztec names close on real Nahuatl noun endings such as <em>-coatl</em>, <em>-tli</em>, <em>-pilli</em> and the honorific <em>-tzin</em>, and are not split by gender because Nahuatl does not mark it.`,
+  },
+  {
     date: "2026-10-21",
     title: "Monk, barbarian and warlock generators, plus kingdom names",
     body: `Three class-flavoured traditions join the race set. Monk names follow the Theravada <em>dharma name</em> practice: open Pali syllables with aspirated <em>Bha-</em> and <em>Dha-</em> openings, closing on <em>-nanda</em>, <em>-pala</em> and <em>-mitta</em> for men and <em>-vati</em>, <em>-ika</em> and <em>-ani</em> for women. Barbarian names are built the way the Goths and Vandals built theirs, two elements welded together — <em>Al-</em>, <em>Theud-</em>, <em>Gais-</em> onto <em>-ric</em>, <em>-mund</em>, <em>-wulf</em>, <em>-hild</em>. Warlock names open sharp (<em>Hex-</em>, <em>Vex-</em>, <em>Nyx-</em>) and close whispered (<em>-iss</em>, <em>-rath</em>, <em>-wyn</em>). The kingdom generator completes the Month-2 place set: it fuses a root onto a territory ending — Germanic <em>-land</em> and <em>-mark</em>, Latin <em>-ania</em> and <em>-oria</em>, Tolkien's <em>-dor</em>.`,

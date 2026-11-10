@@ -2012,4 +2012,260 @@ export const RACES3 = {
     ],
     "lore": "Warlock comes from Old English <em>wǣrloga</em> — 'oath-breaker' — and warlock names keep that sense of a bargain made. In D&D a warlock's power is borrowed from a patron, and many take a pact name the way early-modern cunning folk and accused witches were recorded under aliases: short, sibilant, slightly too smooth. Hard x and v openings, liquid middles and endings like -iss, -rath and -wyn make a name that sounds like it was whispered back."
   },
+  "greek": {
+    "label": "Greek",
+    "genre": [
+      "historical",
+      "fantasy"
+    ],
+    "onset": [
+      "Alex",
+      "Ari",
+      "Demetr",
+      "Kall",
+      "Theo",
+      "Nik",
+      "Phil",
+      "Lys",
+      "Kle",
+      "Her",
+      "Eu",
+      "Peri",
+      "Xenoph",
+      "Them",
+      "Dio",
+      "Hyp",
+      "Penel",
+      "Iph",
+      "Kas",
+      "Menel",
+      "Sop",
+      "Agl",
+      "Andr",
+      "Tim"
+    ],
+    "mid": [
+      "o",
+      "e",
+      "i",
+      "a",
+      "ist",
+      "on"
+    ],
+    "coda": [
+      "andros",
+      "okles",
+      "ippos",
+      "on",
+      "ias",
+      "eus",
+      "as",
+      "ion",
+      "ides",
+      "a",
+      "ia",
+      "ope",
+      "ine",
+      "ike",
+      "is",
+      "ora"
+    ],
+    "syl": [
+      2,
+      2,
+      3
+    ],
+    "gendered": true,
+    "female": [
+      "a",
+      "ia",
+      "ope",
+      "ine",
+      "ike",
+      "is",
+      "ora"
+    ],
+    "male": [
+      "andros",
+      "okles",
+      "ippos",
+      "on",
+      "ias",
+      "eus",
+      "as",
+      "ion",
+      "ides"
+    ],
+    "seeds": [
+      "Alexandros",
+      "Themistokles",
+      "Kallisto",
+      "Penelope",
+      "Lysandra",
+      "Demetrios",
+      "Hypatia",
+      "Perikles"
+    ],
+    "lore": "Ancient Greek names were compounds of two meaningful elements, much like Norse ones: <em>Alexandros</em> is 'defender of men', <em>Perikles</em> 'surrounded by glory', <em>Philippos</em> 'lover of horses'. Endings carry the gender — -os, -es and -on for men, -a, -e and -is for women — and patronymics in -ides ('son of') mark lineage. The sound is crisp and vowel-rich, with k and ph and th clusters that Latin later softened into the forms we usually read."
+  },
+  "slavic": {
+    "label": "Slavic",
+    "genre": [
+      "historical",
+      "fantasy"
+    ],
+    "onset": [
+      "Vlad",
+      "Bog",
+      "Mir",
+      "Rad",
+      "Dob",
+      "Svet",
+      "Yaro",
+      "Bor",
+      "Lyud",
+      "Stan",
+      "Zla",
+      "Mil",
+      "Bole",
+      "Dra",
+      "Ka",
+      "Vse",
+      "Ole",
+      "Zor",
+      "Tvert",
+      "Liu",
+      "Ves",
+      "Gor"
+    ],
+    "mid": [
+      "o",
+      "e",
+      "i"
+    ],
+    "coda": [
+      "slav",
+      "mir",
+      "dan",
+      "gost",
+      "bor",
+      "mil",
+      "vit",
+      "rad",
+      "slava",
+      "mira",
+      "mila",
+      "dana",
+      "na",
+      "ka",
+      "ta"
+    ],
+    "syl": [
+      2,
+      2,
+      3
+    ],
+    "gendered": true,
+    "female": [
+      "slava",
+      "mira",
+      "mila",
+      "dana",
+      "na",
+      "ka",
+      "ta"
+    ],
+    "male": [
+      "slav",
+      "mir",
+      "dan",
+      "gost",
+      "bor",
+      "mil",
+      "vit",
+      "rad"
+    ],
+    "seeds": [
+      "Vladimir",
+      "Bogdan",
+      "Lyudmila",
+      "Svyatoslav",
+      "Miroslava",
+      "Dobromir",
+      "Radomir",
+      "Zlata"
+    ],
+    "lore": "Old Slavic names are two-part compounds with plain meanings: <em>Vladimir</em> is 'rule' + 'peace' or 'world', <em>Bogdan</em> 'given by God', <em>Lyudmila</em> 'dear to the people'. The productive endings — -slav (glory), -mir (peace), -gost (guest), -bor (fight) — took a final -a for women, so Miroslav and Miroslava are one name in two genders. Consonant clusters (sv, vl, zl) open the name; clear vowels close it."
+  },
+  "aztec": {
+    "label": "Aztec",
+    "genre": [
+      "historical",
+      "fantasy"
+    ],
+    "onset": [
+      "Itz",
+      "Xoch",
+      "Cit",
+      "Ix",
+      "Tez",
+      "Tla",
+      "Ilhu",
+      "Mix",
+      "Ne",
+      "Teo",
+      "Cha",
+      "Ma",
+      "Yao",
+      "Ehe",
+      "Tona",
+      "Oce",
+      "Aca",
+      "Cue",
+      "Zol",
+      "Hue",
+      "Pil"
+    ],
+    "mid": [
+      "ca",
+      "za",
+      "to",
+      "li",
+      "pa",
+      "qui"
+    ],
+    "coda": [
+      "coatl",
+      "tzin",
+      "itl",
+      "alli",
+      "oc",
+      "catl",
+      "tli",
+      "pilli",
+      "lin",
+      "ehua",
+      "mani",
+      "tal",
+      "zin",
+      "mitl"
+    ],
+    "syl": [
+      2,
+      3,
+      3
+    ],
+    "gendered": false,
+    "seeds": [
+      "Itzcoatl",
+      "Xochitl",
+      "Citlali",
+      "Moctezuma",
+      "Cuauhtli",
+      "Tlacaelel",
+      "Nezahualcoyotl",
+      "Xochiquetzal"
+    ],
+    "lore": "Aztec names are Nahuatl words used whole: <em>Xochitl</em> is 'flower', <em>Citlali</em> 'star', <em>Itzcoatl</em> 'obsidian serpent'. Many children were named for their day-sign in the 260-day ritual calendar, and nobles added the honorific <em>-tzin</em> ('revered'). The sound is unmistakable — the tl and tz clusters, x pronounced 'sh', and stress on the second-to-last syllable — and the meaning is always concrete: a creature, a stone, a sign in the sky."
+  },
 };
